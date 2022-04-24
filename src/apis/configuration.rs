@@ -34,8 +34,16 @@ pub struct ApiKey {
 
 
 impl Configuration {
-    pub fn new() -> Configuration {
-        Configuration::default()
+    pub fn new(base_path: String, user_agent: Option<String>) -> Configuration {
+        Configuration {
+            base_path: base_path,
+            user_agent: user_agent,
+            client: reqwest::Client::new(),
+            basic_auth: None,
+            oauth_access_token: None,
+            bearer_access_token: None,
+            api_key: None,
+        }
     }
 }
 
@@ -49,7 +57,6 @@ impl Default for Configuration {
             oauth_access_token: None,
             bearer_access_token: None,
             api_key: None,
-
         }
     }
 }
