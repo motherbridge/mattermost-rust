@@ -1,5 +1,5 @@
 [package]
-name = "openapi"
+name = "mattermost-rust-client"
 version = "4.0.0"
 authors = ["OpenAPI Generator team and contributors"]
 edition = "2018"
