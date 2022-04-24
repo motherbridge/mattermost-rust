@@ -1588,7 +1588,7 @@ pub async fn upgrade_to_enterprise_status(configuration: &configuration::Configu
 }
 
 /// Upload a license to enable enterprise features.  __Minimum server version__: 4.0  ##### Permissions Must have `manage_system` permission. 
-pub async fn upload_license_file(configuration: &configuration::Configuration, license: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadLicenseFileError>> {
+pub async fn upload_license_file(configuration: &configuration::Configuration, _license: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadLicenseFileError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -139,7 +139,7 @@ pub async fn autocomplete_emoji(configuration: &configuration::Configuration, na
 }
 
 /// Create a custom emoji for the team. ##### Permissions Must be authenticated. 
-pub async fn create_emoji(configuration: &configuration::Configuration, image: std::path::PathBuf, emoji: &str) -> Result<crate::models::Emoji, Error<CreateEmojiError>> {
+pub async fn create_emoji(configuration: &configuration::Configuration, _image: std::path::PathBuf, emoji: &str) -> Result<crate::models::Emoji, Error<CreateEmojiError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

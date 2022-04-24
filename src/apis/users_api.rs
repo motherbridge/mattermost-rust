@@ -2387,7 +2387,7 @@ pub async fn set_default_profile_image(configuration: &configuration::Configurat
 }
 
 /// Set a user's profile image based on user_id string parameter. ##### Permissions Must be logged in as the user being updated or have the `edit_other_users` permission. 
-pub async fn set_profile_image(configuration: &configuration::Configuration, user_id: &str, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetProfileImageError>> {
+pub async fn set_profile_image(configuration: &configuration::Configuration, user_id: &str, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetProfileImageError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

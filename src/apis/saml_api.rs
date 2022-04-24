@@ -376,7 +376,7 @@ pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Config
 }
 
 /// Upload the IDP certificate to be used with your SAML configuration. The server will pick a hard-coded filename for the IdpCertificateFile setting in your `config.json`. ##### Permissions Must have `sysconsole_write_authentication` permission. 
-pub async fn upload_saml_idp_certificate(configuration: &configuration::Configuration, certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlIdpCertificateError>> {
+pub async fn upload_saml_idp_certificate(configuration: &configuration::Configuration, _certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlIdpCertificateError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -410,7 +410,7 @@ pub async fn upload_saml_idp_certificate(configuration: &configuration::Configur
 }
 
 /// Upload the private key to be used for encryption with your SAML configuration. The server will pick a hard-coded filename for the PrivateKeyFile setting in your `config.json`. ##### Permissions Must have `sysconsole_write_authentication` permission. 
-pub async fn upload_saml_private_certificate(configuration: &configuration::Configuration, certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPrivateCertificateError>> {
+pub async fn upload_saml_private_certificate(configuration: &configuration::Configuration, _certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPrivateCertificateError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -444,7 +444,7 @@ pub async fn upload_saml_private_certificate(configuration: &configuration::Conf
 }
 
 /// Upload the public certificate to be used for encryption with your SAML configuration. The server will pick a hard-coded filename for the PublicCertificateFile setting in your `config.json`. ##### Permissions Must have `sysconsole_write_authentication` permission. 
-pub async fn upload_saml_public_certificate(configuration: &configuration::Configuration, certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPublicCertificateError>> {
+pub async fn upload_saml_public_certificate(configuration: &configuration::Configuration, _certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPublicCertificateError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

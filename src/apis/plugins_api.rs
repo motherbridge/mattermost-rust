@@ -470,7 +470,7 @@ pub async fn remove_plugin(configuration: &configuration::Configuration, plugin_
 }
 
 /// Upload a plugin that is contained within a compressed .tar.gz file. Plugins and plugin uploads must be enabled in the server's config settings.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 4.4 
-pub async fn upload_plugin(configuration: &configuration::Configuration, plugin: std::path::PathBuf, force: Option<&str>) -> Result<crate::models::StatusOk, Error<UploadPluginError>> {
+pub async fn upload_plugin(configuration: &configuration::Configuration, _plugin: std::path::PathBuf, force: Option<&str>) -> Result<crate::models::StatusOk, Error<UploadPluginError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -967,7 +967,7 @@ pub async fn get_teams_unread_for_user(configuration: &configuration::Configurat
 }
 
 /// Import a team into a existing team. Import users, channels, posts, hooks. ##### Permissions Must have `permission_import_team` permission. 
-pub async fn import_team(configuration: &configuration::Configuration, team_id: &str, file: std::path::PathBuf, filesize: i32, import_from: &str) -> Result<crate::models::InlineResponse2005, Error<ImportTeamError>> {
+pub async fn import_team(configuration: &configuration::Configuration, team_id: &str, _file: std::path::PathBuf, filesize: i32, import_from: &str) -> Result<crate::models::InlineResponse2005, Error<ImportTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1333,7 +1333,7 @@ pub async fn search_teams(configuration: &configuration::Configuration, inline_o
 }
 
 /// Sets the team icon for the team.  __Minimum server version__: 4.9  ##### Permissions Must be authenticated and have the `manage_team` permission. 
-pub async fn set_team_icon(configuration: &configuration::Configuration, team_id: &str, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetTeamIconError>> {
+pub async fn set_team_icon(configuration: &configuration::Configuration, team_id: &str, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetTeamIconError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

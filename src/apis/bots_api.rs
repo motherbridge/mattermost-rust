@@ -510,7 +510,7 @@ pub async fn patch_bot(configuration: &configuration::Configuration, bot_user_id
 }
 
 /// Set a bot's LHS icon image based on bot_user_id string parameter. Icon image must be SVG format, all other formats are rejected. ##### Permissions Must have `manage_bots` permission. __Minimum server version__: 5.14 
-pub async fn set_bot_icon_image(configuration: &configuration::Configuration, bot_user_id: &str, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetBotIconImageError>> {
+pub async fn set_bot_icon_image(configuration: &configuration::Configuration, bot_user_id: &str, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetBotIconImageError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

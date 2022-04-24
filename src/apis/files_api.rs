@@ -345,7 +345,7 @@ pub async fn search_files(configuration: &configuration::Configuration, team_id:
 }
 
 /// Uploads a file that can later be attached to a post.  This request can either be a multipart/form-data request with a channel_id, files and optional client_ids defined in the FormData, or it can be a request with the channel_id and filename defined as query parameters with the contents of a single file in the body of the request.  Only multipart/form-data requests are supported by server versions up to and including 4.7. Server versions 4.8 and higher support both types of requests.  ##### Permissions Must have `upload_file` permission. 
-pub async fn upload_file(configuration: &configuration::Configuration, channel_id: Option<&str>, filename: Option<&str>, files: Option<std::path::PathBuf>, channel_id2: Option<&str>, client_ids: Option<&str>) -> Result<crate::models::InlineResponse201, Error<UploadFileError>> {
+pub async fn upload_file(configuration: &configuration::Configuration, channel_id: Option<&str>, filename: Option<&str>, _files: Option<std::path::PathBuf>, channel_id2: Option<&str>, client_ids: Option<&str>) -> Result<crate::models::InlineResponse201, Error<UploadFileError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

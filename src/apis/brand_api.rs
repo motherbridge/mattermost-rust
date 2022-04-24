@@ -110,7 +110,7 @@ pub async fn get_brand_image(configuration: &configuration::Configuration, ) -> 
 }
 
 /// Uploads a brand image. ##### Permissions Must have `manage_system` permission. 
-pub async fn upload_brand_image(configuration: &configuration::Configuration, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadBrandImageError>> {
+pub async fn upload_brand_image(configuration: &configuration::Configuration, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadBrandImageError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
