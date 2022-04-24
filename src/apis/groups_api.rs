@@ -684,7 +684,7 @@ pub async fn get_groups(configuration: &configuration::Configuration, not_associ
 }
 
 /// Retrieve the set of groups associated with the channels in the given team grouped by channel.  ##### Permissions Must have `manage_system` permission or can access only for current user  __Minimum server version__: 5.11 
-pub async fn get_groups_associated_to_channels_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>, paginate: Option<bool>) -> Result<Vec<crate::models::Map>, Error<GetGroupsAssociatedToChannelsByTeamError>> {
+pub async fn get_groups_associated_to_channels_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>, paginate: Option<bool>) -> Result<serde_json::Value, Error<GetGroupsAssociatedToChannelsByTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
