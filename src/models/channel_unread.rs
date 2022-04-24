@@ -18,9 +18,9 @@ pub struct ChannelUnread {
     #[serde(rename = "channel_id", skip_serializing_if = "Option::is_none")]
     pub channel_id: Option<String>,
     #[serde(rename = "msg_count", skip_serializing_if = "Option::is_none")]
-    pub msg_count: Option<i32>,
+    pub msg_count: Option<i64>,
     #[serde(rename = "mention_count", skip_serializing_if = "Option::is_none")]
-    pub mention_count: Option<i32>,
+    pub mention_count: Option<i64>,
 }
 
 impl ChannelUnread {

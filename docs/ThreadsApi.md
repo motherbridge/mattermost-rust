@@ -91,11 +91,11 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
 **team_id** | **String** | The ID of the team in which the thread is. | [required] |
-**since** | Option<**i32**> | Since filters the threads based on their LastUpdateAt timestamp. |  |
+**since** | Option<**i64**> | Since filters the threads based on their LastUpdateAt timestamp. |  |
 **deleted** | Option<**bool**> | Deleted will specify that even deleted threads should be returned (For mobile sync). |  |[default to false]
 **extended** | Option<**bool**> | Extended will enrich the response with participant details. |  |[default to false]
-**page** | Option<**i32**> | Page specifies which part of the results to return, by PageSize. |  |[default to 0]
-**page_size** | Option<**i32**> | PageSize specifies the size of the returned chunk of results. |  |[default to 30]
+**page** | Option<**i64**> | Page specifies which part of the results to return, by PageSize. |  |[default to 0]
+**page_size** | Option<**i64**> | PageSize specifies the size of the returned chunk of results. |  |[default to 30]
 **totals_only** | Option<**bool**> | Setting this to true will only return the total counts. |  |[default to false]
 
 ### Return type

@@ -52,9 +52,9 @@ pub struct ConfigEmailSettings {
     #[serde(rename = "EnableEmailBatching", skip_serializing_if = "Option::is_none")]
     pub enable_email_batching: Option<bool>,
     #[serde(rename = "EmailBatchingBufferSize", skip_serializing_if = "Option::is_none")]
-    pub email_batching_buffer_size: Option<i32>,
+    pub email_batching_buffer_size: Option<i64>,
     #[serde(rename = "EmailBatchingInterval", skip_serializing_if = "Option::is_none")]
-    pub email_batching_interval: Option<i32>,
+    pub email_batching_interval: Option<i64>,
 }
 
 impl ConfigEmailSettings {

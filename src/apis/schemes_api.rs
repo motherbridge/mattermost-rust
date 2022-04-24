@@ -156,7 +156,7 @@ pub async fn delete_scheme(configuration: &configuration::Configuration, scheme_
 }
 
 /// Get a page of channels which use this scheme. The provided Scheme ID should be for a Channel-scoped Scheme. Use the query parameters to modify the behaviour of this endpoint.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 5.0 
-pub async fn get_channels_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForSchemeError>> {
+pub async fn get_channels_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -224,7 +224,7 @@ pub async fn get_scheme(configuration: &configuration::Configuration, scheme_id:
 }
 
 /// Get a page of schemes. Use the query parameters to modify the behaviour of this endpoint.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.0 
-pub async fn get_schemes(configuration: &configuration::Configuration, scope: Option<&str>, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Scheme>, Error<GetSchemesError>> {
+pub async fn get_schemes(configuration: &configuration::Configuration, scope: Option<&str>, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Scheme>, Error<GetSchemesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -264,7 +264,7 @@ pub async fn get_schemes(configuration: &configuration::Configuration, scope: Op
 }
 
 /// Get a page of teams which use this scheme. The provided Scheme ID should be for a Team-scoped Scheme. Use the query parameters to modify the behaviour of this endpoint.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 5.0 
-pub async fn get_teams_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Team>, Error<GetTeamsForSchemeError>> {
+pub async fn get_teams_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Team>, Error<GetTeamsForSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -119,8 +119,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
 **time_range** | **String** | Time range can be \"today\", \"7_day\", or \"28_day\". - `today`: reactions posted on the current day. - `7_day`: reactions posted in the last 7 days. - `28_day`: reactions posted in the last 28 days.  | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of reactions per page, up to a maximum of 200. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of reactions per page, up to a maximum of 200. |  |[default to 60]
 
 ### Return type
 
@@ -152,8 +152,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
 **time_range** | **String** | Time range can be \"today\", \"7_day\", or \"28_day\". - `today`: reactions posted on the current day. - `7_day`: reactions posted in the last 7 days. - `28_day`: reactions posted in the last 28 days.  | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of reactions per page, up to a maximum of 200. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of reactions per page, up to a maximum of 200. |  |[default to 60]
 **team_id** | Option<**String**> | Team ID will scope the response to a given team. ##### Permissions Must have `view_team` permission for the team.  |  |
 
 ### Return type

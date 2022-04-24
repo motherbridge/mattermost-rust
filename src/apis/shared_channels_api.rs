@@ -38,7 +38,7 @@ pub enum GetRemoteClusterInfoError {
 
 
 /// Get all shared channels for a team.  __Minimum server version__: 5.50  ##### Permissions Must be authenticated. 
-pub async fn get_all_shared_channels(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::SharedChannel>, Error<GetAllSharedChannelsError>> {
+pub async fn get_all_shared_channels(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::SharedChannel>, Error<GetAllSharedChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

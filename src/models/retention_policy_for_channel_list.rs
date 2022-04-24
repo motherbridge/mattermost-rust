@@ -18,7 +18,7 @@ pub struct RetentionPolicyForChannelList {
     pub policies: Option<Vec<crate::models::DataRetentionPolicyForChannel>>,
     /// The total number of channel policies.
     #[serde(rename = "total_count", skip_serializing_if = "Option::is_none")]
-    pub total_count: Option<i32>,
+    pub total_count: Option<i64>,
 }
 
 impl RetentionPolicyForChannelList {

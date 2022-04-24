@@ -15,7 +15,7 @@
 pub struct InlineResponse20011 {
     /// Current percentage of the upgrade
     #[serde(rename = "percentage", skip_serializing_if = "Option::is_none")]
-    pub percentage: Option<i32>,
+    pub percentage: Option<i64>,
     /// Error happened during the upgrade
     #[serde(rename = "error", skip_serializing_if = "Option::is_none")]
     pub error: Option<String>,

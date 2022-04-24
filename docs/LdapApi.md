@@ -22,8 +22,8 @@ Returns a list of LDAP groups
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **q** | Option<**String**> | Search term |  |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of users per page. There is a maximum limit of 200 users per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of users per page. There is a maximum limit of 200 users per page. |  |[default to 60]
 
 ### Return type
 

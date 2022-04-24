@@ -331,7 +331,7 @@ pub async fn delete_data_retention_policy(configuration: &configuration::Configu
 }
 
 /// Gets the policies which are applied to the all of the channels to which a user belongs.  __Minimum server version__: 5.35  ##### Permissions Must be logged in as the user or have the `manage_system` permission.  ##### License Requires an E20 license. 
-pub async fn get_channel_policies_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::RetentionPolicyForChannelList, Error<GetChannelPoliciesForUserError>> {
+pub async fn get_channel_policies_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::RetentionPolicyForChannelList, Error<GetChannelPoliciesForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -368,7 +368,7 @@ pub async fn get_channel_policies_for_user(configuration: &configuration::Config
 }
 
 /// Gets the channels to which a granular data retention policy is applied.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
-pub async fn get_channels_for_retention_policy(configuration: &configuration::Configuration, policy_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::ChannelWithTeamData>, Error<GetChannelsForRetentionPolicyError>> {
+pub async fn get_channels_for_retention_policy(configuration: &configuration::Configuration, policy_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::ChannelWithTeamData>, Error<GetChannelsForRetentionPolicyError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -405,7 +405,7 @@ pub async fn get_channels_for_retention_policy(configuration: &configuration::Co
 }
 
 /// Gets details about the granular (i.e. team or channel-specific) data retention policies from the server.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
-pub async fn get_data_retention_policies(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::DataRetentionPolicyWithTeamAndChannelCounts>, Error<GetDataRetentionPoliciesError>> {
+pub async fn get_data_retention_policies(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::DataRetentionPolicyWithTeamAndChannelCounts>, Error<GetDataRetentionPoliciesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -535,7 +535,7 @@ pub async fn get_data_retention_policy_by_id(configuration: &configuration::Conf
 }
 
 /// Gets the policies which are applied to the all of the teams to which a user belongs.  __Minimum server version__: 5.35  ##### Permissions Must be logged in as the user or have the `manage_system` permission.  ##### License Requires an E20 license. 
-pub async fn get_team_policies_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::RetentionPolicyForTeamList, Error<GetTeamPoliciesForUserError>> {
+pub async fn get_team_policies_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::RetentionPolicyForTeamList, Error<GetTeamPoliciesForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -572,7 +572,7 @@ pub async fn get_team_policies_for_user(configuration: &configuration::Configura
 }
 
 /// Gets the teams to which a granular data retention policy is applied.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
-pub async fn get_teams_for_retention_policy(configuration: &configuration::Configuration, policy_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Team>, Error<GetTeamsForRetentionPolicyError>> {
+pub async fn get_teams_for_retention_policy(configuration: &configuration::Configuration, policy_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Team>, Error<GetTeamsForRetentionPolicyError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -541,7 +541,7 @@ pub async fn create_team(configuration: &configuration::Configuration, inline_ob
 }
 
 /// For regular users only returns open teams. Users with the \"manage_system\" permission will return teams regardless of type. The result is based on query string parameters - page and per_page. ##### Permissions Must be authenticated. \"manage_system\" permission is required to show all teams. 
-pub async fn get_all_teams(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::Team>, Error<GetAllTeamsError>> {
+pub async fn get_all_teams(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::Team>, Error<GetAllTeamsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -739,7 +739,7 @@ pub async fn get_team_member(configuration: &configuration::Configuration, team_
 }
 
 /// Get a page team members list based on query string parameters - team id, page and per page. ##### Permissions Must be authenticated and have the `view_team` permission. 
-pub async fn get_team_members(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::TeamMember>, Error<GetTeamMembersError>> {
+pub async fn get_team_members(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::TeamMember>, Error<GetTeamMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -967,7 +967,7 @@ pub async fn get_teams_unread_for_user(configuration: &configuration::Configurat
 }
 
 /// Import a team into a existing team. Import users, channels, posts, hooks. ##### Permissions Must have `permission_import_team` permission. 
-pub async fn import_team(configuration: &configuration::Configuration, team_id: &str, _file: std::path::PathBuf, filesize: i32, import_from: &str) -> Result<crate::models::InlineResponse2005, Error<ImportTeamError>> {
+pub async fn import_team(configuration: &configuration::Configuration, team_id: &str, _file: std::path::PathBuf, filesize: i64, import_from: &str) -> Result<crate::models::InlineResponse2005, Error<ImportTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1254,7 +1254,7 @@ pub async fn restore_team(configuration: &configuration::Configuration, team_id:
 }
 
 /// Search for files in a team based on file name, extention and file content (if file content extraction is enabled and supported for the files). __Minimum server version__: 5.34 ##### Permissions Must be authenticated and have the `view_team` permission. 
-pub async fn search_files(configuration: &configuration::Configuration, team_id: &str, terms: &str, is_or_search: bool, time_zone_offset: Option<i32>, include_deleted_channels: Option<bool>, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::FileInfoList, Error<SearchFilesError>> {
+pub async fn search_files(configuration: &configuration::Configuration, team_id: &str, terms: &str, is_or_search: bool, time_zone_offset: Option<i64>, include_deleted_channels: Option<bool>, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::FileInfoList, Error<SearchFilesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1432,7 +1432,7 @@ pub async fn team_exists(configuration: &configuration::Configuration, name: &st
 }
 
 /// Get the set of users who are members of the team minus the set of users who are members of the given groups. Each user object contains an array of group objects representing the group memberships for that user. Each user object contains the boolean fields `scheme_guest`, `scheme_user`, and `scheme_admin` representing the roles that user has for the given team.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.14 
-pub async fn team_members_minus_group_members(configuration: &configuration::Configuration, team_id: &str, group_ids: &str, page: Option<i32>, per_page: Option<i32>) -> Result<(), Error<TeamMembersMinusGroupMembersError>> {
+pub async fn team_members_minus_group_members(configuration: &configuration::Configuration, team_id: &str, group_ids: &str, page: Option<i64>, per_page: Option<i64>) -> Result<(), Error<TeamMembersMinusGroupMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

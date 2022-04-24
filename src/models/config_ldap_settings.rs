@@ -18,7 +18,7 @@ pub struct ConfigLdapSettings {
     #[serde(rename = "LdapServer", skip_serializing_if = "Option::is_none")]
     pub ldap_server: Option<String>,
     #[serde(rename = "LdapPort", skip_serializing_if = "Option::is_none")]
-    pub ldap_port: Option<i32>,
+    pub ldap_port: Option<i64>,
     #[serde(rename = "ConnectionSecurity", skip_serializing_if = "Option::is_none")]
     pub connection_security: Option<String>,
     #[serde(rename = "BaseDN", skip_serializing_if = "Option::is_none")]
@@ -44,13 +44,13 @@ pub struct ConfigLdapSettings {
     #[serde(rename = "PositionAttribute", skip_serializing_if = "Option::is_none")]
     pub position_attribute: Option<String>,
     #[serde(rename = "SyncIntervalMinutes", skip_serializing_if = "Option::is_none")]
-    pub sync_interval_minutes: Option<i32>,
+    pub sync_interval_minutes: Option<i64>,
     #[serde(rename = "SkipCertificateVerification", skip_serializing_if = "Option::is_none")]
     pub skip_certificate_verification: Option<bool>,
     #[serde(rename = "QueryTimeout", skip_serializing_if = "Option::is_none")]
-    pub query_timeout: Option<i32>,
+    pub query_timeout: Option<i64>,
     #[serde(rename = "MaxPageSize", skip_serializing_if = "Option::is_none")]
-    pub max_page_size: Option<i32>,
+    pub max_page_size: Option<i64>,
     #[serde(rename = "LoginFieldName", skip_serializing_if = "Option::is_none")]
     pub login_field_name: Option<String>,
 }

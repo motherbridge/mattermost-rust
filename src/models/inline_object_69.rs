@@ -15,11 +15,11 @@
 pub struct InlineObject69 {
     /// Number of users requested (20% extra is going to be added)
     #[serde(rename = "users")]
-    pub users: i32,
+    pub users: i64,
 }
 
 impl InlineObject69 {
-    pub fn new(users: i32) -> InlineObject69 {
+    pub fn new(users: i64) -> InlineObject69 {
         InlineObject69 {
             users,
         }

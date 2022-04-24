@@ -87,8 +87,8 @@ Get a page of channels which use this scheme. The provided Scheme ID should be f
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **scheme_id** | **String** | Scheme GUID | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of channels per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of channels per page. |  |[default to 60]
 
 ### Return type
 
@@ -149,8 +149,8 @@ Get a page of schemes. Use the query parameters to modify the behaviour of this 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **scope** | Option<**String**> | Limit the results returned to the provided scope, either `team` or `channel`. |  |[default to ]
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of schemes per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of schemes per page. |  |[default to 60]
 
 ### Return type
 
@@ -181,8 +181,8 @@ Get a page of teams which use this scheme. The provided Scheme ID should be for 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **scheme_id** | **String** | Scheme GUID | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of teams per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of teams per page. |  |[default to 60]
 
 ### Return type
 

@@ -348,8 +348,8 @@ Retrieve the list of users associated with a given group.  ##### Permissions Mus
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
 
 ### Return type
 
@@ -381,11 +381,11 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **not_associated_to_team** | **String** | Team GUID which is used to return all the groups not associated to this team | [required] |
 **not_associated_to_channel** | **String** | Group GUID which is used to return all the groups not associated to this channel | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
 **q** | Option<**String**> | String to pattern match the `name` and `display_name` field. Will return all groups whose `name` and `display_name` field match any of the text. |  |
 **include_member_count** | Option<**bool**> | Boolean which adds the `member_count` attribute to each group JSON object |  |
-**since** | Option<**i32**> | Only return groups that have been modified since the given Unix timestamp (in milliseconds). All modified groups, including deleted and created groups, will be returned. __Minimum server version__: 5.24  |  |
+**since** | Option<**i64**> | Only return groups that have been modified since the given Unix timestamp (in milliseconds). All modified groups, including deleted and created groups, will be returned. __Minimum server version__: 5.24  |  |
 **filter_allow_reference** | Option<**bool**> | Boolean which filters the group entries with the `allow_reference` attribute set. |  |[default to false]
 
 ### Return type
@@ -417,8 +417,8 @@ Retrieve the set of groups associated with the channels in the given team groupe
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
 **filter_allow_reference** | Option<**bool**> | Boolean which filters in the group entries with the `allow_reference` attribute set. |  |[default to false]
 **paginate** | Option<**bool**> | Boolean to determine whether the pagination should be applied or not |  |[default to false]
 
@@ -451,8 +451,8 @@ Retrieve the list of groups associated with a given channel.  ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
 **filter_allow_reference** | Option<**bool**> | Boolean which filters the group entries with the `allow_reference` attribute set. |  |[default to false]
 
 ### Return type
@@ -484,8 +484,8 @@ Retrieve the list of groups associated with a given team.  __Minimum server vers
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
 **filter_allow_reference** | Option<**bool**> | Boolean which filters in the group entries with the `allow_reference` attribute set. |  |[default to false]
 
 ### Return type

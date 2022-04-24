@@ -435,7 +435,7 @@ pub async fn get_bot_icon_image(configuration: &configuration::Configuration, bo
 }
 
 /// Get a page of a list of bots. ##### Permissions Must have `read_bots` permission for bots you are managing, and `read_others_bots` permission for bots others are managing. __Minimum server version__: 5.10 
-pub async fn get_bots(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, include_deleted: Option<bool>, only_orphaned: Option<bool>) -> Result<Vec<crate::models::Bot>, Error<GetBotsError>> {
+pub async fn get_bots(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, include_deleted: Option<bool>, only_orphaned: Option<bool>) -> Result<Vec<crate::models::Bot>, Error<GetBotsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

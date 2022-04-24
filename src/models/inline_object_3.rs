@@ -42,7 +42,7 @@ pub struct InlineObject3 {
     pub without_team: Option<bool>,
     /// The maximum number of users to return in the results  __Available as of server version 5.6. Defaults to `100` if not provided or on an earlier server version.__ 
     #[serde(rename = "limit", skip_serializing_if = "Option::is_none")]
-    pub limit: Option<i32>,
+    pub limit: Option<i64>,
 }
 
 impl InlineObject3 {

@@ -33,7 +33,7 @@ pub struct InlineObject76 {
     pub trigger_words: Vec<String>,
     /// When to trigger the webhook, `0` when a trigger word is present at all and `1` if the message starts with a trigger word
     #[serde(rename = "trigger_when", skip_serializing_if = "Option::is_none")]
-    pub trigger_when: Option<i32>,
+    pub trigger_when: Option<i64>,
     /// The URLs to POST the payloads to when the webhook is triggered
     #[serde(rename = "callback_urls")]
     pub callback_urls: Vec<String>,

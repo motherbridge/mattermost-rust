@@ -159,8 +159,8 @@ Gets the policies which are applied to the all of the channels to which a user b
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -191,8 +191,8 @@ Gets the channels to which a granular data retention policy is applied.  __Minim
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of channels per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of channels per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -222,8 +222,8 @@ Gets details about the granular (i.e. team or channel-specific) data retention p
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -338,8 +338,8 @@ Gets the policies which are applied to the all of the teams to which a user belo
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -370,8 +370,8 @@ Gets the teams to which a granular data retention policy is applied.  __Minimum 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**page** | Option<**i32**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i32**> | The number of teams per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i64**> | The number of teams per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 

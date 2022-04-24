@@ -23,9 +23,9 @@ pub struct ChannelMember {
     #[serde(rename = "last_viewed_at", skip_serializing_if = "Option::is_none")]
     pub last_viewed_at: Option<i64>,
     #[serde(rename = "msg_count", skip_serializing_if = "Option::is_none")]
-    pub msg_count: Option<i32>,
+    pub msg_count: Option<i64>,
     #[serde(rename = "mention_count", skip_serializing_if = "Option::is_none")]
-    pub mention_count: Option<i32>,
+    pub mention_count: Option<i64>,
     #[serde(rename = "notify_props", skip_serializing_if = "Option::is_none")]
     pub notify_props: Option<Box<crate::models::ChannelNotifyProps>>,
     /// The time in milliseconds the channel member was last updated

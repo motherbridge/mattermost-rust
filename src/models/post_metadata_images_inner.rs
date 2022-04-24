@@ -14,9 +14,9 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct PostMetadataImagesInner {
     #[serde(rename = "height", skip_serializing_if = "Option::is_none")]
-    pub height: Option<i32>,
+    pub height: Option<i64>,
     #[serde(rename = "width", skip_serializing_if = "Option::is_none")]
-    pub width: Option<i32>,
+    pub width: Option<i64>,
 }
 
 impl PostMetadataImagesInner {

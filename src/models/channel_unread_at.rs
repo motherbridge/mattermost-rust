@@ -21,13 +21,13 @@ pub struct ChannelUnreadAt {
     pub channel_id: Option<String>,
     /// No. of messages the user has already read.
     #[serde(rename = "msg_count", skip_serializing_if = "Option::is_none")]
-    pub msg_count: Option<i32>,
+    pub msg_count: Option<i64>,
     /// No. of mentions the user has within the unread posts of the channel.
     #[serde(rename = "mention_count", skip_serializing_if = "Option::is_none")]
-    pub mention_count: Option<i32>,
+    pub mention_count: Option<i64>,
     /// time in milliseconds when the user last viewed the channel.
     #[serde(rename = "last_viewed_at", skip_serializing_if = "Option::is_none")]
-    pub last_viewed_at: Option<i32>,
+    pub last_viewed_at: Option<i64>,
 }
 
 impl ChannelUnreadAt {

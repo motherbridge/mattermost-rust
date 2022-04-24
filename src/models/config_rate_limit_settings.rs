@@ -16,11 +16,11 @@ pub struct ConfigRateLimitSettings {
     #[serde(rename = "Enable", skip_serializing_if = "Option::is_none")]
     pub enable: Option<bool>,
     #[serde(rename = "PerSec", skip_serializing_if = "Option::is_none")]
-    pub per_sec: Option<i32>,
+    pub per_sec: Option<i64>,
     #[serde(rename = "MaxBurst", skip_serializing_if = "Option::is_none")]
-    pub max_burst: Option<i32>,
+    pub max_burst: Option<i64>,
     #[serde(rename = "MemoryStoreSize", skip_serializing_if = "Option::is_none")]
-    pub memory_store_size: Option<i32>,
+    pub memory_store_size: Option<i64>,
     #[serde(rename = "VaryByRemoteAddr", skip_serializing_if = "Option::is_none")]
     pub vary_by_remote_addr: Option<bool>,
     #[serde(rename = "VaryByHeader", skip_serializing_if = "Option::is_none")]

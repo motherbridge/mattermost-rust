@@ -168,7 +168,7 @@ pub async fn get_reactions(configuration: &configuration::Configuration, post_id
 }
 
 /// Get a list of the top reactions across all public and private channels (the user is a member of) for a given team. ##### Permissions Must have `view_team` permission for the team. 
-pub async fn get_top_reactions_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForTeamError>> {
+pub async fn get_top_reactions_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -206,7 +206,7 @@ pub async fn get_top_reactions_for_team(configuration: &configuration::Configura
 }
 
 /// Get a list of the top reactions for a user. ##### Permissions Must be logged in as the user. 
-pub async fn get_top_reactions_for_user(configuration: &configuration::Configuration, user_id: &str, time_range: &str, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForUserError>> {
+pub async fn get_top_reactions_for_user(configuration: &configuration::Configuration, user_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

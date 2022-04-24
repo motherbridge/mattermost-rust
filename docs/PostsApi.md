@@ -191,8 +191,8 @@ Name | Type | Description  | Required | Notes
 **user_id** | **String** | ID of the user | [required] |
 **team_id** | Option<**String**> | Team ID |  |
 **channel_id** | Option<**String**> | Channel ID |  |
-**page** | Option<**i32**> | The page to select |  |[default to 0]
-**per_page** | Option<**i32**> | The number of posts per page |  |[default to 60]
+**page** | Option<**i64**> | The page to select |  |[default to 0]
+**per_page** | Option<**i64**> | The number of posts per page |  |[default to 60]
 
 ### Return type
 
@@ -253,9 +253,9 @@ Get a post and the rest of the posts in the same thread. ##### Permissions Must 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** | ID of a post in the thread | [required] |
-**per_page** | Option<**i32**> | The number of posts per page |  |[default to 0]
+**per_page** | Option<**i64**> | The number of posts per page |  |[default to 0]
 **from_post** | Option<**String**> | The post_id to return the next page of posts from |  |[default to ]
-**from_create_at** | Option<**i32**> | The create_at timestamp to return the next page of posts from |  |[default to 0]
+**from_create_at** | Option<**i64**> | The create_at timestamp to return the next page of posts from |  |[default to 0]
 **direction** | Option<**String**> | The direction to return the posts. Either up or down. |  |[default to ]
 **skip_fetch_threads** | Option<**bool**> | Whether to skip fetching threads or not |  |[default to false]
 **collapsed_threads** | Option<**bool**> | Whether the client uses CRT or not |  |[default to false]
@@ -291,8 +291,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | ID of the user | [required] |
 **channel_id** | **String** | The channel ID to get the posts for | [required] |
-**limit_before** | Option<**i32**> | Number of posts before the oldest unread posts. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
-**limit_after** | Option<**i32**> | Number of posts after and including the oldest unread post. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
+**limit_before** | Option<**i64**> | Number of posts before the oldest unread posts. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
+**limit_after** | Option<**i64**> | Number of posts after and including the oldest unread post. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
 **skip_fetch_threads** | Option<**bool**> | Whether to skip fetching threads or not |  |[default to false]
 **collapsed_threads** | Option<**bool**> | Whether the client uses CRT or not |  |[default to false]
 **collapsed_threads_extended** | Option<**bool**> | Whether to return the associated users as part of the response or not |  |[default to false]
@@ -356,9 +356,9 @@ Get a page of posts in a channel. Use the query parameters to modify the behavio
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | The channel ID to get the posts for | [required] |
-**page** | Option<**i32**> | The page to select |  |[default to 0]
-**per_page** | Option<**i32**> | The number of posts per page |  |[default to 60]
-**since** | Option<**i32**> | Provide a non-zero value in Unix time milliseconds to select posts modified after that time |  |
+**page** | Option<**i64**> | The page to select |  |[default to 0]
+**per_page** | Option<**i64**> | The number of posts per page |  |[default to 60]
+**since** | Option<**i64**> | Provide a non-zero value in Unix time milliseconds to select posts modified after that time |  |
 **before** | Option<**String**> | A post id to select the posts that came before this one |  |
 **after** | Option<**String**> | A post id to select the posts that came after this one |  |
 

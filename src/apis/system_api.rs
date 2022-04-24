@@ -526,7 +526,7 @@ pub async fn get_analytics_old(configuration: &configuration::Configuration, nam
 }
 
 /// Get a page of audits for all users on the system, selected with `page` and `per_page` query parameters. ##### Permissions Must have `manage_system` permission. 
-pub async fn get_audits(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Audit>, Error<GetAuditsError>> {
+pub async fn get_audits(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Audit>, Error<GetAuditsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -720,7 +720,7 @@ pub async fn get_image_by_url(configuration: &configuration::Configuration, ) ->
 }
 
 /// Get a page of server logs, selected with `page` and `logs_per_page` query parameters. ##### Permissions Must have `manage_system` permission. 
-pub async fn get_logs(configuration: &configuration::Configuration, page: Option<i32>, logs_per_page: Option<&str>) -> Result<Vec<String>, Error<GetLogsError>> {
+pub async fn get_logs(configuration: &configuration::Configuration, page: Option<i64>, logs_per_page: Option<&str>) -> Result<Vec<String>, Error<GetLogsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

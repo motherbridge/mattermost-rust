@@ -90,8 +90,8 @@ Gets all plugins from the marketplace server, merging data from locally installe
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i32**> | Page number to be fetched. (not yet implemented) |  |
-**per_page** | Option<**i32**> | Number of item per page. (not yet implemented) |  |
+**page** | Option<**i64**> | Page number to be fetched. (not yet implemented) |  |
+**per_page** | Option<**i64**> | Number of item per page. (not yet implemented) |  |
 **filter** | Option<**String**> | Set to filter plugins by ID, name, or description. |  |
 **server_version** | Option<**String**> | Set to filter minimum plugin server version. (not yet implemented) |  |
 **local_only** | Option<**bool**> | Set true to only retrieve local plugins. |  |

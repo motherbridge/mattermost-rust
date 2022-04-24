@@ -16,7 +16,7 @@ pub struct InlineResponse20014 {
     #[serde(rename = "group_id", skip_serializing_if = "Option::is_none")]
     pub group_id: Option<String>,
     #[serde(rename = "total_member_count", skip_serializing_if = "Option::is_none")]
-    pub total_member_count: Option<i32>,
+    pub total_member_count: Option<i64>,
 }
 
 impl InlineResponse20014 {
