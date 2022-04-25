@@ -15,7 +15,7 @@
 pub struct Timezone {
     /// Set to \"true\" to use the browser/system timezone, \"false\" to set manually. Defaults to \"true\".
     #[serde(rename = "useAutomaticTimezone", skip_serializing_if = "Option::is_none")]
-    pub use_automatic_timezone: Option<bool>,
+    pub use_automatic_timezone: Option<String>,
     /// Value when setting manually the timezone, i.e. \"Europe/Berlin\".
     #[serde(rename = "manualTimezone", skip_serializing_if = "Option::is_none")]
     pub manual_timezone: Option<String>,

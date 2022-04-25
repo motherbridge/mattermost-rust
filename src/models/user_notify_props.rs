@@ -15,7 +15,7 @@
 pub struct UserNotifyProps {
     /// Set to \"true\" to enable email notifications, \"false\" to disable. Defaults to \"true\".
     #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
-    pub email: Option<bool>,
+    pub email: Option<String>,
     /// Set to \"all\" to receive push notifications for all activity, \"mention\" for mentions and direct messages only, and \"none\" to disable. Defaults to \"mention\".
     #[serde(rename = "push", skip_serializing_if = "Option::is_none")]
     pub push: Option<String>,
