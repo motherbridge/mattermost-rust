@@ -81,7 +81,6 @@ pub mod insights_api;
 pub mod integration_actions_api;
 pub mod jobs_api;
 pub mod ldap_api;
-pub mod ldap_api;
 pub mod migrate_api;
 pub mod o_auth_api;
 pub mod open_graph_api;

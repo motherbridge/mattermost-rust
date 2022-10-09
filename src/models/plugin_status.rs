@@ -54,17 +54,7 @@ impl PluginStatus {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum State {
     #[serde(rename = "null")]
-    Null,
-    #[serde(rename = "null")]
-    Null,
-    #[serde(rename = "null")]
-    Null,
-    #[serde(rename = "null")]
-    Null,
-    #[serde(rename = "null")]
-    Null,
-    #[serde(rename = "null")]
-    Null,
+    Null
 }
 
 impl Default for State {
