@@ -21,7 +21,7 @@ pub struct InlineObject28 {
     pub status: String,
     /// Time in epoch seconds at which a dnd status would be unset.
     #[serde(rename = "dnd_end_time", skip_serializing_if = "Option::is_none")]
-    pub dnd_end_time: Option<i32>,
+    pub dnd_end_time: Option<i64>,
 }
 
 impl InlineObject28 {

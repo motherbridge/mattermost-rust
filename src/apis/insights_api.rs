@@ -89,7 +89,7 @@ pub enum GetTopThreadsForUserError {
 
 
 /// Get a list of all of the new team members that have joined the given team during the given time period. ##### Permissions Must have `view_team` permission for the team. 
-pub async fn get_new_team_members(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::NewTeamMembersList, Error<GetNewTeamMembersError>> {
+pub async fn get_new_team_members(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::NewTeamMembersList, Error<GetNewTeamMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -127,7 +127,7 @@ pub async fn get_new_team_members(configuration: &configuration::Configuration, 
 }
 
 /// Get a list of the top public and private channels (the user is a member of) for a given team. ##### Permissions Must have `view_team` permission for the team. 
-pub async fn get_top_channels_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::TopChannelList, Error<GetTopChannelsForTeamError>> {
+pub async fn get_top_channels_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::TopChannelList, Error<GetTopChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -165,7 +165,7 @@ pub async fn get_top_channels_for_team(configuration: &configuration::Configurat
 }
 
 /// Get a list of the top public and private channels (the user is a member of) for a given user. ##### Permissions Must be logged in as the user. 
-pub async fn get_top_channels_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>) -> Result<crate::models::TopChannelList, Error<GetTopChannelsForUserError>> {
+pub async fn get_top_channels_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<crate::models::TopChannelList, Error<GetTopChannelsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -206,7 +206,7 @@ pub async fn get_top_channels_for_user(configuration: &configuration::Configurat
 }
 
 /// Get a list of the top dms for a given user. ##### Permissions Must be logged in as the user. 
-pub async fn get_top_dms_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::TopDmList, Error<GetTopDmsForUserError>> {
+pub async fn get_top_dms_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::TopDmList, Error<GetTopDmsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -244,7 +244,7 @@ pub async fn get_top_dms_for_user(configuration: &configuration::Configuration, 
 }
 
 /// Get a list of the top reactions across all public and private channels (the user is a member of) for a given team. ##### Permissions Must have `view_team` permission for the team. 
-pub async fn get_top_reactions_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForTeamError>> {
+pub async fn get_top_reactions_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -282,7 +282,7 @@ pub async fn get_top_reactions_for_team(configuration: &configuration::Configura
 }
 
 /// Get a list of the top reactions across all public and private channels (the user is a member of) for a given user. If no `team_id` is provided, this will also include reactions posted by the given user in direct and group messages. ##### Permissions Must be logged in as the user. 
-pub async fn get_top_reactions_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForUserError>> {
+pub async fn get_top_reactions_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -323,7 +323,7 @@ pub async fn get_top_reactions_for_user(configuration: &configuration::Configura
 }
 
 /// Get a list of the top threads from public and private channels (the user is a member of) for a given team. ##### Permissions Must have `view_team` permission for the team. 
-pub async fn get_top_threads_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::TopThreadList, Error<GetTopThreadsForTeamError>> {
+pub async fn get_top_threads_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::TopThreadList, Error<GetTopThreadsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -361,7 +361,7 @@ pub async fn get_top_threads_for_team(configuration: &configuration::Configurati
 }
 
 /// Get a list of the top threads from public and private channels (the user is a member of and participating in the thread) for a given user. ##### Permissions Must be logged in as the user. 
-pub async fn get_top_threads_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>) -> Result<crate::models::TopThreadList, Error<GetTopThreadsForUserError>> {
+pub async fn get_top_threads_for_user(configuration: &configuration::Configuration, time_range: &str, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<crate::models::TopThreadList, Error<GetTopThreadsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

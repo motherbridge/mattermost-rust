@@ -16,11 +16,11 @@ pub struct PaymentMethod {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<String>,
     #[serde(rename = "last_four", skip_serializing_if = "Option::is_none")]
-    pub last_four: Option<i32>,
+    pub last_four: Option<i64>,
     #[serde(rename = "exp_month", skip_serializing_if = "Option::is_none")]
-    pub exp_month: Option<i32>,
+    pub exp_month: Option<i64>,
     #[serde(rename = "exp_year", skip_serializing_if = "Option::is_none")]
-    pub exp_year: Option<i32>,
+    pub exp_year: Option<i64>,
     #[serde(rename = "card_brand", skip_serializing_if = "Option::is_none")]
     pub card_brand: Option<String>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]

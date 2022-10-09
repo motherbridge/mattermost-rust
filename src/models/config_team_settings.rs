@@ -16,7 +16,7 @@ pub struct ConfigTeamSettings {
     #[serde(rename = "SiteName", skip_serializing_if = "Option::is_none")]
     pub site_name: Option<String>,
     #[serde(rename = "MaxUsersPerTeam", skip_serializing_if = "Option::is_none")]
-    pub max_users_per_team: Option<i32>,
+    pub max_users_per_team: Option<i64>,
     #[serde(rename = "EnableTeamCreation", skip_serializing_if = "Option::is_none")]
     pub enable_team_creation: Option<bool>,
     #[serde(rename = "EnableUserCreation", skip_serializing_if = "Option::is_none")]
@@ -48,11 +48,11 @@ pub struct ConfigTeamSettings {
     #[serde(rename = "RestrictPrivateChannelDeletion", skip_serializing_if = "Option::is_none")]
     pub restrict_private_channel_deletion: Option<String>,
     #[serde(rename = "UserStatusAwayTimeout", skip_serializing_if = "Option::is_none")]
-    pub user_status_away_timeout: Option<i32>,
+    pub user_status_away_timeout: Option<i64>,
     #[serde(rename = "MaxChannelsPerTeam", skip_serializing_if = "Option::is_none")]
-    pub max_channels_per_team: Option<i32>,
+    pub max_channels_per_team: Option<i64>,
     #[serde(rename = "MaxNotificationsPerChannel", skip_serializing_if = "Option::is_none")]
-    pub max_notifications_per_channel: Option<i32>,
+    pub max_notifications_per_channel: Option<i64>,
 }
 
 impl ConfigTeamSettings {

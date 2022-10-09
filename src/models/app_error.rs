@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AppError {
     #[serde(rename = "status_code", skip_serializing_if = "Option::is_none")]
-    pub status_code: Option<i32>,
+    pub status_code: Option<i64>,
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]

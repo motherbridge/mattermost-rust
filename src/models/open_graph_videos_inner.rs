@@ -21,9 +21,9 @@ pub struct OpenGraphVideosInner {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<String>,
     #[serde(rename = "width", skip_serializing_if = "Option::is_none")]
-    pub width: Option<i32>,
+    pub width: Option<i64>,
     #[serde(rename = "height", skip_serializing_if = "Option::is_none")]
-    pub height: Option<i32>,
+    pub height: Option<i64>,
 }
 
 impl OpenGraphVideosInner {

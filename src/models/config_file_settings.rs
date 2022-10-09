@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ConfigFileSettings {
     #[serde(rename = "MaxFileSize", skip_serializing_if = "Option::is_none")]
-    pub max_file_size: Option<i32>,
+    pub max_file_size: Option<i64>,
     #[serde(rename = "DriverName", skip_serializing_if = "Option::is_none")]
     pub driver_name: Option<String>,
     #[serde(rename = "Directory", skip_serializing_if = "Option::is_none")]
@@ -24,17 +24,17 @@ pub struct ConfigFileSettings {
     #[serde(rename = "PublicLinkSalt", skip_serializing_if = "Option::is_none")]
     pub public_link_salt: Option<String>,
     #[serde(rename = "ThumbnailWidth", skip_serializing_if = "Option::is_none")]
-    pub thumbnail_width: Option<i32>,
+    pub thumbnail_width: Option<i64>,
     #[serde(rename = "ThumbnailHeight", skip_serializing_if = "Option::is_none")]
-    pub thumbnail_height: Option<i32>,
+    pub thumbnail_height: Option<i64>,
     #[serde(rename = "PreviewWidth", skip_serializing_if = "Option::is_none")]
-    pub preview_width: Option<i32>,
+    pub preview_width: Option<i64>,
     #[serde(rename = "PreviewHeight", skip_serializing_if = "Option::is_none")]
-    pub preview_height: Option<i32>,
+    pub preview_height: Option<i64>,
     #[serde(rename = "ProfileWidth", skip_serializing_if = "Option::is_none")]
-    pub profile_width: Option<i32>,
+    pub profile_width: Option<i64>,
     #[serde(rename = "ProfileHeight", skip_serializing_if = "Option::is_none")]
-    pub profile_height: Option<i32>,
+    pub profile_height: Option<i64>,
     #[serde(rename = "InitialFont", skip_serializing_if = "Option::is_none")]
     pub initial_font: Option<String>,
     #[serde(rename = "AmazonS3AccessKeyId", skip_serializing_if = "Option::is_none")]

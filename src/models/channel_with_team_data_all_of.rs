@@ -21,7 +21,7 @@ pub struct ChannelWithTeamDataAllOf {
     pub team_name: Option<String>,
     /// The time at which the team to which this channel belongs was last updated.
     #[serde(rename = "team_update_at", skip_serializing_if = "Option::is_none")]
-    pub team_update_at: Option<i32>,
+    pub team_update_at: Option<i64>,
     /// The data retention policy to which this team has been assigned. If no such policy exists, or the caller does not have the `sysconsole_read_compliance_data_retention` permission, this field will be null.
     #[serde(rename = "policy_id", skip_serializing_if = "Option::is_none")]
     pub policy_id: Option<String>,

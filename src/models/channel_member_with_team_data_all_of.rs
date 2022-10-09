@@ -21,7 +21,7 @@ pub struct ChannelMemberWithTeamDataAllOf {
     pub team_name: Option<String>,
     /// The time at which the team to which this channel belongs was last updated.
     #[serde(rename = "team_update_at", skip_serializing_if = "Option::is_none")]
-    pub team_update_at: Option<i32>,
+    pub team_update_at: Option<i64>,
 }
 
 impl ChannelMemberWithTeamDataAllOf {

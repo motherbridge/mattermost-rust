@@ -674,7 +674,7 @@ pub async fn attach_device_id(configuration: &configuration::Configuration, inli
 }
 
 /// Get a list of users for the purpose of autocompleting based on the provided search term. Specify a combination of `team_id` and `channel_id` to filter results further. ##### Permissions Requires an active session and `view_team` and `read_channel` on any teams or channels used to filter the results further. 
-pub async fn autocomplete_users(configuration: &configuration::Configuration, name: &str, team_id: Option<&str>, channel_id: Option<&str>, limit: Option<i32>) -> Result<crate::models::UserAutocomplete, Error<AutocompleteUsersError>> {
+pub async fn autocomplete_users(configuration: &configuration::Configuration, name: &str, team_id: Option<&str>, channel_id: Option<&str>, limit: Option<i64>) -> Result<crate::models::UserAutocomplete, Error<AutocompleteUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1040,7 +1040,7 @@ pub async fn generate_mfa_secret(configuration: &configuration::Configuration, u
 }
 
 /// Get all channel members from all teams for a user.  __Minimum server version__: 6.2.0  ##### Permissions Logged in as the user, or have `edit_other_users` permission. 
-pub async fn get_channel_members_with_team_data_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, page_size: Option<i32>) -> Result<Vec<crate::models::ChannelMemberWithTeamData>, Error<GetChannelMembersWithTeamDataForUserError>> {
+pub async fn get_channel_members_with_team_data_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, page_size: Option<i64>) -> Result<Vec<crate::models::ChannelMemberWithTeamData>, Error<GetChannelMembersWithTeamDataForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1377,7 +1377,7 @@ pub async fn get_user_access_token(configuration: &configuration::Configuration,
 }
 
 /// Get a page of user access tokens for users on the system. Does not include the actual authentication tokens. Use query parameters for paging.  __Minimum server version__: 4.7  ##### Permissions Must have `manage_system` permission. 
-pub async fn get_user_access_tokens(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensError>> {
+pub async fn get_user_access_tokens(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1414,7 +1414,7 @@ pub async fn get_user_access_tokens(configuration: &configuration::Configuration
 }
 
 /// Get a list of user access tokens for a user. Does not include the actual authentication tokens. Use query parameters for paging.  __Minimum server version__: 4.1  ##### Permissions Must have `read_user_access_token` permission. For non-self requests, must also have the `edit_other_users` permission. 
-pub async fn get_user_access_tokens_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensForUserError>> {
+pub async fn get_user_access_tokens_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1575,7 +1575,7 @@ pub async fn get_user_terms_of_service(configuration: &configuration::Configurat
 }
 
 /// Get a page of a list of users. Based on query string parameters, select users from a team, channel, or select users not in a specific channel.  Since server version 4.0, some basic sorting is available using the `sort` query parameter. Sorting is currently only supported when selecting users on a team. ##### Permissions Requires an active session and (if specified) membership to the channel or team being selected from. 
-pub async fn get_users(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, in_team: Option<&str>, not_in_team: Option<&str>, in_channel: Option<&str>, not_in_channel: Option<&str>, in_group: Option<&str>, group_constrained: Option<bool>, without_team: Option<bool>, active: Option<bool>, inactive: Option<bool>, role: Option<&str>, sort: Option<&str>, roles: Option<&str>, channel_roles: Option<&str>, team_roles: Option<&str>) -> Result<Vec<crate::models::User>, Error<GetUsersError>> {
+pub async fn get_users(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, in_team: Option<&str>, not_in_team: Option<&str>, in_channel: Option<&str>, not_in_channel: Option<&str>, in_group: Option<&str>, group_constrained: Option<bool>, without_team: Option<bool>, active: Option<bool>, inactive: Option<bool>, role: Option<&str>, sort: Option<&str>, roles: Option<&str>, channel_roles: Option<&str>, team_roles: Option<&str>) -> Result<Vec<crate::models::User>, Error<GetUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1686,7 +1686,7 @@ pub async fn get_users_by_group_channel_ids(configuration: &configuration::Confi
 }
 
 /// Get a list of users based on a provided list of user ids. ##### Permissions Requires an active session but no other permissions. 
-pub async fn get_users_by_ids(configuration: &configuration::Configuration, request_body: Vec<String>, since: Option<i32>) -> Result<Vec<crate::models::User>, Error<GetUsersByIdsError>> {
+pub async fn get_users_by_ids(configuration: &configuration::Configuration, request_body: Vec<String>, since: Option<i64>) -> Result<Vec<crate::models::User>, Error<GetUsersByIdsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

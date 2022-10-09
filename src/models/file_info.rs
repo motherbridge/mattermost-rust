@@ -39,16 +39,16 @@ pub struct FileInfo {
     pub extension: Option<String>,
     /// The size of the file in bytes
     #[serde(rename = "size", skip_serializing_if = "Option::is_none")]
-    pub size: Option<i32>,
+    pub size: Option<i64>,
     /// The MIME type of the file
     #[serde(rename = "mime_type", skip_serializing_if = "Option::is_none")]
     pub mime_type: Option<String>,
     /// If this file is an image, the width of the file
     #[serde(rename = "width", skip_serializing_if = "Option::is_none")]
-    pub width: Option<i32>,
+    pub width: Option<i64>,
     /// If this file is an image, the height of the file
     #[serde(rename = "height", skip_serializing_if = "Option::is_none")]
-    pub height: Option<i32>,
+    pub height: Option<i64>,
     /// If this file is an image, whether or not it has a preview-sized version
     #[serde(rename = "has_preview_image", skip_serializing_if = "Option::is_none")]
     pub has_preview_image: Option<bool>,

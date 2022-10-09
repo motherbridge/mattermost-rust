@@ -205,7 +205,7 @@ pub async fn get_job(configuration: &configuration::Configuration, job_id: &str)
 }
 
 /// Get a page of jobs. Use the query parameters to modify the behaviour of this endpoint. __Minimum server version: 4.1__ ##### Permissions Must have `manage_jobs` permission. 
-pub async fn get_jobs(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Job>, Error<GetJobsError>> {
+pub async fn get_jobs(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Job>, Error<GetJobsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -242,7 +242,7 @@ pub async fn get_jobs(configuration: &configuration::Configuration, page: Option
 }
 
 /// Get a page of jobs of the given type. Use the query parameters to modify the behaviour of this endpoint. __Minimum server version: 4.1__ ##### Permissions Must have `manage_jobs` permission. 
-pub async fn get_jobs_by_type(configuration: &configuration::Configuration, _type: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Job>, Error<GetJobsByTypeError>> {
+pub async fn get_jobs_by_type(configuration: &configuration::Configuration, _type: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Job>, Error<GetJobsByTypeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

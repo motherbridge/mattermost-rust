@@ -298,7 +298,7 @@ pub async fn get_emoji_image(configuration: &configuration::Configuration, emoji
 }
 
 /// Get a page of metadata for custom emoji on the system. Since server version 4.7, sort using the `sort` query parameter. ##### Permissions Must be authenticated. 
-pub async fn get_emoji_list(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, sort: Option<&str>) -> Result<crate::models::Emoji, Error<GetEmojiListError>> {
+pub async fn get_emoji_list(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, sort: Option<&str>) -> Result<crate::models::Emoji, Error<GetEmojiListError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

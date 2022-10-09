@@ -16,9 +16,9 @@ pub struct TeamStats {
     #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
     pub team_id: Option<String>,
     #[serde(rename = "total_member_count", skip_serializing_if = "Option::is_none")]
-    pub total_member_count: Option<i32>,
+    pub total_member_count: Option<i64>,
     #[serde(rename = "active_member_count", skip_serializing_if = "Option::is_none")]
-    pub active_member_count: Option<i32>,
+    pub active_member_count: Option<i64>,
 }
 
 impl TeamStats {

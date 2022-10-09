@@ -21,10 +21,10 @@ pub struct GlobalDataRetentionPolicy {
     pub file_deletion_enabled: Option<bool>,
     /// The current server timestamp before which messages should be deleted.
     #[serde(rename = "message_retention_cutoff", skip_serializing_if = "Option::is_none")]
-    pub message_retention_cutoff: Option<i32>,
+    pub message_retention_cutoff: Option<i64>,
     /// The current server timestamp before which files should be deleted.
     #[serde(rename = "file_retention_cutoff", skip_serializing_if = "Option::is_none")]
-    pub file_retention_cutoff: Option<i32>,
+    pub file_retention_cutoff: Option<i64>,
 }
 
 impl GlobalDataRetentionPolicy {

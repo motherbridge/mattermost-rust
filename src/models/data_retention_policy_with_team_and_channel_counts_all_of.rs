@@ -15,10 +15,10 @@
 pub struct DataRetentionPolicyWithTeamAndChannelCountsAllOf {
     /// The number of teams to which this policy is applied.
     #[serde(rename = "team_count", skip_serializing_if = "Option::is_none")]
-    pub team_count: Option<i32>,
+    pub team_count: Option<i64>,
     /// The number of channels to which this policy is applied.
     #[serde(rename = "channel_count", skip_serializing_if = "Option::is_none")]
-    pub channel_count: Option<i32>,
+    pub channel_count: Option<i64>,
 }
 
 impl DataRetentionPolicyWithTeamAndChannelCountsAllOf {

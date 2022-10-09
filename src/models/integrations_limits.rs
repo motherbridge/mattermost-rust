@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct IntegrationsLimits {
     #[serde(rename = "enabled", skip_serializing_if = "Option::is_none")]
-    pub enabled: Option<i32>,
+    pub enabled: Option<i64>,
 }
 
 impl IntegrationsLimits {

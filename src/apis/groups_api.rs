@@ -596,7 +596,7 @@ pub async fn get_group_syncables_teams(configuration: &configuration::Configurat
 }
 
 /// Retrieve the list of users associated with a given group.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn get_group_users(configuration: &configuration::Configuration, group_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::InlineResponse20013, Error<GetGroupUsersError>> {
+pub async fn get_group_users(configuration: &configuration::Configuration, group_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::InlineResponse20013, Error<GetGroupUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -633,7 +633,7 @@ pub async fn get_group_users(configuration: &configuration::Configuration, group
 }
 
 /// Retrieve a list of all groups not associated to a particular channel or team.  `not_associated_to_team` **OR** `not_associated_to_channel` is required.  If you use `not_associated_to_team`, you must be a team admin for that particular team (permission to manage that team).  If you use `not_associated_to_channel`, you must be a channel admin for that particular channel (permission to manage that channel).  __Minimum server version__: 5.11 
-pub async fn get_groups(configuration: &configuration::Configuration, not_associated_to_team: &str, not_associated_to_channel: &str, page: Option<i32>, per_page: Option<i32>, q: Option<&str>, include_member_count: Option<bool>, since: Option<i32>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsError>> {
+pub async fn get_groups(configuration: &configuration::Configuration, not_associated_to_team: &str, not_associated_to_channel: &str, page: Option<i64>, per_page: Option<i64>, q: Option<&str>, include_member_count: Option<bool>, since: Option<i64>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -684,7 +684,7 @@ pub async fn get_groups(configuration: &configuration::Configuration, not_associ
 }
 
 /// Retrieve the list of groups associated with a given channel.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn get_groups_by_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByChannelError>> {
+pub async fn get_groups_by_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i64>, per_page: Option<i64>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -724,7 +724,7 @@ pub async fn get_groups_by_channel(configuration: &configuration::Configuration,
 }
 
 /// Retrieve the list of groups associated with a given team.  __Minimum server version__: 5.11 
-pub async fn get_groups_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByTeamError>> {
+pub async fn get_groups_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -14,9 +14,9 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct BoardsLimits {
     #[serde(rename = "cards", skip_serializing_if = "Option::is_none")]
-    pub cards: Option<i32>,
+    pub cards: Option<i64>,
     #[serde(rename = "views", skip_serializing_if = "Option::is_none")]
-    pub views: Option<i32>,
+    pub views: Option<i64>,
 }
 
 impl BoardsLimits {

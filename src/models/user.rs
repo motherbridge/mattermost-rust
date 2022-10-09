@@ -47,11 +47,11 @@ pub struct User {
     #[serde(rename = "props", skip_serializing_if = "Option::is_none")]
     pub props: Option<serde_json::Value>,
     #[serde(rename = "last_password_update", skip_serializing_if = "Option::is_none")]
-    pub last_password_update: Option<i32>,
+    pub last_password_update: Option<i64>,
     #[serde(rename = "last_picture_update", skip_serializing_if = "Option::is_none")]
-    pub last_picture_update: Option<i32>,
+    pub last_picture_update: Option<i64>,
     #[serde(rename = "failed_attempts", skip_serializing_if = "Option::is_none")]
-    pub failed_attempts: Option<i32>,
+    pub failed_attempts: Option<i64>,
     #[serde(rename = "mfa_active", skip_serializing_if = "Option::is_none")]
     pub mfa_active: Option<bool>,
     #[serde(rename = "timezone", skip_serializing_if = "Option::is_none")]

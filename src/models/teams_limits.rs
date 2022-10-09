@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TeamsLimits {
     #[serde(rename = "active", skip_serializing_if = "Option::is_none")]
-    pub active: Option<i32>,
+    pub active: Option<i64>,
 }
 
 impl TeamsLimits {

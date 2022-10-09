@@ -154,7 +154,7 @@ pub async fn get_compliance_report(configuration: &configuration::Configuration,
 }
 
 /// Get a list of compliance reports previously created by page, selected with `page` and `per_page` query parameters. ##### Permissions Must have `manage_system` permission. 
-pub async fn get_compliance_reports(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Compliance>, Error<GetComplianceReportsError>> {
+pub async fn get_compliance_reports(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Compliance>, Error<GetComplianceReportsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

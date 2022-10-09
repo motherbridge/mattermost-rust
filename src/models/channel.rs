@@ -38,9 +38,9 @@ pub struct Channel {
     pub purpose: Option<String>,
     /// The time in milliseconds of the last post of a channel
     #[serde(rename = "last_post_at", skip_serializing_if = "Option::is_none")]
-    pub last_post_at: Option<i32>,
+    pub last_post_at: Option<i64>,
     #[serde(rename = "total_msg_count", skip_serializing_if = "Option::is_none")]
-    pub total_msg_count: Option<i32>,
+    pub total_msg_count: Option<i64>,
     /// Deprecated in Mattermost 5.0 release
     #[serde(rename = "extra_update_at", skip_serializing_if = "Option::is_none")]
     pub extra_update_at: Option<i64>,

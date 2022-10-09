@@ -159,7 +159,7 @@ pub async fn get_user_thread(configuration: &configuration::Configuration, user_
 }
 
 /// Get all threads that user is following  __Minimum server version__: 5.29  ##### Permissions Must be logged in as the user or have `edit_other_users` permission. 
-pub async fn get_user_threads(configuration: &configuration::Configuration, user_id: &str, team_id: &str, since: Option<i32>, deleted: Option<bool>, extended: Option<bool>, page: Option<i32>, page_size: Option<i32>, totals_only: Option<bool>, threads_only: Option<bool>) -> Result<crate::models::UserThreads, Error<GetUserThreadsError>> {
+pub async fn get_user_threads(configuration: &configuration::Configuration, user_id: &str, team_id: &str, since: Option<i64>, deleted: Option<bool>, extended: Option<bool>, page: Option<i64>, page_size: Option<i64>, totals_only: Option<bool>, threads_only: Option<bool>) -> Result<crate::models::UserThreads, Error<GetUserThreadsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

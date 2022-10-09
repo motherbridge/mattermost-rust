@@ -293,7 +293,7 @@ pub async fn get_incoming_webhook(configuration: &configuration::Configuration, 
 }
 
 /// Get a page of a list of incoming webhooks. Optionally filter for a specific team using query parameters. ##### Permissions `manage_webhooks` for the system or `manage_webhooks` for the specific team. 
-pub async fn get_incoming_webhooks(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>) -> Result<Vec<crate::models::IncomingWebhook>, Error<GetIncomingWebhooksError>> {
+pub async fn get_incoming_webhooks(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<Vec<crate::models::IncomingWebhook>, Error<GetIncomingWebhooksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -364,7 +364,7 @@ pub async fn get_outgoing_webhook(configuration: &configuration::Configuration, 
 }
 
 /// Get a page of a list of outgoing webhooks. Optionally filter for a specific team or channel using query parameters. ##### Permissions `manage_webhooks` for the system or `manage_webhooks` for the specific team/channel. 
-pub async fn get_outgoing_webhooks(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>, channel_id: Option<&str>) -> Result<Vec<crate::models::OutgoingWebhook>, Error<GetOutgoingWebhooksError>> {
+pub async fn get_outgoing_webhooks(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>, channel_id: Option<&str>) -> Result<Vec<crate::models::OutgoingWebhook>, Error<GetOutgoingWebhooksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

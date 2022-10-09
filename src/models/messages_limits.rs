@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MessagesLimits {
     #[serde(rename = "history", skip_serializing_if = "Option::is_none")]
-    pub history: Option<i32>,
+    pub history: Option<i64>,
 }
 
 impl MessagesLimits {
