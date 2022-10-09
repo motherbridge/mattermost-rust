@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_type** | Option<**String**> |  | [optional]
-**last_four** | Option<**i64**> |  | [optional]
-**exp_month** | Option<**i64**> |  | [optional]
-**exp_year** | Option<**i64**> |  | [optional]
+**last_four** | Option<**i32**> |  | [optional]
+**exp_month** | Option<**i32**> |  | [optional]
+**exp_year** | Option<**i32**> |  | [optional]
 **card_brand** | Option<**String**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 

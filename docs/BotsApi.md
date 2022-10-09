@@ -52,7 +52,7 @@ Name | Type | Description  | Required | Notes
 
 ## convert_bot_to_user
 
-> crate::models::StatusOk convert_bot_to_user(bot_user_id, inline_object111, set_system_admin)
+> crate::models::StatusOk convert_bot_to_user(bot_user_id, inline_object112, set_system_admin)
 Convert a bot into a user
 
 Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
@@ -63,7 +63,7 @@ Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bot_user_id** | **String** | Bot user ID | [required] |
-**inline_object111** | [**InlineObject111**](InlineObject111.md) |  | [required] |
+**inline_object112** | [**InlineObject112**](InlineObject112.md) |  | [required] |
 **set_system_admin** | Option<**bool**> | Whether to give the user the system admin role. |  |[default to false]
 
 ### Return type
@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_bot
 
-> crate::models::Bot create_bot(inline_object108)
+> crate::models::Bot create_bot(inline_object109)
 Create a bot
 
 Create a new bot account on the system. Username is required. ##### Permissions Must have `create_bot` permission. __Minimum server version__: 5.10 
@@ -124,7 +124,7 @@ Create a new bot account on the system. Username is required. ##### Permissions 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object108** | [**InlineObject108**](InlineObject108.md) |  | [required] |
+**inline_object109** | [**InlineObject109**](InlineObject109.md) |  | [required] |
 
 ### Return type
 
@@ -305,8 +305,8 @@ Get a page of a list of bots. ##### Permissions Must have `read_bots` permission
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of users per page. There is a maximum limit of 200 users per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of users per page. There is a maximum limit of 200 users per page. |  |[default to 60]
 **include_deleted** | Option<**bool**> | If deleted bots should be returned. |  |
 **only_orphaned** | Option<**bool**> | When true, only orphaned bots will be returned. A bot is consitered orphaned if it's owner has been deactivated. |  |
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_bot
 
-> crate::models::Bot patch_bot(bot_user_id, inline_object109)
+> crate::models::Bot patch_bot(bot_user_id, inline_object110)
 Patch a bot
 
 Partially update a bot by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have `manage_bots` permission.  __Minimum server version__: 5.10 
@@ -339,7 +339,7 @@ Partially update a bot by providing only the fields you want to update. Omitted 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bot_user_id** | **String** | Bot user ID | [required] |
-**inline_object109** | [**InlineObject109**](InlineObject109.md) |  | [required] |
+**inline_object110** | [**InlineObject110**](InlineObject110.md) |  | [required] |
 
 ### Return type
 

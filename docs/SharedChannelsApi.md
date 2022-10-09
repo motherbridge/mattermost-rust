@@ -22,8 +22,8 @@ Get all shared channels for a team.  __Minimum server version__: 5.50  ##### Per
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team Id | [required] |
-**page** | Option<**i64**> |  |  |[default to 0]
-**per_page** | Option<**i64**> |  |  |[default to 0]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of sharedchannels per page. |  |[default to 0]
 
 ### Return type
 

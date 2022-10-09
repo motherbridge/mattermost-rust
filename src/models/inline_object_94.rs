@@ -13,15 +13,27 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject94 {
-    /// Destination teamId
-    #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
-    pub team_id: Option<String>,
+    /// Team ID to where the command should be created
+    #[serde(rename = "team_id")]
+    pub team_id: String,
+    /// `'P'` for post request, `'G'` for get request
+    #[serde(rename = "method")]
+    pub method: String,
+    /// Activation word to trigger the command
+    #[serde(rename = "trigger")]
+    pub trigger: String,
+    /// The URL that the command will make the request
+    #[serde(rename = "url")]
+    pub url: String,
 }
 
 impl InlineObject94 {
-    pub fn new() -> InlineObject94 {
+    pub fn new(team_id: String, method: String, trigger: String, url: String) -> InlineObject94 {
         InlineObject94 {
-            team_id: None,
+            team_id,
+            method,
+            trigger,
+            url,
         }
     }
 }

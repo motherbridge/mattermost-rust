@@ -13,35 +13,19 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject96 {
-    /// The name of the client application
-    #[serde(rename = "name")]
-    pub name: String,
-    /// A short description of the application
-    #[serde(rename = "description")]
-    pub description: String,
-    /// A URL to an icon to display with the application
-    #[serde(rename = "icon_url", skip_serializing_if = "Option::is_none")]
-    pub icon_url: Option<String>,
-    /// A list of callback URLs for the appliation
-    #[serde(rename = "callback_urls")]
-    pub callback_urls: Vec<String>,
-    /// A link to the website of the application
-    #[serde(rename = "homepage")]
-    pub homepage: String,
-    /// Set this to `true` to skip asking users for permission
-    #[serde(rename = "is_trusted", skip_serializing_if = "Option::is_none")]
-    pub is_trusted: Option<bool>,
+    /// Channel Id where the command will execute
+    #[serde(rename = "channel_id")]
+    pub channel_id: String,
+    /// The slash command to execute
+    #[serde(rename = "command")]
+    pub command: String,
 }
 
 impl InlineObject96 {
-    pub fn new(name: String, description: String, callback_urls: Vec<String>, homepage: String) -> InlineObject96 {
+    pub fn new(channel_id: String, command: String) -> InlineObject96 {
         InlineObject96 {
-            name,
-            description,
-            icon_url: None,
-            callback_urls,
-            homepage,
-            is_trusted: None,
+            channel_id,
+            command,
         }
     }
 }

@@ -159,8 +159,8 @@ Gets the policies which are applied to the all of the channels to which a user b
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -191,8 +191,8 @@ Gets the channels to which a granular data retention policy is applied.  __Minim
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of channels per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of channels per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -222,8 +222,8 @@ Gets details about the granular (i.e. team or channel-specific) data retention p
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -338,8 +338,8 @@ Gets the policies which are applied to the all of the teams to which a user belo
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of policies per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -370,8 +370,8 @@ Gets the teams to which a granular data retention policy is applied.  __Minimum 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of teams per page. There is a maximum limit of 200 per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of teams per page. There is a maximum limit of 200 per page. |  |[default to 60]
 
 ### Return type
 
@@ -484,7 +484,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_channels_for_retention_policy
 
-> Vec<crate::models::ChannelWithTeamData> search_channels_for_retention_policy(policy_id, inline_object99)
+> Vec<crate::models::ChannelWithTeamData> search_channels_for_retention_policy(policy_id, inline_object100)
 Search for the channels in a granular data retention policy
 
 Searches for the channels to which a granular data retention policy is applied.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
@@ -495,7 +495,7 @@ Searches for the channels to which a granular data retention policy is applied. 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**inline_object99** | [**InlineObject99**](InlineObject99.md) |  | [required] |
+**inline_object100** | [**InlineObject100**](InlineObject100.md) |  | [required] |
 
 ### Return type
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_teams_for_retention_policy
 
-> Vec<crate::models::Team> search_teams_for_retention_policy(policy_id, inline_object98)
+> Vec<crate::models::Team> search_teams_for_retention_policy(policy_id, inline_object99)
 Search for the teams in a granular data retention policy
 
 Searches for the teams to which a granular data retention policy is applied.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
@@ -526,7 +526,7 @@ Searches for the teams to which a granular data retention policy is applied.  __
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**inline_object98** | [**InlineObject98**](InlineObject98.md) |  | [required] |
+**inline_object99** | [**InlineObject99**](InlineObject99.md) |  | [required] |
 
 ### Return type
 

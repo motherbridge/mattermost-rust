@@ -7,8 +7,6 @@ Method | HTTP request | Description
 [**delete_reaction**](ReactionsApi.md#delete_reaction) | **DELETE** /users/{user_id}/posts/{post_id}/reactions/{emoji_name} | Remove a reaction from a post
 [**get_bulk_reactions**](ReactionsApi.md#get_bulk_reactions) | **POST** /posts/ids/reactions | Bulk get the reaction for posts
 [**get_reactions**](ReactionsApi.md#get_reactions) | **GET** /posts/{post_id}/reactions | Get a list of reactions to a post
-[**get_top_reactions_for_team**](ReactionsApi.md#get_top_reactions_for_team) | **GET** /teams/{team_id}/top/reactions | Get a list of the top reactions for a team.
-[**get_top_reactions_for_user**](ReactionsApi.md#get_top_reactions_for_user) | **GET** /users/me/top/reactions | Get a list of the top reactions across all public and private channels (the user is a member of) for a given user.
 [**save_reaction**](ReactionsApi.md#save_reaction) | **POST** /reactions | Create a reaction
 
 
@@ -92,73 +90,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**Vec<crate::models::Reaction>**](Reaction.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_top_reactions_for_team
-
-> crate::models::TopReactionList get_top_reactions_for_team(team_id, time_range, page, per_page)
-Get a list of the top reactions for a team.
-
-Get a list of the top reactions across all public and private channels (the user is a member of) for a given team. ##### Permissions Must have `view_team` permission for the team. 
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**team_id** | **String** | Team GUID | [required] |
-**time_range** | **String** | Time range can be \"today\", \"7_day\", or \"28_day\". - `today`: reactions posted on the current day. - `7_day`: reactions posted in the last 7 days. - `28_day`: reactions posted in the last 28 days.  | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of reactions per page, up to a maximum of 200. |  |[default to 60]
-
-### Return type
-
-[**crate::models::TopReactionList**](TopReactionList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_top_reactions_for_user
-
-> crate::models::TopReactionList get_top_reactions_for_user(user_id, time_range, page, per_page, team_id)
-Get a list of the top reactions across all public and private channels (the user is a member of) for a given user.
-
-Get a list of the top reactions for a user. ##### Permissions Must be logged in as the user. 
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**user_id** | **String** | User GUID | [required] |
-**time_range** | **String** | Time range can be \"today\", \"7_day\", or \"28_day\". - `today`: reactions posted on the current day. - `7_day`: reactions posted in the last 7 days. - `28_day`: reactions posted in the last 28 days.  | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of reactions per page, up to a maximum of 200. |  |[default to 60]
-**team_id** | Option<**String**> | Team ID will scope the response to a given team. ##### Permissions Must have `view_team` permission for the team.  |  |
-
-### Return type
-
-[**crate::models::TopReactionList**](TopReactionList.md)
 
 ### Authorization
 

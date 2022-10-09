@@ -139,7 +139,7 @@ pub async fn autocomplete_emoji(configuration: &configuration::Configuration, na
 }
 
 /// Create a custom emoji for the team. ##### Permissions Must be authenticated. 
-pub async fn create_emoji(configuration: &configuration::Configuration, _image: std::path::PathBuf, emoji: &str) -> Result<crate::models::Emoji, Error<CreateEmojiError>> {
+pub async fn create_emoji(configuration: &configuration::Configuration, image: std::path::PathBuf, emoji: &str) -> Result<crate::models::Emoji, Error<CreateEmojiError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -298,7 +298,7 @@ pub async fn get_emoji_image(configuration: &configuration::Configuration, emoji
 }
 
 /// Get a page of metadata for custom emoji on the system. Since server version 4.7, sort using the `sort` query parameter. ##### Permissions Must be authenticated. 
-pub async fn get_emoji_list(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, sort: Option<&str>) -> Result<crate::models::Emoji, Error<GetEmojiListError>> {
+pub async fn get_emoji_list(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, sort: Option<&str>) -> Result<crate::models::Emoji, Error<GetEmojiListError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -338,7 +338,7 @@ pub async fn get_emoji_list(configuration: &configuration::Configuration, page: 
 }
 
 /// Search for custom emoji by name based on search criteria provided in the request body. A maximum of 200 results are returned. ##### Permissions Must be authenticated.  __Minimum server version__: 4.7 
-pub async fn search_emoji(configuration: &configuration::Configuration, inline_object73: crate::models::InlineObject73) -> Result<Vec<crate::models::Emoji>, Error<SearchEmojiError>> {
+pub async fn search_emoji(configuration: &configuration::Configuration, inline_object74: crate::models::InlineObject74) -> Result<Vec<crate::models::Emoji>, Error<SearchEmojiError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -352,7 +352,7 @@ pub async fn search_emoji(configuration: &configuration::Configuration, inline_o
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object73);
+    local_var_req_builder = local_var_req_builder.json(&inline_object74);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

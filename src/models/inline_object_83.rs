@@ -13,15 +13,23 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject83 {
-    /// New IdAttribute value
-    #[serde(rename = "toAttribute")]
-    pub to_attribute: String,
+    /// Whether to include deleted users.
+    #[serde(rename = "include_deleted", skip_serializing_if = "Option::is_none")]
+    pub include_deleted: Option<bool>,
+    /// If set to true, the number of users who would be affected is returned.
+    #[serde(rename = "dry_run", skip_serializing_if = "Option::is_none")]
+    pub dry_run: Option<bool>,
+    /// If set to a non-empty array, then users whose IDs are not in the array will be excluded.
+    #[serde(rename = "user_ids", skip_serializing_if = "Option::is_none")]
+    pub user_ids: Option<Vec<String>>,
 }
 
 impl InlineObject83 {
-    pub fn new(to_attribute: String) -> InlineObject83 {
+    pub fn new() -> InlineObject83 {
         InlineObject83 {
-            to_attribute,
+            include_deleted: None,
+            dry_run: None,
+            user_ids: None,
         }
     }
 }

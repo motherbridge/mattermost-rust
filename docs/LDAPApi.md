@@ -101,7 +101,7 @@ Name | Type | Description  | Required | Notes
 
 ## migrate_id_ldap
 
-> crate::models::StatusOk migrate_id_ldap(inline_object83)
+> crate::models::StatusOk migrate_id_ldap(inline_object84)
 Migrate Id LDAP
 
 Migrate LDAP IdAttribute to new value. ##### Permissions Must have `manage_system` permission. __Minimum server version__: 5.26 
@@ -111,7 +111,7 @@ Migrate LDAP IdAttribute to new value. ##### Permissions Must have `manage_syste
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object83** | [**InlineObject83**](InlineObject83.md) |  | [required] |
+**inline_object84** | [**InlineObject84**](InlineObject84.md) |  | [required] |
 
 ### Return type
 

@@ -45,24 +45,6 @@ pub enum GetReactionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_top_reactions_for_team`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetTopReactionsForTeamError {
-    Status400(crate::models::AppError),
-    Status403(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`get_top_reactions_for_user`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetTopReactionsForUserError {
-    Status400(crate::models::AppError),
-    Status403(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`save_reaction`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -162,85 +144,6 @@ pub async fn get_reactions(configuration: &configuration::Configuration, post_id
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<GetReactionsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-/// Get a list of the top reactions across all public and private channels (the user is a member of) for a given team. ##### Permissions Must have `view_team` permission for the team. 
-pub async fn get_top_reactions_for_team(configuration: &configuration::Configuration, team_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForTeamError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/teams/{team_id}/top/reactions", local_var_configuration.base_path, team_id=crate::apis::urlencode(team_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("time_range", &time_range.to_string())]);
-    if let Some(ref local_var_str) = page {
-        local_var_req_builder = local_var_req_builder.query(&[("page", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_str) = per_page {
-        local_var_req_builder = local_var_req_builder.query(&[("per_page", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetTopReactionsForTeamError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-/// Get a list of the top reactions for a user. ##### Permissions Must be logged in as the user. 
-pub async fn get_top_reactions_for_user(configuration: &configuration::Configuration, user_id: &str, time_range: &str, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<crate::models::TopReactionList, Error<GetTopReactionsForUserError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{user_id}/top/reactions", local_var_configuration.base_path, user_id=crate::apis::urlencode(user_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("time_range", &time_range.to_string())]);
-    if let Some(ref local_var_str) = page {
-        local_var_req_builder = local_var_req_builder.query(&[("page", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_str) = per_page {
-        local_var_req_builder = local_var_req_builder.query(&[("per_page", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_str) = team_id {
-        local_var_req_builder = local_var_req_builder.query(&[("team_id", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetTopReactionsForUserError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

@@ -13,9 +13,6 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject97 {
-    /// The id of the client application
-    #[serde(rename = "id")]
-    pub id: String,
     /// The name of the client application
     #[serde(rename = "name")]
     pub name: String,
@@ -31,15 +28,14 @@ pub struct InlineObject97 {
     /// A link to the website of the application
     #[serde(rename = "homepage")]
     pub homepage: String,
-    /// Set this to `true` to skip asking users for permission. It will be set to false if value is not provided.
+    /// Set this to `true` to skip asking users for permission
     #[serde(rename = "is_trusted", skip_serializing_if = "Option::is_none")]
     pub is_trusted: Option<bool>,
 }
 
 impl InlineObject97 {
-    pub fn new(id: String, name: String, description: String, callback_urls: Vec<String>, homepage: String) -> InlineObject97 {
+    pub fn new(name: String, description: String, callback_urls: Vec<String>, homepage: String) -> InlineObject97 {
         InlineObject97 {
-            id,
             name,
             description,
             icon_url: None,

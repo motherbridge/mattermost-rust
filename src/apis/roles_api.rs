@@ -15,6 +15,16 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
+/// struct for typed errors of method [`get_all_roles`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetAllRolesError {
+    Status400(crate::models::AppError),
+    Status401(crate::models::AppError),
+    Status403(crate::models::AppError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_role`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -54,16 +64,37 @@ pub enum PatchRoleError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`roles_get`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum RolesGetError {
-    Status400(crate::models::AppError),
-    Status401(crate::models::AppError),
-    Status403(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
 
+/// ##### Permissions  `manage_system` permission is required.  __Minimum server version__: 5.33 
+pub async fn get_all_roles(configuration: &configuration::Configuration, ) -> Result<Vec<crate::models::Role>, Error<GetAllRolesError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/roles", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetAllRolesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
 
 /// Get a role from the provided role id.  ##### Permissions Requires an active session but no other permissions.  __Minimum server version__: 4.9 
 pub async fn get_role(configuration: &configuration::Configuration, role_id: &str) -> Result<crate::models::Role, Error<GetRoleError>> {
@@ -160,7 +191,7 @@ pub async fn get_roles_by_names(configuration: &configuration::Configuration, re
 }
 
 /// Partially update a role by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 4.9 
-pub async fn patch_role(configuration: &configuration::Configuration, role_id: &str, inline_object102: crate::models::InlineObject102) -> Result<crate::models::Role, Error<PatchRoleError>> {
+pub async fn patch_role(configuration: &configuration::Configuration, role_id: &str, inline_object103: crate::models::InlineObject103) -> Result<crate::models::Role, Error<PatchRoleError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -174,7 +205,7 @@ pub async fn patch_role(configuration: &configuration::Configuration, role_id: &
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object102);
+    local_var_req_builder = local_var_req_builder.json(&inline_object103);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -186,37 +217,6 @@ pub async fn patch_role(configuration: &configuration::Configuration, role_id: &
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<PatchRoleError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-/// ##### Permissions  `manage_system` permission is required.  __Minimum server version__: 5.33 
-pub async fn roles_get(configuration: &configuration::Configuration, ) -> Result<Vec<crate::models::Role>, Error<RolesGetError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/roles", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<RolesGetError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

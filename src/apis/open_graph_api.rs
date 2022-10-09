@@ -25,7 +25,7 @@ pub enum OpenGraphError {
 
 
 /// Get Open Graph Metadata for a specif URL. Use the Open Graph protocol to get some generic metadata about a URL. Used for creating link previews.  __Minimum server version__: 3.10  ##### Permissions No permission required but must be logged in. 
-pub async fn open_graph(configuration: &configuration::Configuration, inline_object105: crate::models::InlineObject105) -> Result<crate::models::OpenGraph, Error<OpenGraphError>> {
+pub async fn open_graph(configuration: &configuration::Configuration, inline_object106: crate::models::InlineObject106) -> Result<crate::models::OpenGraph, Error<OpenGraphError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -39,7 +39,7 @@ pub async fn open_graph(configuration: &configuration::Configuration, inline_obj
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object105);
+    local_var_req_builder = local_var_req_builder.json(&inline_object106);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

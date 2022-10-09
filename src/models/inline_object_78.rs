@@ -13,15 +13,27 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject78 {
-    /// The URL from which to retrieve the SAML IDP data.
-    #[serde(rename = "saml_metadata_url", skip_serializing_if = "Option::is_none")]
-    pub saml_metadata_url: Option<String>,
+    /// Outgoing webhook GUID
+    #[serde(rename = "id")]
+    pub id: String,
+    /// The ID of a public channel or private group that receives the webhook payloads.
+    #[serde(rename = "channel_id")]
+    pub channel_id: String,
+    /// The display name for this incoming webhook
+    #[serde(rename = "display_name")]
+    pub display_name: String,
+    /// The description for this incoming webhook
+    #[serde(rename = "description")]
+    pub description: String,
 }
 
 impl InlineObject78 {
-    pub fn new() -> InlineObject78 {
+    pub fn new(id: String, channel_id: String, display_name: String, description: String) -> InlineObject78 {
         InlineObject78 {
-            saml_metadata_url: None,
+            id,
+            channel_id,
+            display_name,
+            description,
         }
     }
 }

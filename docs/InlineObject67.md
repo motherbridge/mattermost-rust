@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**site_url** | **String** | The Site URL to test | 
+**_type** | **String** | The type of job to create | 
+**data** | Option<[**serde_json::Value**](.md)> | An object containing any additional data required for this job type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

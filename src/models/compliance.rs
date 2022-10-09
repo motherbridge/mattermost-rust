@@ -22,7 +22,7 @@ pub struct Compliance {
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(rename = "count", skip_serializing_if = "Option::is_none")]
-    pub count: Option<i64>,
+    pub count: Option<i32>,
     #[serde(rename = "desc", skip_serializing_if = "Option::is_none")]
     pub desc: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]

@@ -110,8 +110,8 @@ Get a list of compliance reports previously created by page, selected with `page
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of reports per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of reports per page. |  |[default to 60]
 
 ### Return type
 

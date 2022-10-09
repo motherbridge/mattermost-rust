@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## open_graph
 
-> crate::models::OpenGraph open_graph(inline_object105)
+> crate::models::OpenGraph open_graph(inline_object106)
 Get open graph metadata for url
 
 Get Open Graph Metadata for a specif URL. Use the Open Graph protocol to get some generic metadata about a URL. Used for creating link previews.  __Minimum server version__: 3.10  ##### Permissions No permission required but must be logged in. 
@@ -20,7 +20,7 @@ Get Open Graph Metadata for a specif URL. Use the Open Graph protocol to get som
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object105** | [**InlineObject105**](InlineObject105.md) |  | [required] |
+**inline_object106** | [**InlineObject106**](InlineObject106.md) |  | [required] |
 
 ### Return type
 

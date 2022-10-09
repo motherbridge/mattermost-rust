@@ -24,16 +24,16 @@ pub struct UserNotifyProps {
     pub desktop: Option<String>,
     /// Set to \"true\" to enable sound on desktop notifications, \"false\" to disable. Defaults to \"true\".
     #[serde(rename = "desktop_sound", skip_serializing_if = "Option::is_none")]
-    pub desktop_sound: Option<bool>,
+    pub desktop_sound: Option<String>,
     /// A comma-separated list of words to count as mentions. Defaults to username and @username.
     #[serde(rename = "mention_keys", skip_serializing_if = "Option::is_none")]
     pub mention_keys: Option<String>,
     /// Set to \"true\" to enable channel-wide notifications (@channel, @all, etc.), \"false\" to disable. Defaults to \"true\".
     #[serde(rename = "channel", skip_serializing_if = "Option::is_none")]
-    pub channel: Option<bool>,
+    pub channel: Option<String>,
     /// Set to \"true\" to enable mentions for first name. Defaults to \"true\" if a first name is set, \"false\" otherwise.
     #[serde(rename = "first_name", skip_serializing_if = "Option::is_none")]
-    pub first_name: Option<bool>,
+    pub first_name: Option<String>,
 }
 
 impl UserNotifyProps {

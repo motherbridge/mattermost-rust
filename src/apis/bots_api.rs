@@ -179,7 +179,7 @@ pub async fn assign_bot(configuration: &configuration::Configuration, bot_user_i
 }
 
 /// Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
-pub async fn convert_bot_to_user(configuration: &configuration::Configuration, bot_user_id: &str, inline_object111: crate::models::InlineObject111, set_system_admin: Option<bool>) -> Result<crate::models::StatusOk, Error<ConvertBotToUserError>> {
+pub async fn convert_bot_to_user(configuration: &configuration::Configuration, bot_user_id: &str, inline_object112: crate::models::InlineObject112, set_system_admin: Option<bool>) -> Result<crate::models::StatusOk, Error<ConvertBotToUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -196,7 +196,7 @@ pub async fn convert_bot_to_user(configuration: &configuration::Configuration, b
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object111);
+    local_var_req_builder = local_var_req_builder.json(&inline_object112);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -245,7 +245,7 @@ pub async fn convert_user_to_bot(configuration: &configuration::Configuration, u
 }
 
 /// Create a new bot account on the system. Username is required. ##### Permissions Must have `create_bot` permission. __Minimum server version__: 5.10 
-pub async fn create_bot(configuration: &configuration::Configuration, inline_object108: crate::models::InlineObject108) -> Result<crate::models::Bot, Error<CreateBotError>> {
+pub async fn create_bot(configuration: &configuration::Configuration, inline_object109: crate::models::InlineObject109) -> Result<crate::models::Bot, Error<CreateBotError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -259,7 +259,7 @@ pub async fn create_bot(configuration: &configuration::Configuration, inline_obj
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object108);
+    local_var_req_builder = local_var_req_builder.json(&inline_object109);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -435,7 +435,7 @@ pub async fn get_bot_icon_image(configuration: &configuration::Configuration, bo
 }
 
 /// Get a page of a list of bots. ##### Permissions Must have `read_bots` permission for bots you are managing, and `read_others_bots` permission for bots others are managing. __Minimum server version__: 5.10 
-pub async fn get_bots(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, include_deleted: Option<bool>, only_orphaned: Option<bool>) -> Result<Vec<crate::models::Bot>, Error<GetBotsError>> {
+pub async fn get_bots(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, include_deleted: Option<bool>, only_orphaned: Option<bool>) -> Result<Vec<crate::models::Bot>, Error<GetBotsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -478,7 +478,7 @@ pub async fn get_bots(configuration: &configuration::Configuration, page: Option
 }
 
 /// Partially update a bot by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have `manage_bots` permission.  __Minimum server version__: 5.10 
-pub async fn patch_bot(configuration: &configuration::Configuration, bot_user_id: &str, inline_object109: crate::models::InlineObject109) -> Result<crate::models::Bot, Error<PatchBotError>> {
+pub async fn patch_bot(configuration: &configuration::Configuration, bot_user_id: &str, inline_object110: crate::models::InlineObject110) -> Result<crate::models::Bot, Error<PatchBotError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -492,7 +492,7 @@ pub async fn patch_bot(configuration: &configuration::Configuration, bot_user_id
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object109);
+    local_var_req_builder = local_var_req_builder.json(&inline_object110);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -510,7 +510,7 @@ pub async fn patch_bot(configuration: &configuration::Configuration, bot_user_id
 }
 
 /// Set a bot's LHS icon image based on bot_user_id string parameter. Icon image must be SVG format, all other formats are rejected. ##### Permissions Must have `manage_bots` permission. __Minimum server version__: 5.14 
-pub async fn set_bot_icon_image(configuration: &configuration::Configuration, bot_user_id: &str, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetBotIconImageError>> {
+pub async fn set_bot_icon_image(configuration: &configuration::Configuration, bot_user_id: &str, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetBotIconImageError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -524,7 +524,7 @@ pub async fn set_bot_icon_image(configuration: &configuration::Configuration, bo
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'image' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 

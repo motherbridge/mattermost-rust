@@ -37,7 +37,7 @@ pub enum LinkLdapGroupError {
 
 
 /// ##### Permissions Must have `manage_system` permission. __Minimum server version__: 5.11 
-pub async fn get_ldap_groups(configuration: &configuration::Configuration, q: Option<&str>, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::LdapGroupsPaged>, Error<GetLdapGroupsError>> {
+pub async fn get_ldap_groups(configuration: &configuration::Configuration, q: Option<&str>, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::LdapGroupsPaged>, Error<GetLdapGroupsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

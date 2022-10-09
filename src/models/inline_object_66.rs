@@ -13,19 +13,23 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject66 {
-    /// The type of job to create
-    #[serde(rename = "type")]
-    pub _type: String,
-    /// An object containing any additional data required for this job type
-    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<serde_json::Value>,
+    /// The ID of the channel to upload to.
+    #[serde(rename = "channel_id")]
+    pub channel_id: String,
+    /// The name of the file to upload.
+    #[serde(rename = "filename")]
+    pub filename: String,
+    /// The size of the file to upload in bytes.
+    #[serde(rename = "file_size")]
+    pub file_size: i64,
 }
 
 impl InlineObject66 {
-    pub fn new(_type: String) -> InlineObject66 {
+    pub fn new(channel_id: String, filename: String, file_size: i64) -> InlineObject66 {
         InlineObject66 {
-            _type,
-            data: None,
+            channel_id,
+            filename,
+            file_size,
         }
     }
 }

@@ -49,6 +49,9 @@ pub struct InlineObject45 {
     /// If set to true, only channels which do not have a granular retention policy assigned to them will be returned. The `sysconsole_read_compliance_data_retention` permission is required to use this parameter. __Minimum server version__: 5.35 
     #[serde(rename = "exclude_policy_constrained", skip_serializing_if = "Option::is_none")]
     pub exclude_policy_constrained: Option<bool>,
+    /// If set to true, returns channels where given search 'term' matches channel ID. __Minimum server version__: 5.35 
+    #[serde(rename = "include_search_by_id", skip_serializing_if = "Option::is_none")]
+    pub include_search_by_id: Option<bool>,
 }
 
 impl InlineObject45 {
@@ -66,6 +69,7 @@ impl InlineObject45 {
             page: None,
             per_page: None,
             exclude_policy_constrained: None,
+            include_search_by_id: None,
         }
     }
 }

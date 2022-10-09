@@ -48,6 +48,16 @@ pub enum GetCloudCustomerError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_cloud_limits`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetCloudLimitsError {
+    Status401(crate::models::AppError),
+    Status500(crate::models::AppError),
+    Status501(crate::models::AppError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_cloud_products`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -92,14 +102,6 @@ pub enum GetSubscriptionError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_subscription_stats`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetSubscriptionStatsError {
-    Status500(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`post_endpoint_for_cws_webhooks`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -107,26 +109,6 @@ pub enum PostEndpointForCwsWebhooksError {
     Status400(crate::models::AppError),
     Status401(crate::models::AppError),
     Status403(crate::models::AppError),
-    Status501(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`send_admin_upgrade_request_email`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum SendAdminUpgradeRequestEmailError {
-    Status413(crate::models::AppError),
-    Status500(crate::models::AppError),
-    Status501(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`send_admin_upgrade_request_email_on_join`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum SendAdminUpgradeRequestEmailOnJoinError {
-    Status413(crate::models::AppError),
-    Status500(crate::models::AppError),
     Status501(crate::models::AppError),
     UnknownValue(serde_json::Value),
 }
@@ -247,6 +229,37 @@ pub async fn get_cloud_customer(configuration: &configuration::Configuration, ) 
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<GetCloudCustomerError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// Retrieve any cloud workspace limits applicable to this instance. ##### Permissions Must be authenticated and be licensed for Cloud. __Minimum server version__: 7.0 __Note:__ This is intended for internal use and is subject to change. 
+pub async fn get_cloud_limits(configuration: &configuration::Configuration, ) -> Result<crate::models::ProductLimits, Error<GetCloudLimitsError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/cloud/limits", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetCloudLimitsError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
@@ -376,37 +389,6 @@ pub async fn get_subscription(configuration: &configuration::Configuration, ) ->
     }
 }
 
-/// An endpoint that returns stats about a user's subscription. For example remaining seats on a free tier ##### Permissions This endpoint should only be accessed in a Mattermost Cloud instance __Minimum server version__: 5.34 __Note:__ This is intended for internal use and is subject to change. 
-pub async fn get_subscription_stats(configuration: &configuration::Configuration, ) -> Result<crate::models::SubscriptionStats, Error<GetSubscriptionStatsError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/cloud/subscription/stats", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetSubscriptionStatsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
 /// An endpoint for processing webhooks from the Customer Portal ##### Permissions This endpoint should only be accessed by CWS, in a Mattermost Cloud instance __Minimum server version__: 5.30 __Note:__ This is intended for internal use and is subject to change. 
 pub async fn post_endpoint_for_cws_webhooks(configuration: &configuration::Configuration, ) -> Result<(), Error<PostEndpointForCwsWebhooksError>> {
     let local_var_configuration = configuration;
@@ -438,70 +420,8 @@ pub async fn post_endpoint_for_cws_webhooks(configuration: &configuration::Confi
     }
 }
 
-/// An endpoint that triggers sending emails to all sys admins to request them to upgrade the workspace when a user tries to invite more users ##### Permissions This endpoint should only be accessed in a Mattermost Cloud instance __Minimum server version__: 5.34 __Note:__ This is intended for internal use and is subject to change. 
-pub async fn send_admin_upgrade_request_email(configuration: &configuration::Configuration, ) -> Result<(), Error<SendAdminUpgradeRequestEmailError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/cloud/subscription/limitreached/invite", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        Ok(())
-    } else {
-        let local_var_entity: Option<SendAdminUpgradeRequestEmailError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-/// An endpoint that triggers sending emails to all sys admins to request them to upgrade the workspace when a user tries to join the workspace ##### Permissions This endpoint should only be accessed in a Mattermost Cloud instance __Minimum server version__: 5.34 __Note:__ This is intended for internal use and is subject to change. 
-pub async fn send_admin_upgrade_request_email_on_join(configuration: &configuration::Configuration, ) -> Result<(), Error<SendAdminUpgradeRequestEmailOnJoinError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/cloud/subscription/limitreached/join", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        Ok(())
-    } else {
-        let local_var_entity: Option<SendAdminUpgradeRequestEmailOnJoinError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
 /// Updates the customer information for the Mattermost Cloud customer bound to this installation. ##### Permissions Must have `manage_system` permission and be licensed for Cloud. __Minimum server version__: 5.29 __Note:__ This is intended for internal use and is subject to change. 
-pub async fn update_cloud_customer(configuration: &configuration::Configuration, inline_object113: crate::models::InlineObject113) -> Result<crate::models::CloudCustomer, Error<UpdateCloudCustomerError>> {
+pub async fn update_cloud_customer(configuration: &configuration::Configuration, inline_object114: crate::models::InlineObject114) -> Result<crate::models::CloudCustomer, Error<UpdateCloudCustomerError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -515,7 +435,7 @@ pub async fn update_cloud_customer(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object113);
+    local_var_req_builder = local_var_req_builder.json(&inline_object114);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

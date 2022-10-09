@@ -110,7 +110,7 @@ pub async fn get_brand_image(configuration: &configuration::Configuration, ) -> 
 }
 
 /// Uploads a brand image. ##### Permissions Must have `manage_system` permission. 
-pub async fn upload_brand_image(configuration: &configuration::Configuration, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadBrandImageError>> {
+pub async fn upload_brand_image(configuration: &configuration::Configuration, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadBrandImageError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -124,7 +124,7 @@ pub async fn upload_brand_image(configuration: &configuration::Configuration, _i
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'image' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## create_command
 
-> crate::models::Command create_command(inline_object93)
+> crate::models::Command create_command(inline_object94)
 Create a command
 
 Create a command for a team. ##### Permissions `manage_slash_commands` for the team the command is in. 
@@ -29,7 +29,7 @@ Create a command for a team. ##### Permissions `manage_slash_commands` for the t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object93** | [**InlineObject93**](InlineObject93.md) |  | [required] |
+**inline_object94** | [**InlineObject94**](InlineObject94.md) |  | [required] |
 
 ### Return type
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 
 ## execute_command
 
-> crate::models::CommandResponse execute_command(inline_object95)
+> crate::models::CommandResponse execute_command(inline_object96)
 Execute a command
 
 Execute a command on a team. ##### Permissions Must have `use_slash_commands` permission for the team the command is in. 
@@ -89,7 +89,7 @@ Execute a command on a team. ##### Permissions Must have `use_slash_commands` pe
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object95** | [**InlineObject95**](InlineObject95.md) |  | [required] |
+**inline_object96** | [**InlineObject96**](InlineObject96.md) |  | [required] |
 
 ### Return type
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Required | Notes
 
 ## move_command
 
-> crate::models::StatusOk move_command(command_id, inline_object94)
+> crate::models::StatusOk move_command(command_id, inline_object95)
 Move a command
 
 Move a command to a different team based on command id string. ##### Permissions Must have `manage_slash_commands` permission for the team the command is currently in and the destination team.  __Minimum server version__: 5.22 
@@ -242,7 +242,7 @@ Move a command to a different team based on command id string. ##### Permissions
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **command_id** | **String** | ID of the command to move | [required] |
-**inline_object94** | [**InlineObject94**](InlineObject94.md) |  | [required] |
+**inline_object95** | [**InlineObject95**](InlineObject95.md) |  | [required] |
 
 ### Return type
 

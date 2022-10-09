@@ -21,9 +21,9 @@ pub struct OpenGraphImagesInner {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<String>,
     #[serde(rename = "width", skip_serializing_if = "Option::is_none")]
-    pub width: Option<i64>,
+    pub width: Option<i32>,
     #[serde(rename = "height", skip_serializing_if = "Option::is_none")]
-    pub height: Option<i64>,
+    pub height: Option<i32>,
 }
 
 impl OpenGraphImagesInner {

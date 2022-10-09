@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ConfigPasswordSettings {
     #[serde(rename = "MinimumLength", skip_serializing_if = "Option::is_none")]
-    pub minimum_length: Option<i64>,
+    pub minimum_length: Option<i32>,
     #[serde(rename = "Lowercase", skip_serializing_if = "Option::is_none")]
     pub lowercase: Option<bool>,
     #[serde(rename = "Number", skip_serializing_if = "Option::is_none")]

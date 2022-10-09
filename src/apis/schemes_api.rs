@@ -93,7 +93,7 @@ pub enum PatchSchemeError {
 
 
 /// Create a new scheme.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.0 
-pub async fn create_scheme(configuration: &configuration::Configuration, inline_object103: crate::models::InlineObject103) -> Result<crate::models::Scheme, Error<CreateSchemeError>> {
+pub async fn create_scheme(configuration: &configuration::Configuration, inline_object104: crate::models::InlineObject104) -> Result<crate::models::Scheme, Error<CreateSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -107,7 +107,7 @@ pub async fn create_scheme(configuration: &configuration::Configuration, inline_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object103);
+    local_var_req_builder = local_var_req_builder.json(&inline_object104);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -156,7 +156,7 @@ pub async fn delete_scheme(configuration: &configuration::Configuration, scheme_
 }
 
 /// Get a page of channels which use this scheme. The provided Scheme ID should be for a Channel-scoped Scheme. Use the query parameters to modify the behaviour of this endpoint.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 5.0 
-pub async fn get_channels_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForSchemeError>> {
+pub async fn get_channels_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -224,7 +224,7 @@ pub async fn get_scheme(configuration: &configuration::Configuration, scheme_id:
 }
 
 /// Get a page of schemes. Use the query parameters to modify the behaviour of this endpoint.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.0 
-pub async fn get_schemes(configuration: &configuration::Configuration, scope: Option<&str>, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Scheme>, Error<GetSchemesError>> {
+pub async fn get_schemes(configuration: &configuration::Configuration, scope: Option<&str>, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Scheme>, Error<GetSchemesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -264,7 +264,7 @@ pub async fn get_schemes(configuration: &configuration::Configuration, scope: Op
 }
 
 /// Get a page of teams which use this scheme. The provided Scheme ID should be for a Team-scoped Scheme. Use the query parameters to modify the behaviour of this endpoint.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 5.0 
-pub async fn get_teams_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Team>, Error<GetTeamsForSchemeError>> {
+pub async fn get_teams_for_scheme(configuration: &configuration::Configuration, scheme_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Team>, Error<GetTeamsForSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -301,7 +301,7 @@ pub async fn get_teams_for_scheme(configuration: &configuration::Configuration, 
 }
 
 /// Partially update a scheme by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 5.0 
-pub async fn patch_scheme(configuration: &configuration::Configuration, scheme_id: &str, inline_object104: crate::models::InlineObject104) -> Result<crate::models::Scheme, Error<PatchSchemeError>> {
+pub async fn patch_scheme(configuration: &configuration::Configuration, scheme_id: &str, inline_object105: crate::models::InlineObject105) -> Result<crate::models::Scheme, Error<PatchSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -315,7 +315,7 @@ pub async fn patch_scheme(configuration: &configuration::Configuration, scheme_i
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object104);
+    local_var_req_builder = local_var_req_builder.json(&inline_object105);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

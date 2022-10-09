@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## create_upload
 
-> crate::models::UploadSession create_upload(inline_object65)
+> crate::models::UploadSession create_upload(inline_object66)
 Create an upload
 
 Creates a new upload session.  __Minimum server version__: 5.28 ##### Permissions Must have `upload_file` permission. 
@@ -22,7 +22,7 @@ Creates a new upload session.  __Minimum server version__: 5.28 ##### Permission
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object65** | [**InlineObject65**](InlineObject65.md) |  | [required] |
+**inline_object66** | [**InlineObject66**](InlineObject66.md) |  | [required] |
 
 ### Return type
 

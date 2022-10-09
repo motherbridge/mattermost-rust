@@ -16,7 +16,7 @@ pub struct ChannelStats {
     #[serde(rename = "channel_id", skip_serializing_if = "Option::is_none")]
     pub channel_id: Option<String>,
     #[serde(rename = "member_count", skip_serializing_if = "Option::is_none")]
-    pub member_count: Option<i64>,
+    pub member_count: Option<i32>,
 }
 
 impl ChannelStats {

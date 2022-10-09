@@ -33,7 +33,7 @@ pub struct Job {
     pub status: Option<String>,
     /// The progress (as a percentage) of the job
     #[serde(rename = "progress", skip_serializing_if = "Option::is_none")]
-    pub progress: Option<i64>,
+    pub progress: Option<i32>,
     /// A freeform data field containing additional information about the job
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
     pub data: Option<serde_json::Value>,

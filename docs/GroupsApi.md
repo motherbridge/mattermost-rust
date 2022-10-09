@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 ## add_group_members
 
-> crate::models::StatusOk add_group_members(group_id, inline_object90)
+> crate::models::StatusOk add_group_members(group_id, inline_object91)
 Adds members to a custom group
 
 Adds members to a custom group.  ##### Permissions Must have `custom_group_manage_members` permission for the given group.  __Minimum server version__: 6.3 
@@ -44,7 +44,7 @@ Adds members to a custom group.  ##### Permissions Must have `custom_group_manag
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | The ID of the group. | [required] |
-**inline_object90** | [**InlineObject90**](InlineObject90.md) |  | [required] |
+**inline_object91** | [**InlineObject91**](InlineObject91.md) |  | [required] |
 
 ### Return type
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_group
 
-> create_group(inline_object86)
+> create_group(inline_object87)
 Create a custom group
 
 Create a `custom` type group.  #### Permission Must have `create_custom_group` permission.  __Minimum server version__: 6.3 
@@ -74,7 +74,7 @@ Create a `custom` type group.  #### Permission Must have `create_custom_group` p
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object86** | [**InlineObject86**](InlineObject86.md) |  | [required] |
+**inline_object87** | [**InlineObject87**](InlineObject87.md) |  | [required] |
 
 ### Return type
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_group_members
 
-> crate::models::StatusOk delete_group_members(group_id, inline_object91)
+> crate::models::StatusOk delete_group_members(group_id, inline_object92)
 Removes members from a custom group
 
 Soft deletes a custom group members.  ##### Permissions Must have `custom_group_manage_members` permission for the given group.  __Minimum server version__: 6.3 
@@ -135,7 +135,7 @@ Soft deletes a custom group members.  ##### Permissions Must have `custom_group_
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | The ID of the group to delete. | [required] |
-**inline_object91** | [**InlineObject91**](InlineObject91.md) |  | [required] |
+**inline_object92** | [**InlineObject92**](InlineObject92.md) |  | [required] |
 
 ### Return type
 
@@ -348,8 +348,8 @@ Retrieve the list of users associated with a given group.  ##### Permissions Mus
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
 
 ### Return type
 
@@ -381,11 +381,11 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **not_associated_to_team** | **String** | Team GUID which is used to return all the groups not associated to this team | [required] |
 **not_associated_to_channel** | **String** | Group GUID which is used to return all the groups not associated to this channel | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
 **q** | Option<**String**> | String to pattern match the `name` and `display_name` field. Will return all groups whose `name` and `display_name` field match any of the text. |  |
 **include_member_count** | Option<**bool**> | Boolean which adds the `member_count` attribute to each group JSON object |  |
-**since** | Option<**i64**> | Only return groups that have been modified since the given Unix timestamp (in milliseconds). All modified groups, including deleted and created groups, will be returned. __Minimum server version__: 5.24  |  |
+**since** | Option<**i32**> | Only return groups that have been modified since the given Unix timestamp (in milliseconds). All modified groups, including deleted and created groups, will be returned. __Minimum server version__: 5.24  |  |
 **filter_allow_reference** | Option<**bool**> | Boolean which filters the group entries with the `allow_reference` attribute set. |  |[default to false]
 
 ### Return type
@@ -417,8 +417,8 @@ Retrieve the set of groups associated with the channels in the given team groupe
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
 **filter_allow_reference** | Option<**bool**> | Boolean which filters in the group entries with the `allow_reference` attribute set. |  |[default to false]
 **paginate** | Option<**bool**> | Boolean to determine whether the pagination should be applied or not |  |[default to false]
 
@@ -451,8 +451,8 @@ Retrieve the list of groups associated with a given channel.  ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
 **filter_allow_reference** | Option<**bool**> | Boolean which filters the group entries with the `allow_reference` attribute set. |  |[default to false]
 
 ### Return type
@@ -484,8 +484,8 @@ Retrieve the list of groups associated with a given team.  __Minimum server vers
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of groups per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of groups per page. |  |[default to 60]
 **filter_allow_reference** | Option<**bool**> | Boolean which filters in the group entries with the `allow_reference` attribute set. |  |[default to false]
 
 ### Return type
@@ -598,7 +598,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_group
 
-> crate::models::Group patch_group(group_id, inline_object87)
+> crate::models::Group patch_group(group_id, inline_object88)
 Patch a group
 
 Partially update a group by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -609,7 +609,7 @@ Partially update a group by providing only the fields you want to update. Omitte
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
-**inline_object87** | [**InlineObject87**](InlineObject87.md) |  | [required] |
+**inline_object88** | [**InlineObject88**](InlineObject88.md) |  | [required] |
 
 ### Return type
 
@@ -629,7 +629,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_group_syncable_for_channel
 
-> crate::models::GroupSyncableChannel patch_group_syncable_for_channel(group_id, channel_id, inline_object89)
+> crate::models::GroupSyncableChannel patch_group_syncable_for_channel(group_id, channel_id, inline_object90)
 Patch a GroupSyncable associated to Channel
 
 Partially update a GroupSyncable by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -641,7 +641,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object89** | [**InlineObject89**](InlineObject89.md) |  | [required] |
+**inline_object90** | [**InlineObject90**](InlineObject90.md) |  | [required] |
 
 ### Return type
 
@@ -661,7 +661,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_group_syncable_for_team
 
-> crate::models::GroupSyncableTeam patch_group_syncable_for_team(group_id, team_id, inline_object88)
+> crate::models::GroupSyncableTeam patch_group_syncable_for_team(group_id, team_id, inline_object89)
 Patch a GroupSyncable associated to Team
 
 Partially update a GroupSyncable by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -673,7 +673,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
 **team_id** | **String** | Team GUID | [required] |
-**inline_object88** | [**InlineObject88**](InlineObject88.md) |  | [required] |
+**inline_object89** | [**InlineObject89**](InlineObject89.md) |  | [required] |
 
 ### Return type
 

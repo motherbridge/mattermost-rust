@@ -13,19 +13,15 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject95 {
-    /// Channel Id where the command will execute
-    #[serde(rename = "channel_id")]
-    pub channel_id: String,
-    /// The slash command to execute
-    #[serde(rename = "command")]
-    pub command: String,
+    /// Destination teamId
+    #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
+    pub team_id: Option<String>,
 }
 
 impl InlineObject95 {
-    pub fn new(channel_id: String, command: String) -> InlineObject95 {
+    pub fn new() -> InlineObject95 {
         InlineObject95 {
-            channel_id,
-            command,
+            team_id: None,
         }
     }
 }

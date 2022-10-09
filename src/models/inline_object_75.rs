@@ -13,18 +13,18 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject75 {
-    /// Incoming webhook GUID
-    #[serde(rename = "hook_id", skip_serializing_if = "Option::is_none")]
-    pub hook_id: Option<String>,
     /// The ID of a public channel or private group that receives the webhook payloads.
     #[serde(rename = "channel_id")]
     pub channel_id: String,
+    /// The ID of the owner of the webhook if different than the requester. Required for [local mode](https://docs.mattermost.com/administration/mmctl-cli-tool.html#local-mode).
+    #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
+    pub user_id: Option<String>,
     /// The display name for this incoming webhook
-    #[serde(rename = "display_name")]
-    pub display_name: String,
+    #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
+    pub display_name: Option<String>,
     /// The description for this incoming webhook
-    #[serde(rename = "description")]
-    pub description: String,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
     /// The username this incoming webhook will post as.
     #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
@@ -34,12 +34,12 @@ pub struct InlineObject75 {
 }
 
 impl InlineObject75 {
-    pub fn new(channel_id: String, display_name: String, description: String) -> InlineObject75 {
+    pub fn new(channel_id: String) -> InlineObject75 {
         InlineObject75 {
-            hook_id: None,
             channel_id,
-            display_name,
-            description,
+            user_id: None,
+            display_name: None,
+            description: None,
             username: None,
             icon_url: None,
         }

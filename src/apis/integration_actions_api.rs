@@ -35,7 +35,7 @@ pub enum SubmitInteractiveDialogError {
 
 
 /// Open an interactive dialog using a trigger ID provided by a slash command, or some other action payload. See https://docs.mattermost.com/developer/interactive-dialogs.html for more information on interactive dialogs. __Minimum server version: 5.6__ 
-pub async fn open_interactive_dialog(configuration: &configuration::Configuration, inline_object106: crate::models::InlineObject106) -> Result<crate::models::StatusOk, Error<OpenInteractiveDialogError>> {
+pub async fn open_interactive_dialog(configuration: &configuration::Configuration, inline_object107: crate::models::InlineObject107) -> Result<crate::models::StatusOk, Error<OpenInteractiveDialogError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -49,7 +49,7 @@ pub async fn open_interactive_dialog(configuration: &configuration::Configuratio
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object106);
+    local_var_req_builder = local_var_req_builder.json(&inline_object107);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -67,7 +67,7 @@ pub async fn open_interactive_dialog(configuration: &configuration::Configuratio
 }
 
 /// Endpoint used by the Mattermost clients to submit a dialog. See https://docs.mattermost.com/developer/interactive-dialogs.html for more information on interactive dialogs. __Minimum server version: 5.6__ 
-pub async fn submit_interactive_dialog(configuration: &configuration::Configuration, inline_object107: crate::models::InlineObject107) -> Result<crate::models::StatusOk, Error<SubmitInteractiveDialogError>> {
+pub async fn submit_interactive_dialog(configuration: &configuration::Configuration, inline_object108: crate::models::InlineObject108) -> Result<crate::models::StatusOk, Error<SubmitInteractiveDialogError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -81,7 +81,7 @@ pub async fn submit_interactive_dialog(configuration: &configuration::Configurat
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object107);
+    local_var_req_builder = local_var_req_builder.json(&inline_object108);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

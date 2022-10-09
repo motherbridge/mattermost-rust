@@ -18,7 +18,7 @@ pub struct DataRetentionPolicyCreate {
     pub display_name: String,
     /// The number of days a message will be retained before being deleted by this policy. If this value is less than 0, the policy has infinite retention (i.e. messages are never deleted). 
     #[serde(rename = "post_duration")]
-    pub post_duration: i64,
+    pub post_duration: i32,
     /// The IDs of the teams to which this policy should be applied.
     #[serde(rename = "team_ids", skip_serializing_if = "Option::is_none")]
     pub team_ids: Option<Vec<String>>,
@@ -28,7 +28,7 @@ pub struct DataRetentionPolicyCreate {
 }
 
 impl DataRetentionPolicyCreate {
-    pub fn new(display_name: String, post_duration: i64) -> DataRetentionPolicyCreate {
+    pub fn new(display_name: String, post_duration: i32) -> DataRetentionPolicyCreate {
         DataRetentionPolicyCreate {
             display_name,
             post_duration,

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**force_ack** | Option<**bool**> | Flag which determines if the ack for the metric warning should be directly stored (without trying to send email first) or not | [optional]
+**level** | **String** | The error level, ERROR or DEBUG | 
+**message** | **String** | Message to send to the server logs | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

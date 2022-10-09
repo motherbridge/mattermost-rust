@@ -13,19 +13,15 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject70 {
-    /// The error level, ERROR or DEBUG
-    #[serde(rename = "level")]
-    pub level: String,
-    /// Message to send to the server logs
-    #[serde(rename = "message")]
-    pub message: String,
+    /// Number of users requested (20% extra is going to be added)
+    #[serde(rename = "users")]
+    pub users: i32,
 }
 
 impl InlineObject70 {
-    pub fn new(level: String, message: String) -> InlineObject70 {
+    pub fn new(users: i32) -> InlineObject70 {
         InlineObject70 {
-            level,
-            message,
+            users,
         }
     }
 }

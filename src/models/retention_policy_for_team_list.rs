@@ -18,7 +18,7 @@ pub struct RetentionPolicyForTeamList {
     pub policies: Option<Vec<crate::models::DataRetentionPolicyForTeam>>,
     /// The total number of team policies.
     #[serde(rename = "total_count", skip_serializing_if = "Option::is_none")]
-    pub total_count: Option<i64>,
+    pub total_count: Option<i32>,
 }
 
 impl RetentionPolicyForTeamList {

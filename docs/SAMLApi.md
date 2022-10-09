@@ -155,7 +155,7 @@ This endpoint does not need any parameter.
 
 ## get_saml_metadata_from_idp
 
-> String get_saml_metadata_from_idp(inline_object78)
+> String get_saml_metadata_from_idp(inline_object79)
 Get metadata from Identity Provider
 
 Get SAML metadata from the Identity Provider. SAML must be configured properly. ##### Permissions No permission required. 
@@ -165,7 +165,7 @@ Get SAML metadata from the Identity Provider. SAML must be configured properly. 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object78** | Option<[**InlineObject78**](InlineObject78.md)> |  |  |
+**inline_object79** | Option<[**InlineObject79**](InlineObject79.md)> |  |  |
 
 ### Return type
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Required | Notes
 
 ## reset_saml_auth_data_to_email
 
-> crate::models::InlineResponse20012 reset_saml_auth_data_to_email(inline_object82)
+> crate::models::InlineResponse20012 reset_saml_auth_data_to_email(inline_object83)
 Reset AuthData to Email
 
 Reset the AuthData field of SAML users to their email. This is meant to be used when the \"id\" attribute is set to an empty value (\"\") from a previously non-empty value. __Minimum server version__: 5.35 ##### Permissions Must have `manage_system` permission. 
@@ -225,7 +225,7 @@ Reset the AuthData field of SAML users to their email. This is meant to be used 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object82** | Option<[**InlineObject82**](InlineObject82.md)> |  |  |
+**inline_object83** | Option<[**InlineObject83**](InlineObject83.md)> |  |  |
 
 ### Return type
 

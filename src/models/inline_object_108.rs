@@ -13,20 +13,39 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject108 {
-    #[serde(rename = "username")]
-    pub username: String,
-    #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    /// The URL to send the submitted dialog payload to
+    #[serde(rename = "url")]
+    pub url: String,
+    /// Channel ID the user submitted the dialog from
+    #[serde(rename = "channel_id")]
+    pub channel_id: String,
+    /// Team ID the user submitted the dialog from
+    #[serde(rename = "team_id")]
+    pub team_id: String,
+    /// String map where keys are element names and values are the element input values
+    #[serde(rename = "submission")]
+    pub submission: serde_json::Value,
+    /// Callback ID sent when the dialog was opened
+    #[serde(rename = "callback_id", skip_serializing_if = "Option::is_none")]
+    pub callback_id: Option<String>,
+    /// State sent when the dialog was opened
+    #[serde(rename = "state", skip_serializing_if = "Option::is_none")]
+    pub state: Option<String>,
+    /// Set to true if the dialog was cancelled
+    #[serde(rename = "cancelled", skip_serializing_if = "Option::is_none")]
+    pub cancelled: Option<bool>,
 }
 
 impl InlineObject108 {
-    pub fn new(username: String) -> InlineObject108 {
+    pub fn new(url: String, channel_id: String, team_id: String, submission: serde_json::Value) -> InlineObject108 {
         InlineObject108 {
-            username,
-            display_name: None,
-            description: None,
+            url,
+            channel_id,
+            team_id,
+            submission,
+            callback_id: None,
+            state: None,
+            cancelled: None,
         }
     }
 }

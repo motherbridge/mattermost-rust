@@ -13,15 +13,19 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject102 {
-    /// The permissions the role should grant.
-    #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
-    pub permissions: Option<Vec<String>>,
+    /// The ID of the plugin to install.
+    #[serde(rename = "id")]
+    pub id: String,
+    /// The version of the plugin to install.
+    #[serde(rename = "version")]
+    pub version: String,
 }
 
 impl InlineObject102 {
-    pub fn new() -> InlineObject102 {
+    pub fn new(id: String, version: String) -> InlineObject102 {
         InlineObject102 {
-            permissions: None,
+            id,
+            version,
         }
     }
 }

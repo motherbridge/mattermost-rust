@@ -155,6 +155,17 @@ pub enum SearchPostsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`set_post_reminder`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum SetPostReminderError {
+    Status400(crate::models::AppError),
+    Status401(crate::models::AppError),
+    Status403(crate::models::AppError),
+    Status404(crate::models::AppError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`set_post_unread`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -317,7 +328,7 @@ pub async fn do_post_action(configuration: &configuration::Configuration, post_i
 }
 
 /// Gets a list of file information objects for the files attached to a post. ##### Permissions Must have `read_channel` permission for the channel the post is in. 
-pub async fn get_file_infos_for_post(configuration: &configuration::Configuration, post_id: &str) -> Result<Vec<crate::models::FileInfo>, Error<GetFileInfosForPostError>> {
+pub async fn get_file_infos_for_post(configuration: &configuration::Configuration, post_id: &str, include_deleted: Option<bool>) -> Result<Vec<crate::models::FileInfo>, Error<GetFileInfosForPostError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -325,6 +336,9 @@ pub async fn get_file_infos_for_post(configuration: &configuration::Configuratio
     let local_var_uri_str = format!("{}/posts/{post_id}/files/info", local_var_configuration.base_path, post_id=crate::apis::urlencode(post_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = include_deleted {
+        local_var_req_builder = local_var_req_builder.query(&[("include_deleted", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -348,7 +362,7 @@ pub async fn get_file_infos_for_post(configuration: &configuration::Configuratio
 }
 
 /// Get a page of flagged posts of a user provided user id string. Selects from a channel, team, or all flagged posts by a user. Will only return posts from channels in which the user is member. ##### Permissions Must be user or have `manage_system` permission. 
-pub async fn get_flagged_posts_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: Option<&str>, channel_id: Option<&str>, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::PostList>, Error<GetFlaggedPostsForUserError>> {
+pub async fn get_flagged_posts_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: Option<&str>, channel_id: Option<&str>, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::PostList>, Error<GetFlaggedPostsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -391,7 +405,7 @@ pub async fn get_flagged_posts_for_user(configuration: &configuration::Configura
 }
 
 /// Get a single post. ##### Permissions Must have `read_channel` permission for the channel the post is in or if the channel is public, have the `read_public_channels` permission for the team. 
-pub async fn get_post(configuration: &configuration::Configuration, post_id: &str) -> Result<crate::models::Post, Error<GetPostError>> {
+pub async fn get_post(configuration: &configuration::Configuration, post_id: &str, include_deleted: Option<bool>) -> Result<crate::models::Post, Error<GetPostError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -399,6 +413,9 @@ pub async fn get_post(configuration: &configuration::Configuration, post_id: &st
     let local_var_uri_str = format!("{}/posts/{post_id}", local_var_configuration.base_path, post_id=crate::apis::urlencode(post_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = include_deleted {
+        local_var_req_builder = local_var_req_builder.query(&[("include_deleted", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -422,7 +439,7 @@ pub async fn get_post(configuration: &configuration::Configuration, post_id: &st
 }
 
 /// Get a post and the rest of the posts in the same thread. ##### Permissions Must have `read_channel` permission for the channel the post is in or if the channel is public, have the `read_public_channels` permission for the team. 
-pub async fn get_post_thread(configuration: &configuration::Configuration, post_id: &str, per_page: Option<i64>, from_post: Option<&str>, from_create_at: Option<i64>, direction: Option<&str>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostThreadError>> {
+pub async fn get_post_thread(configuration: &configuration::Configuration, post_id: &str, per_page: Option<i32>, from_post: Option<&str>, from_create_at: Option<i32>, direction: Option<&str>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostThreadError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -474,7 +491,7 @@ pub async fn get_post_thread(configuration: &configuration::Configuration, post_
 }
 
 /// Get the oldest unread post in the channel for the given user as well as the posts around it. The returned list is sorted in descending order (most recent post first). ##### Permissions Must be logged in as the user or have `edit_other_users` permission, and must have `read_channel` permission for the channel. __Minimum server version__: 5.14 
-pub async fn get_posts_around_last_unread(configuration: &configuration::Configuration, user_id: &str, channel_id: &str, limit_before: Option<i64>, limit_after: Option<i64>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsAroundLastUnreadError>> {
+pub async fn get_posts_around_last_unread(configuration: &configuration::Configuration, user_id: &str, channel_id: &str, limit_before: Option<i32>, limit_after: Option<i32>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsAroundLastUnreadError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -552,7 +569,7 @@ pub async fn get_posts_by_ids(configuration: &configuration::Configuration, requ
 }
 
 /// Get a page of posts in a channel. Use the query parameters to modify the behaviour of this endpoint. The parameter `since` must not be used with any of `before`, `after`, `page`, and `per_page` parameters. If `since` is used, it will always return all posts modified since that time, ordered by their create time limited till 1000. A caveat with this parameter is that there is no guarantee that the returned posts will be consecutive. It is left to the clients to maintain state and fill any missing holes in the post order. ##### Permissions Must have `read_channel` permission for the channel. 
-pub async fn get_posts_for_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i64>, per_page: Option<i64>, since: Option<i64>, before: Option<&str>, after: Option<&str>) -> Result<crate::models::PostList, Error<GetPostsForChannelError>> {
+pub async fn get_posts_for_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i32>, per_page: Option<i32>, since: Option<i32>, before: Option<&str>, after: Option<&str>, include_deleted: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsForChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -574,6 +591,9 @@ pub async fn get_posts_for_channel(configuration: &configuration::Configuration,
     }
     if let Some(ref local_var_str) = after {
         local_var_req_builder = local_var_req_builder.query(&[("after", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = include_deleted {
+        local_var_req_builder = local_var_req_builder.query(&[("include_deleted", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
@@ -687,6 +707,38 @@ pub async fn search_posts(configuration: &configuration::Configuration, team_id:
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<SearchPostsError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// Set a reminder for the user for the post. ##### Permissions Must have `read_channel` permission for the channel the post is in.  __Minimum server version__: 7.2 
+pub async fn set_post_reminder(configuration: &configuration::Configuration, user_id: &str, post_id: &str, inline_object63: crate::models::InlineObject63) -> Result<crate::models::StatusOk, Error<SetPostReminderError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/users/{user_id}/posts/{post_id}/reminder", local_var_configuration.base_path, user_id=crate::apis::urlencode(user_id), post_id=crate::apis::urlencode(post_id));
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    };
+    local_var_req_builder = local_var_req_builder.json(&inline_object63);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<SetPostReminderError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

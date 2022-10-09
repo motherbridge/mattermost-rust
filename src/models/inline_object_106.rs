@@ -13,22 +13,15 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject106 {
-    /// Trigger ID provided by other action
-    #[serde(rename = "trigger_id")]
-    pub trigger_id: String,
-    /// The URL to send the submitted dialog payload to
+    /// The URL to get Open Graph Metadata.
     #[serde(rename = "url")]
     pub url: String,
-    #[serde(rename = "dialog")]
-    pub dialog: Box<crate::models::ActionsDialogsOpenDialog>,
 }
 
 impl InlineObject106 {
-    pub fn new(trigger_id: String, url: String, dialog: crate::models::ActionsDialogsOpenDialog) -> InlineObject106 {
+    pub fn new(url: String) -> InlineObject106 {
         InlineObject106 {
-            trigger_id,
             url,
-            dialog: Box::new(dialog),
         }
     }
 }

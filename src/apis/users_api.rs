@@ -674,7 +674,7 @@ pub async fn attach_device_id(configuration: &configuration::Configuration, inli
 }
 
 /// Get a list of users for the purpose of autocompleting based on the provided search term. Specify a combination of `team_id` and `channel_id` to filter results further. ##### Permissions Requires an active session and `view_team` and `read_channel` on any teams or channels used to filter the results further. 
-pub async fn autocomplete_users(configuration: &configuration::Configuration, name: &str, team_id: Option<&str>, channel_id: Option<&str>, limit: Option<i64>) -> Result<crate::models::UserAutocomplete, Error<AutocompleteUsersError>> {
+pub async fn autocomplete_users(configuration: &configuration::Configuration, name: &str, team_id: Option<&str>, channel_id: Option<&str>, limit: Option<i32>) -> Result<crate::models::UserAutocomplete, Error<AutocompleteUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -747,7 +747,7 @@ pub async fn check_user_mfa(configuration: &configuration::Configuration, inline
 }
 
 /// Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
-pub async fn convert_bot_to_user(configuration: &configuration::Configuration, bot_user_id: &str, inline_object111: crate::models::InlineObject111, set_system_admin: Option<bool>) -> Result<crate::models::StatusOk, Error<ConvertBotToUserError>> {
+pub async fn convert_bot_to_user(configuration: &configuration::Configuration, bot_user_id: &str, inline_object112: crate::models::InlineObject112, set_system_admin: Option<bool>) -> Result<crate::models::StatusOk, Error<ConvertBotToUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -764,7 +764,7 @@ pub async fn convert_bot_to_user(configuration: &configuration::Configuration, b
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object111);
+    local_var_req_builder = local_var_req_builder.json(&inline_object112);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1040,7 +1040,7 @@ pub async fn generate_mfa_secret(configuration: &configuration::Configuration, u
 }
 
 /// Get all channel members from all teams for a user.  __Minimum server version__: 6.2.0  ##### Permissions Logged in as the user, or have `edit_other_users` permission. 
-pub async fn get_channel_members_with_team_data_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, page_size: Option<i64>) -> Result<Vec<crate::models::ChannelMemberWithTeamData>, Error<GetChannelMembersWithTeamDataForUserError>> {
+pub async fn get_channel_members_with_team_data_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, page_size: Option<i32>) -> Result<Vec<crate::models::ChannelMemberWithTeamData>, Error<GetChannelMembersWithTeamDataForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1147,6 +1147,9 @@ pub async fn get_profile_image(configuration: &configuration::Configuration, use
     let local_var_uri_str = format!("{}/users/{user_id}/image", local_var_configuration.base_path, user_id=crate::apis::urlencode(user_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = _ {
+        local_var_req_builder = local_var_req_builder.query(&[("_", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -1377,7 +1380,7 @@ pub async fn get_user_access_token(configuration: &configuration::Configuration,
 }
 
 /// Get a page of user access tokens for users on the system. Does not include the actual authentication tokens. Use query parameters for paging.  __Minimum server version__: 4.7  ##### Permissions Must have `manage_system` permission. 
-pub async fn get_user_access_tokens(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensError>> {
+pub async fn get_user_access_tokens(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1414,7 +1417,7 @@ pub async fn get_user_access_tokens(configuration: &configuration::Configuration
 }
 
 /// Get a list of user access tokens for a user. Does not include the actual authentication tokens. Use query parameters for paging.  __Minimum server version__: 4.1  ##### Permissions Must have `read_user_access_token` permission. For non-self requests, must also have the `edit_other_users` permission. 
-pub async fn get_user_access_tokens_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensForUserError>> {
+pub async fn get_user_access_tokens_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::UserAccessTokenSanitized>, Error<GetUserAccessTokensForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1575,7 +1578,7 @@ pub async fn get_user_terms_of_service(configuration: &configuration::Configurat
 }
 
 /// Get a page of a list of users. Based on query string parameters, select users from a team, channel, or select users not in a specific channel.  Since server version 4.0, some basic sorting is available using the `sort` query parameter. Sorting is currently only supported when selecting users on a team. ##### Permissions Requires an active session and (if specified) membership to the channel or team being selected from. 
-pub async fn get_users(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, in_team: Option<&str>, not_in_team: Option<&str>, in_channel: Option<&str>, not_in_channel: Option<&str>, in_group: Option<&str>, group_constrained: Option<bool>, without_team: Option<bool>, active: Option<bool>, inactive: Option<bool>, role: Option<&str>, sort: Option<&str>, roles: Option<&str>, channel_roles: Option<&str>, team_roles: Option<&str>) -> Result<Vec<crate::models::User>, Error<GetUsersError>> {
+pub async fn get_users(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, in_team: Option<&str>, not_in_team: Option<&str>, in_channel: Option<&str>, not_in_channel: Option<&str>, in_group: Option<&str>, group_constrained: Option<bool>, without_team: Option<bool>, active: Option<bool>, inactive: Option<bool>, role: Option<&str>, sort: Option<&str>, roles: Option<&str>, channel_roles: Option<&str>, team_roles: Option<&str>) -> Result<Vec<crate::models::User>, Error<GetUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1686,7 +1689,7 @@ pub async fn get_users_by_group_channel_ids(configuration: &configuration::Confi
 }
 
 /// Get a list of users based on a provided list of user ids. ##### Permissions Requires an active session but no other permissions. 
-pub async fn get_users_by_ids(configuration: &configuration::Configuration, request_body: Vec<String>, since: Option<i64>) -> Result<Vec<crate::models::User>, Error<GetUsersByIdsError>> {
+pub async fn get_users_by_ids(configuration: &configuration::Configuration, request_body: Vec<String>, since: Option<i32>) -> Result<Vec<crate::models::User>, Error<GetUsersByIdsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2387,7 +2390,7 @@ pub async fn set_default_profile_image(configuration: &configuration::Configurat
 }
 
 /// Set a user's profile image based on user_id string parameter. ##### Permissions Must be logged in as the user being updated or have the `edit_other_users` permission. 
-pub async fn set_profile_image(configuration: &configuration::Configuration, user_id: &str, _image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetProfileImageError>> {
+pub async fn set_profile_image(configuration: &configuration::Configuration, user_id: &str, image: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<SetProfileImageError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2401,7 +2404,7 @@ pub async fn set_profile_image(configuration: &configuration::Configuration, use
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'image' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 

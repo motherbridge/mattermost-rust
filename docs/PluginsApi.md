@@ -30,7 +30,7 @@ Disable a previously enabled plugin. Plugins must be enabled in the server's con
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**plugin_id** | **String** |  | [required] |
+**plugin_id** | **String** | Id of the plugin to be disabled | [required] |
 
 ### Return type
 
@@ -60,7 +60,7 @@ Enable a previously uploaded plugin. Plugins must be enabled in the server's con
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**plugin_id** | **String** |  | [required] |
+**plugin_id** | **String** | Id of the plugin to be enabled | [required] |
 
 ### Return type
 
@@ -90,8 +90,8 @@ Gets all plugins from the marketplace server, merging data from locally installe
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | Page number to be fetched. (not yet implemented) |  |
-**per_page** | Option<**i64**> | Number of item per page. (not yet implemented) |  |
+**page** | Option<**i32**> | Page number to be fetched. (not yet implemented) |  |
+**per_page** | Option<**i32**> | Number of item per page. (not yet implemented) |  |
 **filter** | Option<**String**> | Set to filter plugins by ID, name, or description. |  |
 **server_version** | Option<**String**> | Set to filter minimum plugin server version. (not yet implemented) |  |
 **local_only** | Option<**bool**> | Set true to only retrieve local plugins. |  |
@@ -222,7 +222,7 @@ This endpoint does not need any parameter.
 
 ## install_marketplace_plugin
 
-> crate::models::PluginManifest install_marketplace_plugin(inline_object101)
+> crate::models::PluginManifest install_marketplace_plugin(inline_object102)
 Installs a marketplace plugin
 
 Installs a plugin listed in the marketplace server.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
@@ -232,7 +232,7 @@ Installs a plugin listed in the marketplace server.  ##### Permissions Must have
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object101** | [**InlineObject101**](InlineObject101.md) |  | [required] |
+**inline_object102** | [**InlineObject102**](InlineObject102.md) |  | [required] |
 
 ### Return type
 
@@ -293,7 +293,7 @@ Remove the plugin with the provided ID from the server. All plugin files are del
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**plugin_id** | **String** |  | [required] |
+**plugin_id** | **String** | Id of the plugin to be removed | [required] |
 
 ### Return type
 

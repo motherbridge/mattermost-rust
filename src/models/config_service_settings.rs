@@ -30,11 +30,11 @@ pub struct ConfigServiceSettings {
     #[serde(rename = "Forward80To443", skip_serializing_if = "Option::is_none")]
     pub forward80_to443: Option<bool>,
     #[serde(rename = "ReadTimeout", skip_serializing_if = "Option::is_none")]
-    pub read_timeout: Option<i64>,
+    pub read_timeout: Option<i32>,
     #[serde(rename = "WriteTimeout", skip_serializing_if = "Option::is_none")]
-    pub write_timeout: Option<i64>,
+    pub write_timeout: Option<i32>,
     #[serde(rename = "MaximumLoginAttempts", skip_serializing_if = "Option::is_none")]
-    pub maximum_login_attempts: Option<i64>,
+    pub maximum_login_attempts: Option<i32>,
     #[serde(rename = "SegmentDeveloperKey", skip_serializing_if = "Option::is_none")]
     pub segment_developer_key: Option<String>,
     #[serde(rename = "GoogleDeveloperKey", skip_serializing_if = "Option::is_none")]
@@ -68,17 +68,17 @@ pub struct ConfigServiceSettings {
     #[serde(rename = "AllowCorsFrom", skip_serializing_if = "Option::is_none")]
     pub allow_cors_from: Option<String>,
     #[serde(rename = "SessionLengthWebInDays", skip_serializing_if = "Option::is_none")]
-    pub session_length_web_in_days: Option<i64>,
+    pub session_length_web_in_days: Option<i32>,
     #[serde(rename = "SessionLengthMobileInDays", skip_serializing_if = "Option::is_none")]
-    pub session_length_mobile_in_days: Option<i64>,
+    pub session_length_mobile_in_days: Option<i32>,
     #[serde(rename = "SessionLengthSSOInDays", skip_serializing_if = "Option::is_none")]
-    pub session_length_ssoin_days: Option<i64>,
+    pub session_length_ssoin_days: Option<i32>,
     #[serde(rename = "SessionCacheInMinutes", skip_serializing_if = "Option::is_none")]
-    pub session_cache_in_minutes: Option<i64>,
+    pub session_cache_in_minutes: Option<i32>,
     #[serde(rename = "WebsocketSecurePort", skip_serializing_if = "Option::is_none")]
-    pub websocket_secure_port: Option<i64>,
+    pub websocket_secure_port: Option<i32>,
     #[serde(rename = "WebsocketPort", skip_serializing_if = "Option::is_none")]
-    pub websocket_port: Option<i64>,
+    pub websocket_port: Option<i32>,
     #[serde(rename = "WebserverMode", skip_serializing_if = "Option::is_none")]
     pub webserver_mode: Option<String>,
     #[serde(rename = "EnableCustomEmoji", skip_serializing_if = "Option::is_none")]

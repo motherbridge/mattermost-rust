@@ -13,15 +13,19 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject67 {
-    /// The Site URL to test
-    #[serde(rename = "site_url")]
-    pub site_url: String,
+    /// The type of job to create
+    #[serde(rename = "type")]
+    pub _type: String,
+    /// An object containing any additional data required for this job type
+    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
+    pub data: Option<serde_json::Value>,
 }
 
 impl InlineObject67 {
-    pub fn new(site_url: String) -> InlineObject67 {
+    pub fn new(_type: String) -> InlineObject67 {
         InlineObject67 {
-            site_url,
+            _type,
+            data: None,
         }
     }
 }

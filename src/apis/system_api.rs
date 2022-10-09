@@ -136,6 +136,16 @@ pub enum GetPingError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_prev_trial_license`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetPrevTrialLicenseError {
+    Status400(crate::models::AppError),
+    Status401(crate::models::AppError),
+    Status403(crate::models::AppError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_redirect_location`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -304,16 +314,6 @@ pub enum TestSiteUrlError {
     Status400(crate::models::AppError),
     Status403(crate::models::AppError),
     Status500(crate::models::AppError),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`trial_license_prev_get`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum TrialLicensePrevGetError {
-    Status400(crate::models::AppError),
-    Status401(crate::models::AppError),
-    Status403(crate::models::AppError),
     UnknownValue(serde_json::Value),
 }
 
@@ -526,7 +526,7 @@ pub async fn get_analytics_old(configuration: &configuration::Configuration, nam
 }
 
 /// Get a page of audits for all users on the system, selected with `page` and `per_page` query parameters. ##### Permissions Must have `manage_system` permission. 
-pub async fn get_audits(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Audit>, Error<GetAuditsError>> {
+pub async fn get_audits(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Audit>, Error<GetAuditsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -720,7 +720,7 @@ pub async fn get_image_by_url(configuration: &configuration::Configuration, ) ->
 }
 
 /// Get a page of server logs, selected with `page` and `logs_per_page` query parameters. ##### Permissions Must have `manage_system` permission. 
-pub async fn get_logs(configuration: &configuration::Configuration, page: Option<i64>, logs_per_page: Option<&str>) -> Result<Vec<String>, Error<GetLogsError>> {
+pub async fn get_logs(configuration: &configuration::Configuration, page: Option<i32>, logs_per_page: Option<&str>) -> Result<Vec<String>, Error<GetLogsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -824,6 +824,37 @@ pub async fn get_ping(configuration: &configuration::Configuration, get_server_s
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<GetPingError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// Get the last trial license used on the sevrer __Minimum server version__: 5.36 ##### Permissions Must have `manage_systems` permissions. 
+pub async fn get_prev_trial_license(configuration: &configuration::Configuration, ) -> Result<(), Error<GetPrevTrialLicenseError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/trial-license/prev", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        Ok(())
+    } else {
+        let local_var_entity: Option<GetPrevTrialLicenseError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
@@ -1017,7 +1048,7 @@ pub async fn mark_notices_viewed(configuration: &configuration::Configuration, r
     }
 }
 
-/// Submit configuration to patch. As of server version 4.8, the `PluginSettings.EnableUploads` setting cannot be modified by this endpoint. ##### Permissions Must have `manage_system` permission. __Minimum server version__: 5.20 
+/// Submit configuration to patch. As of server version 4.8, the `PluginSettings.EnableUploads` setting cannot be modified by this endpoint. ##### Permissions Must have `manage_system` permission. __Minimum server version__: 5.20 ##### Note The Plugins are stored as a map, and since a map may recursively go  down to any depth, individual fields of a map are not changed.  Consider using the `update config` (PUT api/v4/config) endpoint to update a plugins configurations. 
 pub async fn patch_config(configuration: &configuration::Configuration, config: crate::models::Config) -> Result<crate::models::Config, Error<PatchConfigError>> {
     let local_var_configuration = configuration;
 
@@ -1050,7 +1081,7 @@ pub async fn patch_config(configuration: &configuration::Configuration, config: 
 }
 
 /// Add log messages to the server logs. ##### Permissions Users with `manage_system` permission can log ERROR or DEBUG messages. Logged in users can log ERROR or DEBUG messages when `ServiceSettings.EnableDeveloper` is `true` or just DEBUG messages when `false`. Non-logged in users can log ERROR or DEBUG messages when `ServiceSettings.EnableDeveloper` is `true` and cannot log when `false`. 
-pub async fn post_log(configuration: &configuration::Configuration, inline_object70: crate::models::InlineObject70) -> Result<Vec<String>, Error<PostLogError>> {
+pub async fn post_log(configuration: &configuration::Configuration, inline_object71: crate::models::InlineObject71) -> Result<Vec<String>, Error<PostLogError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1064,7 +1095,7 @@ pub async fn post_log(configuration: &configuration::Configuration, inline_objec
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object70);
+    local_var_req_builder = local_var_req_builder.json(&inline_object71);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1175,7 +1206,7 @@ pub async fn request_license_renewal_link(configuration: &configuration::Configu
 }
 
 /// Request and install a trial license for your server __Minimum server version__: 5.25 ##### Permissions Must have `manage_system` permission. 
-pub async fn request_trial_license(configuration: &configuration::Configuration, inline_object69: crate::models::InlineObject69) -> Result<(), Error<RequestTrialLicenseError>> {
+pub async fn request_trial_license(configuration: &configuration::Configuration, inline_object70: crate::models::InlineObject70) -> Result<(), Error<RequestTrialLicenseError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1189,7 +1220,7 @@ pub async fn request_trial_license(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object69);
+    local_var_req_builder = local_var_req_builder.json(&inline_object70);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1269,7 +1300,7 @@ pub async fn send_trial_license_warn_metric_ack(configuration: &configuration::C
 }
 
 /// Acknowledge a warning for the warn_metric_id metric crossing a threshold (or some similar condition being fulfilled) - attempts to send an ack email to acknowledge@mattermost.com and sets the \"ack\" status for all the warn metrics in the system.  __Minimum server version__: 5.26  ##### Permissions  Must have `manage_system` permission. 
-pub async fn send_warn_metric_ack(configuration: &configuration::Configuration, warn_metric_id: &str, inline_object71: crate::models::InlineObject71) -> Result<crate::models::StatusOk, Error<SendWarnMetricAckError>> {
+pub async fn send_warn_metric_ack(configuration: &configuration::Configuration, warn_metric_id: &str, inline_object72: crate::models::InlineObject72) -> Result<crate::models::StatusOk, Error<SendWarnMetricAckError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1283,7 +1314,7 @@ pub async fn send_warn_metric_ack(configuration: &configuration::Configuration, 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object71);
+    local_var_req_builder = local_var_req_builder.json(&inline_object72);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1399,7 +1430,7 @@ pub async fn test_s3_connection(configuration: &configuration::Configuration, co
 }
 
 /// Sends a Ping request to the mattermost server using the specified Site URL.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
-pub async fn test_site_url(configuration: &configuration::Configuration, inline_object67: crate::models::InlineObject67) -> Result<crate::models::StatusOk, Error<TestSiteUrlError>> {
+pub async fn test_site_url(configuration: &configuration::Configuration, inline_object68: crate::models::InlineObject68) -> Result<crate::models::StatusOk, Error<TestSiteUrlError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1413,7 +1444,7 @@ pub async fn test_site_url(configuration: &configuration::Configuration, inline_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object67);
+    local_var_req_builder = local_var_req_builder.json(&inline_object68);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1425,37 +1456,6 @@ pub async fn test_site_url(configuration: &configuration::Configuration, inline_
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<TestSiteUrlError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-/// Get the last trial license used on the sevrer __Minimum server version__: 5.36 ##### Permissions Must have `manage_systems` permissions. 
-pub async fn trial_license_prev_get(configuration: &configuration::Configuration, ) -> Result<(), Error<TrialLicensePrevGetError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/trial-license/prev", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        Ok(())
-    } else {
-        let local_var_entity: Option<TrialLicensePrevGetError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
@@ -1588,7 +1588,7 @@ pub async fn upgrade_to_enterprise_status(configuration: &configuration::Configu
 }
 
 /// Upload a license to enable enterprise features.  __Minimum server version__: 4.0  ##### Permissions Must have `manage_system` permission. 
-pub async fn upload_license_file(configuration: &configuration::Configuration, _license: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadLicenseFileError>> {
+pub async fn upload_license_file(configuration: &configuration::Configuration, license: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadLicenseFileError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1602,7 +1602,7 @@ pub async fn upload_license_file(configuration: &configuration::Configuration, _
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'license' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 

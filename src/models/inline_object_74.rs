@@ -13,35 +13,19 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject74 {
-    /// The ID of a public channel or private group that receives the webhook payloads.
-    #[serde(rename = "channel_id")]
-    pub channel_id: String,
-    /// The ID of the owner of the webhook if different than the requester. Required for [local mode](https://docs.mattermost.com/administration/mmctl-cli-tool.html#local-mode).
-    #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<String>,
-    /// The display name for this incoming webhook
-    #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
-    /// The description for this incoming webhook
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
-    /// The username this incoming webhook will post as.
-    #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
-    /// The profile picture this incoming webhook will use when posting.
-    #[serde(rename = "icon_url", skip_serializing_if = "Option::is_none")]
-    pub icon_url: Option<String>,
+    /// The term to match against the emoji name.
+    #[serde(rename = "term")]
+    pub term: String,
+    /// Set to only search for names starting with the search term.
+    #[serde(rename = "prefix_only", skip_serializing_if = "Option::is_none")]
+    pub prefix_only: Option<String>,
 }
 
 impl InlineObject74 {
-    pub fn new(channel_id: String) -> InlineObject74 {
+    pub fn new(term: String) -> InlineObject74 {
         InlineObject74 {
-            channel_id,
-            user_id: None,
-            display_name: None,
-            description: None,
-            username: None,
-            icon_url: None,
+            term,
+            prefix_only: None,
         }
     }
 }

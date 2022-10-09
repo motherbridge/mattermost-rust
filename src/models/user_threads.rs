@@ -15,7 +15,7 @@
 pub struct UserThreads {
     /// Total number of threads (used for paging)
     #[serde(rename = "total", skip_serializing_if = "Option::is_none")]
-    pub total: Option<i64>,
+    pub total: Option<i32>,
     /// Array of threads
     #[serde(rename = "threads", skip_serializing_if = "Option::is_none")]
     pub threads: Option<Vec<crate::models::UserThread>>,

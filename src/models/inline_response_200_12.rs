@@ -15,7 +15,7 @@
 pub struct InlineResponse20012 {
     /// The number of users whose AuthData field was reset.
     #[serde(rename = "num_affected", skip_serializing_if = "Option::is_none")]
-    pub num_affected: Option<i64>,
+    pub num_affected: Option<i32>,
 }
 
 impl InlineResponse20012 {

@@ -99,14 +99,12 @@ Class | Method | HTTP request | Description
 *CloudApi* | [**confirm_customer_payment**](docs/CloudApi.md#confirm_customer_payment) | **POST** /cloud/payment/confirm | Completes the payment setup intent
 *CloudApi* | [**create_customer_payment**](docs/CloudApi.md#create_customer_payment) | **POST** /cloud/payment | Create a customer setup payment intent
 *CloudApi* | [**get_cloud_customer**](docs/CloudApi.md#get_cloud_customer) | **GET** /cloud/customer | Get cloud customer
+*CloudApi* | [**get_cloud_limits**](docs/CloudApi.md#get_cloud_limits) | **GET** /cloud/limits | Get cloud workspace limits
 *CloudApi* | [**get_cloud_products**](docs/CloudApi.md#get_cloud_products) | **GET** /cloud/products | Get cloud products
 *CloudApi* | [**get_invoice_for_subscription_as_pdf**](docs/CloudApi.md#get_invoice_for_subscription_as_pdf) | **GET** /cloud/subscription/invoices/{invoice_id}/pdf | Get cloud invoice PDF
 *CloudApi* | [**get_invoices_for_subscription**](docs/CloudApi.md#get_invoices_for_subscription) | **GET** /cloud/subscription/invoices | Get cloud subscription invoices
 *CloudApi* | [**get_subscription**](docs/CloudApi.md#get_subscription) | **GET** /cloud/subscription | Get cloud subscription
-*CloudApi* | [**get_subscription_stats**](docs/CloudApi.md#get_subscription_stats) | **GET** /cloud/subscription/stats | GET endpoint for cloud subscription stats
 *CloudApi* | [**post_endpoint_for_cws_webhooks**](docs/CloudApi.md#post_endpoint_for_cws_webhooks) | **POST** /cloud/webhook | POST endpoint for CWS Webhooks
-*CloudApi* | [**send_admin_upgrade_request_email**](docs/CloudApi.md#send_admin_upgrade_request_email) | **POST** /cloud/subscription/limitreached/invite | POST endpoint for triggering sending emails to admin with request to upgrade workspace
-*CloudApi* | [**send_admin_upgrade_request_email_on_join**](docs/CloudApi.md#send_admin_upgrade_request_email_on_join) | **POST** /cloud/subscription/limitreached/join | POST endpoint for triggering sending emails to admin with request to upgrade workspace
 *CloudApi* | [**update_cloud_customer**](docs/CloudApi.md#update_cloud_customer) | **PUT** /cloud/customer | Update cloud customer
 *CloudApi* | [**update_cloud_customer_address**](docs/CloudApi.md#update_cloud_customer_address) | **PUT** /cloud/customer/address | Update cloud customer address
 *ClusterApi* | [**get_cluster_status**](docs/ClusterApi.md#get_cluster_status) | **GET** /cluster/status | Get cluster status
@@ -187,6 +185,14 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**unlink_group_syncable_for_team**](docs/GroupsApi.md#unlink_group_syncable_for_team) | **DELETE** /groups/{group_id}/teams/{team_id}/link | Delete a link from a team to a group
 *GroupsApi* | [**unlink_ldap_group**](docs/GroupsApi.md#unlink_ldap_group) | **DELETE** /ldap/groups/{remote_id}/link | Delete a link for LDAP group
 *ImportsApi* | [**list_imports**](docs/ImportsApi.md#list_imports) | **GET** /imports | List import files
+*InsightsApi* | [**get_new_team_members**](docs/InsightsApi.md#get_new_team_members) | **GET** /teams/{team_id}/top/team_members | Get a list of new team members.
+*InsightsApi* | [**get_top_channels_for_team**](docs/InsightsApi.md#get_top_channels_for_team) | **GET** /teams/{team_id}/top/channels | Get a list of the top channels for a team.
+*InsightsApi* | [**get_top_channels_for_user**](docs/InsightsApi.md#get_top_channels_for_user) | **GET** /users/me/top/channels | Get a list of the top channels for a user.
+*InsightsApi* | [**get_top_dms_for_user**](docs/InsightsApi.md#get_top_dms_for_user) | **GET** /users/me/top/dms | Get a list of the top dms for a user.
+*InsightsApi* | [**get_top_reactions_for_team**](docs/InsightsApi.md#get_top_reactions_for_team) | **GET** /teams/{team_id}/top/reactions | Get a list of the top reactions for a team.
+*InsightsApi* | [**get_top_reactions_for_user**](docs/InsightsApi.md#get_top_reactions_for_user) | **GET** /users/me/top/reactions | Get a list of the top reactions for a user.
+*InsightsApi* | [**get_top_threads_for_team**](docs/InsightsApi.md#get_top_threads_for_team) | **GET** /teams/{team_id}/top/threads | Get a list of the top threads for a team.
+*InsightsApi* | [**get_top_threads_for_user**](docs/InsightsApi.md#get_top_threads_for_user) | **GET** /users/me/top/threads | Get a list of the top threads for a user.
 *IntegrationActionsApi* | [**open_interactive_dialog**](docs/IntegrationActionsApi.md#open_interactive_dialog) | **POST** /actions/dialogs/open | Open a dialog
 *IntegrationActionsApi* | [**submit_interactive_dialog**](docs/IntegrationActionsApi.md#submit_interactive_dialog) | **POST** /actions/dialogs/submit | Submit a dialog
 *JobsApi* | [**cancel_job**](docs/JobsApi.md#cancel_job) | **POST** /jobs/{job_id}/cancel | Cancel a job.
@@ -242,6 +248,7 @@ Class | Method | HTTP request | Description
 *PostsApi* | [**patch_post**](docs/PostsApi.md#patch_post) | **PUT** /posts/{post_id}/patch | Patch a post
 *PostsApi* | [**pin_post**](docs/PostsApi.md#pin_post) | **POST** /posts/{post_id}/pin | Pin a post to the channel
 *PostsApi* | [**search_posts**](docs/PostsApi.md#search_posts) | **POST** /teams/{team_id}/posts/search | Search for team posts
+*PostsApi* | [**set_post_reminder**](docs/PostsApi.md#set_post_reminder) | **POST** /users/{user_id}/posts/{post_id}/reminder | Set a post reminder
 *PostsApi* | [**set_post_unread**](docs/PostsApi.md#set_post_unread) | **POST** /users/{user_id}/posts/{post_id}/set_unread | Mark as unread from a post.
 *PostsApi* | [**unpin_post**](docs/PostsApi.md#unpin_post) | **POST** /posts/{post_id}/unpin | Unpin a post to the channel
 *PostsApi* | [**update_post**](docs/PostsApi.md#update_post) | **PUT** /posts/{post_id} | Update a post
@@ -253,14 +260,12 @@ Class | Method | HTTP request | Description
 *ReactionsApi* | [**delete_reaction**](docs/ReactionsApi.md#delete_reaction) | **DELETE** /users/{user_id}/posts/{post_id}/reactions/{emoji_name} | Remove a reaction from a post
 *ReactionsApi* | [**get_bulk_reactions**](docs/ReactionsApi.md#get_bulk_reactions) | **POST** /posts/ids/reactions | Bulk get the reaction for posts
 *ReactionsApi* | [**get_reactions**](docs/ReactionsApi.md#get_reactions) | **GET** /posts/{post_id}/reactions | Get a list of reactions to a post
-*ReactionsApi* | [**get_top_reactions_for_team**](docs/ReactionsApi.md#get_top_reactions_for_team) | **GET** /teams/{team_id}/top/reactions | Get a list of the top reactions for a team.
-*ReactionsApi* | [**get_top_reactions_for_user**](docs/ReactionsApi.md#get_top_reactions_for_user) | **GET** /users/me/top/reactions | Get a list of the top reactions across all public and private channels (the user is a member of) for a given user.
 *ReactionsApi* | [**save_reaction**](docs/ReactionsApi.md#save_reaction) | **POST** /reactions | Create a reaction
+*RolesApi* | [**get_all_roles**](docs/RolesApi.md#get_all_roles) | **GET** /roles | Get a list of all the roles
 *RolesApi* | [**get_role**](docs/RolesApi.md#get_role) | **GET** /roles/{role_id} | Get a role
 *RolesApi* | [**get_role_by_name**](docs/RolesApi.md#get_role_by_name) | **GET** /roles/name/{role_name} | Get a role
 *RolesApi* | [**get_roles_by_names**](docs/RolesApi.md#get_roles_by_names) | **POST** /roles/names | Get a list of roles by name
 *RolesApi* | [**patch_role**](docs/RolesApi.md#patch_role) | **PUT** /roles/{role_id}/patch | Patch a role
-*RolesApi* | [**roles_get**](docs/RolesApi.md#roles_get) | **GET** /roles | Get a list of all the roles
 *RootApi* | [**acknowledge_notification**](docs/RootApi.md#acknowledge_notification) | **POST** /notifications/ack | Acknowledge receiving of a notification
 *SAMLApi* | [**delete_saml_idp_certificate**](docs/SAMLApi.md#delete_saml_idp_certificate) | **DELETE** /saml/certificate/idp | Remove IDP certificate
 *SAMLApi* | [**delete_saml_private_certificate**](docs/SAMLApi.md#delete_saml_private_certificate) | **DELETE** /saml/certificate/private | Remove private key
@@ -304,6 +309,7 @@ Class | Method | HTTP request | Description
 *SystemApi* | [**get_logs**](docs/SystemApi.md#get_logs) | **GET** /logs | Get logs
 *SystemApi* | [**get_notices**](docs/SystemApi.md#get_notices) | **GET** /system/notices/{teamId} | Get notices for logged in user in specified team
 *SystemApi* | [**get_ping**](docs/SystemApi.md#get_ping) | **GET** /system/ping | Check system health
+*SystemApi* | [**get_prev_trial_license**](docs/SystemApi.md#get_prev_trial_license) | **GET** /trial-license/prev | Get last trial license used
 *SystemApi* | [**get_redirect_location**](docs/SystemApi.md#get_redirect_location) | **GET** /redirect_location | Get redirect location
 *SystemApi* | [**get_server_busy_expires**](docs/SystemApi.md#get_server_busy_expires) | **GET** /server_busy | Get server busy expiry time.
 *SystemApi* | [**get_supported_timezone**](docs/SystemApi.md#get_supported_timezone) | **GET** /system/timezones | Retrieve a list of supported timezones
@@ -323,7 +329,6 @@ Class | Method | HTTP request | Description
 *SystemApi* | [**test_email**](docs/SystemApi.md#test_email) | **POST** /email/test | Send a test email
 *SystemApi* | [**test_s3_connection**](docs/SystemApi.md#test_s3_connection) | **POST** /file/s3_test | Test AWS S3 connection
 *SystemApi* | [**test_site_url**](docs/SystemApi.md#test_site_url) | **POST** /site_url/test | Checks the validity of a Site URL
-*SystemApi* | [**trial_license_prev_get**](docs/SystemApi.md#trial_license_prev_get) | **GET** /trial-license/prev | Get last trial license used
 *SystemApi* | [**update_config**](docs/SystemApi.md#update_config) | **PUT** /config | Update configuration
 *SystemApi* | [**update_marketplace_visited_by_admin**](docs/SystemApi.md#update_marketplace_visited_by_admin) | **POST** /plugins/marketplace/first_admin_visit | Stores that the Plugin Marketplace has been visited by at least an admin.
 *SystemApi* | [**upgrade_to_enterprise**](docs/SystemApi.md#upgrade_to_enterprise) | **POST** /upgrade_to_enterprise | Executes an inplace upgrade from Team Edition to Enterprise Edition
@@ -373,6 +378,7 @@ Class | Method | HTTP request | Description
 *ThreadsApi* | [**get_thread_mention_counts_by_channel**](docs/ThreadsApi.md#get_thread_mention_counts_by_channel) | **GET** /users/{user_id}/teams/{team_id}/threads/mention_counts | Get all unread mention counts from followed threads, per-channel
 *ThreadsApi* | [**get_user_thread**](docs/ThreadsApi.md#get_user_thread) | **GET** /users/{user_id}/teams/{team_id}/threads/{thread_id} | Get a thread followed by the user
 *ThreadsApi* | [**get_user_threads**](docs/ThreadsApi.md#get_user_threads) | **GET** /users/{user_id}/teams/{team_id}/threads | Get all threads that user is following
+*ThreadsApi* | [**set_thread_unread_by_post_id**](docs/ThreadsApi.md#set_thread_unread_by_post_id) | **PUT** /users/{user_id}/teams/{team_id}/threads/{thread_id}/set_unread/{post_id} | Mark a thread that user is following as unread based on a post id
 *ThreadsApi* | [**start_following_thread**](docs/ThreadsApi.md#start_following_thread) | **PUT** /users/{user_id}/teams/{team_id}/threads/{thread_id}/following | Start following a thread
 *ThreadsApi* | [**stop_following_thread**](docs/ThreadsApi.md#stop_following_thread) | **DELETE** /users/{user_id}/teams/{team_id}/threads/{thread_id}/following | Stop following a thread
 *ThreadsApi* | [**update_thread_read_for_user**](docs/ThreadsApi.md#update_thread_read_for_user) | **PUT** /users/{user_id}/teams/{team_id}/threads/{thread_id}/read/{timestamp} | Mark a thread that user is following read state to the timestamp
@@ -380,6 +386,8 @@ Class | Method | HTTP request | Description
 *UploadsApi* | [**create_upload**](docs/UploadsApi.md#create_upload) | **POST** /uploads | Create an upload
 *UploadsApi* | [**get_upload**](docs/UploadsApi.md#get_upload) | **GET** /uploads/{upload_id} | Get an upload session
 *UploadsApi* | [**upload_data**](docs/UploadsApi.md#upload_data) | **POST** /uploads/{upload_id} | Perform a file upload
+*UsageApi* | [**get_posts_usage**](docs/UsageApi.md#get_posts_usage) | **GET** /usage/posts | Get current usage of posts
+*UsageApi* | [**get_storage_usage**](docs/UsageApi.md#get_storage_usage) | **GET** /usage/storage | Get the total file storage usage for the instance in bytes.
 *UsersApi* | [**attach_device_id**](docs/UsersApi.md#attach_device_id) | **PUT** /users/sessions/device | Attach mobile device
 *UsersApi* | [**autocomplete_users**](docs/UsersApi.md#autocomplete_users) | **GET** /users/autocomplete | Autocomplete users
 *UsersApi* | [**check_user_mfa**](docs/UsersApi.md#check_user_mfa) | **POST** /users/mfa | Check MFA
@@ -463,6 +471,7 @@ Class | Method | HTTP request | Description
  - [AppError](docs/AppError.md)
  - [Audit](docs/Audit.md)
  - [AutocompleteSuggestion](docs/AutocompleteSuggestion.md)
+ - [BoardsLimits](docs/BoardsLimits.md)
  - [Bot](docs/Bot.md)
  - [Channel](docs/Channel.md)
  - [ChannelData](docs/ChannelData.md)
@@ -538,6 +547,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentConfigTeamSettings](docs/EnvironmentConfigTeamSettings.md)
  - [FileInfo](docs/FileInfo.md)
  - [FileInfoList](docs/FileInfoList.md)
+ - [FilesLimits](docs/FilesLimits.md)
  - [GlobalDataRetentionPolicy](docs/GlobalDataRetentionPolicy.md)
  - [Group](docs/Group.md)
  - [GroupSyncableChannel](docs/GroupSyncableChannel.md)
@@ -550,7 +560,7 @@ Class | Method | HTTP request | Description
  - [InlineObject](docs/InlineObject.md)
  - [InlineObject1](docs/InlineObject1.md)
  - [InlineObject10](docs/InlineObject10.md)
- - [InlineObject101](docs/InlineObject101.md)
+ - [InlineObject100](docs/InlineObject100.md)
  - [InlineObject102](docs/InlineObject102.md)
  - [InlineObject103](docs/InlineObject103.md)
  - [InlineObject104](docs/InlineObject104.md)
@@ -560,8 +570,9 @@ Class | Method | HTTP request | Description
  - [InlineObject108](docs/InlineObject108.md)
  - [InlineObject109](docs/InlineObject109.md)
  - [InlineObject11](docs/InlineObject11.md)
- - [InlineObject111](docs/InlineObject111.md)
- - [InlineObject113](docs/InlineObject113.md)
+ - [InlineObject110](docs/InlineObject110.md)
+ - [InlineObject112](docs/InlineObject112.md)
+ - [InlineObject114](docs/InlineObject114.md)
  - [InlineObject12](docs/InlineObject12.md)
  - [InlineObject13](docs/InlineObject13.md)
  - [InlineObject14](docs/InlineObject14.md)
@@ -616,29 +627,29 @@ Class | Method | HTTP request | Description
  - [InlineObject60](docs/InlineObject60.md)
  - [InlineObject61](docs/InlineObject61.md)
  - [InlineObject62](docs/InlineObject62.md)
- - [InlineObject65](docs/InlineObject65.md)
+ - [InlineObject63](docs/InlineObject63.md)
  - [InlineObject66](docs/InlineObject66.md)
  - [InlineObject67](docs/InlineObject67.md)
- - [InlineObject69](docs/InlineObject69.md)
+ - [InlineObject68](docs/InlineObject68.md)
  - [InlineObject7](docs/InlineObject7.md)
  - [InlineObject70](docs/InlineObject70.md)
  - [InlineObject71](docs/InlineObject71.md)
- - [InlineObject73](docs/InlineObject73.md)
+ - [InlineObject72](docs/InlineObject72.md)
  - [InlineObject74](docs/InlineObject74.md)
  - [InlineObject75](docs/InlineObject75.md)
  - [InlineObject76](docs/InlineObject76.md)
  - [InlineObject77](docs/InlineObject77.md)
  - [InlineObject78](docs/InlineObject78.md)
- - [InlineObject82](docs/InlineObject82.md)
+ - [InlineObject79](docs/InlineObject79.md)
  - [InlineObject83](docs/InlineObject83.md)
- - [InlineObject86](docs/InlineObject86.md)
+ - [InlineObject84](docs/InlineObject84.md)
  - [InlineObject87](docs/InlineObject87.md)
  - [InlineObject88](docs/InlineObject88.md)
  - [InlineObject89](docs/InlineObject89.md)
  - [InlineObject9](docs/InlineObject9.md)
  - [InlineObject90](docs/InlineObject90.md)
  - [InlineObject91](docs/InlineObject91.md)
- - [InlineObject93](docs/InlineObject93.md)
+ - [InlineObject92](docs/InlineObject92.md)
  - [InlineObject94](docs/InlineObject94.md)
  - [InlineObject95](docs/InlineObject95.md)
  - [InlineObject96](docs/InlineObject96.md)
@@ -664,6 +675,8 @@ Class | Method | HTTP request | Description
  - [InlineResponse2008](docs/InlineResponse2008.md)
  - [InlineResponse2009](docs/InlineResponse2009.md)
  - [InlineResponse201](docs/InlineResponse201.md)
+ - [InsightUserInformation](docs/InsightUserInformation.md)
+ - [IntegrationsLimits](docs/IntegrationsLimits.md)
  - [IntegrityCheckResult](docs/IntegrityCheckResult.md)
  - [Invoice](docs/Invoice.md)
  - [InvoiceLineItem](docs/InvoiceLineItem.md)
@@ -672,6 +685,9 @@ Class | Method | HTTP request | Description
  - [LdapGroupsPaged](docs/LdapGroupsPaged.md)
  - [LicenseRenewalLink](docs/LicenseRenewalLink.md)
  - [MarketplacePlugin](docs/MarketplacePlugin.md)
+ - [MessagesLimits](docs/MessagesLimits.md)
+ - [NewTeamMember](docs/NewTeamMember.md)
+ - [NewTeamMembersList](docs/NewTeamMembersList.md)
  - [Notice](docs/Notice.md)
  - [OAuthApp](docs/OAuthApp.md)
  - [OpenGraph](docs/OpenGraph.md)
@@ -699,8 +715,10 @@ Class | Method | HTTP request | Description
  - [PostMetadataEmbedsInner](docs/PostMetadataEmbedsInner.md)
  - [PostMetadataImagesInner](docs/PostMetadataImagesInner.md)
  - [PostsEphemeralPost](docs/PostsEphemeralPost.md)
+ - [PostsUsage](docs/PostsUsage.md)
  - [Preference](docs/Preference.md)
  - [Product](docs/Product.md)
+ - [ProductLimits](docs/ProductLimits.md)
  - [PushNotification](docs/PushNotification.md)
  - [Reaction](docs/Reaction.md)
  - [RelationalIntegrityCheckData](docs/RelationalIntegrityCheckData.md)
@@ -719,6 +737,7 @@ Class | Method | HTTP request | Description
  - [SlackAttachmentField](docs/SlackAttachmentField.md)
  - [Status](docs/Status.md)
  - [StatusOk](docs/StatusOk.md)
+ - [StorageUsage](docs/StorageUsage.md)
  - [Subscription](docs/Subscription.md)
  - [SubscriptionStats](docs/SubscriptionStats.md)
  - [System](docs/System.md)
@@ -729,10 +748,19 @@ Class | Method | HTTP request | Description
  - [TeamMember](docs/TeamMember.md)
  - [TeamStats](docs/TeamStats.md)
  - [TeamUnread](docs/TeamUnread.md)
+ - [TeamsLimits](docs/TeamsLimits.md)
  - [TermsOfService](docs/TermsOfService.md)
  - [Timezone](docs/Timezone.md)
+ - [TopChannel](docs/TopChannel.md)
+ - [TopChannelList](docs/TopChannelList.md)
+ - [TopDm](docs/TopDm.md)
+ - [TopDmInsightUserInformation](docs/TopDmInsightUserInformation.md)
+ - [TopDmInsightUserInformationAllOf](docs/TopDmInsightUserInformationAllOf.md)
+ - [TopDmList](docs/TopDmList.md)
  - [TopReaction](docs/TopReaction.md)
  - [TopReactionList](docs/TopReactionList.md)
+ - [TopThread](docs/TopThread.md)
+ - [TopThreadList](docs/TopThreadList.md)
  - [UploadSession](docs/UploadSession.md)
  - [User](docs/User.md)
  - [UserAccessToken](docs/UserAccessToken.md)

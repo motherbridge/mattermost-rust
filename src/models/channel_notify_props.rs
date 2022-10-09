@@ -9,6 +9,8 @@
  */
 
 
+
+
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ChannelNotifyProps {
     /// Set to \"true\" to enable email notifications, \"false\" to disable, or \"default\" to use the global user notification setting.

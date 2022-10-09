@@ -16,9 +16,9 @@ pub struct TeamUnread {
     #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
     pub team_id: Option<String>,
     #[serde(rename = "msg_count", skip_serializing_if = "Option::is_none")]
-    pub msg_count: Option<i64>,
+    pub msg_count: Option<i32>,
     #[serde(rename = "mention_count", skip_serializing_if = "Option::is_none")]
-    pub mention_count: Option<i64>,
+    pub mention_count: Option<i32>,
 }
 
 impl TeamUnread {

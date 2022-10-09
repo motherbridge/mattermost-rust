@@ -39,10 +39,10 @@ pub struct SharedChannel {
     pub creator_id: Option<String>,
     /// Time in milliseconds that the channel was shared
     #[serde(rename = "create_at", skip_serializing_if = "Option::is_none")]
-    pub create_at: Option<i64>,
+    pub create_at: Option<i32>,
     /// Time in milliseconds that the shared channel record was last updated
     #[serde(rename = "update_at", skip_serializing_if = "Option::is_none")]
-    pub update_at: Option<i64>,
+    pub update_at: Option<i32>,
     /// Id of the remote cluster where the shared channel is homed
     #[serde(rename = "remote_id", skip_serializing_if = "Option::is_none")]
     pub remote_id: Option<String>,

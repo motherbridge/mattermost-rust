@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**get_logs**](SystemApi.md#get_logs) | **GET** /logs | Get logs
 [**get_notices**](SystemApi.md#get_notices) | **GET** /system/notices/{teamId} | Get notices for logged in user in specified team
 [**get_ping**](SystemApi.md#get_ping) | **GET** /system/ping | Check system health
+[**get_prev_trial_license**](SystemApi.md#get_prev_trial_license) | **GET** /trial-license/prev | Get last trial license used
 [**get_redirect_location**](SystemApi.md#get_redirect_location) | **GET** /redirect_location | Get redirect location
 [**get_server_busy_expires**](SystemApi.md#get_server_busy_expires) | **GET** /server_busy | Get server busy expiry time.
 [**get_supported_timezone**](SystemApi.md#get_supported_timezone) | **GET** /system/timezones | Retrieve a list of supported timezones
@@ -37,7 +38,6 @@ Method | HTTP request | Description
 [**test_email**](SystemApi.md#test_email) | **POST** /email/test | Send a test email
 [**test_s3_connection**](SystemApi.md#test_s3_connection) | **POST** /file/s3_test | Test AWS S3 connection
 [**test_site_url**](SystemApi.md#test_site_url) | **POST** /site_url/test | Checks the validity of a Site URL
-[**trial_license_prev_get**](SystemApi.md#trial_license_prev_get) | **GET** /trial-license/prev | Get last trial license used
 [**update_config**](SystemApi.md#update_config) | **PUT** /config | Update configuration
 [**update_marketplace_visited_by_admin**](SystemApi.md#update_marketplace_visited_by_admin) | **POST** /plugins/marketplace/first_admin_visit | Stores that the Plugin Marketplace has been visited by at least an admin.
 [**upgrade_to_enterprise**](SystemApi.md#upgrade_to_enterprise) | **POST** /upgrade_to_enterprise | Executes an inplace upgrade from Team Edition to Enterprise Edition
@@ -197,8 +197,8 @@ Get a page of audits for all users on the system, selected with `page` and `per_
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of audits per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of audits per page. |  |[default to 60]
 
 ### Return type
 
@@ -369,7 +369,7 @@ Get a page of server logs, selected with `page` and `logs_per_page` query parame
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
 **logs_per_page** | Option<**String**> | The number of logs per page. There is a maximum limit of 10000 logs per page. |  |[default to 10000]
 
 ### Return type
@@ -439,6 +439,33 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::SystemStatusResponse**](SystemStatusResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_prev_trial_license
+
+> get_prev_trial_license()
+Get last trial license used
+
+Get the last trial license used on the sevrer __Minimum server version__: 5.36 ##### Permissions Must have `manage_systems` permissions. 
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
@@ -625,7 +652,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::Config patch_config(config)
 Patch configuration
 
-Submit configuration to patch. As of server version 4.8, the `PluginSettings.EnableUploads` setting cannot be modified by this endpoint. ##### Permissions Must have `manage_system` permission. __Minimum server version__: 5.20 
+Submit configuration to patch. As of server version 4.8, the `PluginSettings.EnableUploads` setting cannot be modified by this endpoint. ##### Permissions Must have `manage_system` permission. __Minimum server version__: 5.20 ##### Note The Plugins are stored as a map, and since a map may recursively go  down to any depth, individual fields of a map are not changed.  Consider using the `update config` (PUT api/v4/config) endpoint to update a plugins configurations. 
 
 ### Parameters
 
@@ -652,7 +679,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_log
 
-> Vec<String> post_log(inline_object70)
+> Vec<String> post_log(inline_object71)
 Add log message
 
 Add log messages to the server logs. ##### Permissions Users with `manage_system` permission can log ERROR or DEBUG messages. Logged in users can log ERROR or DEBUG messages when `ServiceSettings.EnableDeveloper` is `true` or just DEBUG messages when `false`. Non-logged in users can log ERROR or DEBUG messages when `ServiceSettings.EnableDeveloper` is `true` and cannot log when `false`. 
@@ -662,7 +689,7 @@ Add log messages to the server logs. ##### Permissions Users with `manage_system
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object70** | [**InlineObject70**](InlineObject70.md) |  | [required] |
+**inline_object71** | [**InlineObject71**](InlineObject71.md) |  | [required] |
 
 ### Return type
 
@@ -763,7 +790,7 @@ This endpoint does not need any parameter.
 
 ## request_trial_license
 
-> request_trial_license(inline_object69)
+> request_trial_license(inline_object70)
 Request and install a trial license for your server
 
 Request and install a trial license for your server __Minimum server version__: 5.25 ##### Permissions Must have `manage_system` permission. 
@@ -773,7 +800,7 @@ Request and install a trial license for your server __Minimum server version__: 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object69** | [**InlineObject69**](InlineObject69.md) |  | [required] |
+**inline_object70** | [**InlineObject70**](InlineObject70.md) |  | [required] |
 
 ### Return type
 
@@ -850,7 +877,7 @@ Name | Type | Description  | Required | Notes
 
 ## send_warn_metric_ack
 
-> crate::models::StatusOk send_warn_metric_ack(warn_metric_id, inline_object71)
+> crate::models::StatusOk send_warn_metric_ack(warn_metric_id, inline_object72)
 Acknowledge a warning of a metric status
 
 Acknowledge a warning for the warn_metric_id metric crossing a threshold (or some similar condition being fulfilled) - attempts to send an ack email to acknowledge@mattermost.com and sets the \"ack\" status for all the warn metrics in the system.  __Minimum server version__: 5.26  ##### Permissions  Must have `manage_system` permission. 
@@ -861,7 +888,7 @@ Acknowledge a warning for the warn_metric_id metric crossing a threshold (or som
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **warn_metric_id** | **String** | Warn Metric Id. | [required] |
-**inline_object71** | [**InlineObject71**](InlineObject71.md) |  | [required] |
+**inline_object72** | [**InlineObject72**](InlineObject72.md) |  | [required] |
 
 ### Return type
 
@@ -971,7 +998,7 @@ Name | Type | Description  | Required | Notes
 
 ## test_site_url
 
-> crate::models::StatusOk test_site_url(inline_object67)
+> crate::models::StatusOk test_site_url(inline_object68)
 Checks the validity of a Site URL
 
 Sends a Ping request to the mattermost server using the specified Site URL.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
@@ -981,7 +1008,7 @@ Sends a Ping request to the mattermost server using the specified Site URL.  ###
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object67** | [**InlineObject67**](InlineObject67.md) |  | [required] |
+**inline_object68** | [**InlineObject68**](InlineObject68.md) |  | [required] |
 
 ### Return type
 
@@ -994,33 +1021,6 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## trial_license_prev_get
-
-> trial_license_prev_get()
-Get last trial license used
-
-Get the last trial license used on the sevrer __Minimum server version__: 5.36 ##### Permissions Must have `manage_systems` permissions. 
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -13,47 +13,35 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject76 {
-    /// The ID of the team that the webhook watchs
-    #[serde(rename = "team_id")]
-    pub team_id: String,
-    /// The ID of a public channel that the webhook watchs
-    #[serde(rename = "channel_id", skip_serializing_if = "Option::is_none")]
-    pub channel_id: Option<String>,
-    /// The ID of the owner of the webhook if different than the requester. Required in [local mode](https://docs.mattermost.com/administration/mmctl-cli-tool.html#local-mode).
-    #[serde(rename = "creator_id", skip_serializing_if = "Option::is_none")]
-    pub creator_id: Option<String>,
-    /// The description for this outgoing webhook
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
-    /// The display name for this outgoing webhook
+    /// Incoming webhook GUID
+    #[serde(rename = "id")]
+    pub id: String,
+    /// The ID of a public channel or private group that receives the webhook payloads.
+    #[serde(rename = "channel_id")]
+    pub channel_id: String,
+    /// The display name for this incoming webhook
     #[serde(rename = "display_name")]
     pub display_name: String,
-    /// List of words for the webhook to trigger on
-    #[serde(rename = "trigger_words")]
-    pub trigger_words: Vec<String>,
-    /// When to trigger the webhook, `0` when a trigger word is present at all and `1` if the message starts with a trigger word
-    #[serde(rename = "trigger_when", skip_serializing_if = "Option::is_none")]
-    pub trigger_when: Option<i64>,
-    /// The URLs to POST the payloads to when the webhook is triggered
-    #[serde(rename = "callback_urls")]
-    pub callback_urls: Vec<String>,
-    /// The format to POST the data in, either `application/json` or `application/x-www-form-urlencoded`
-    #[serde(rename = "content_type", skip_serializing_if = "Option::is_none")]
-    pub content_type: Option<String>,
+    /// The description for this incoming webhook
+    #[serde(rename = "description")]
+    pub description: String,
+    /// The username this incoming webhook will post as.
+    #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
+    pub username: Option<String>,
+    /// The profile picture this incoming webhook will use when posting.
+    #[serde(rename = "icon_url", skip_serializing_if = "Option::is_none")]
+    pub icon_url: Option<String>,
 }
 
 impl InlineObject76 {
-    pub fn new(team_id: String, display_name: String, trigger_words: Vec<String>, callback_urls: Vec<String>) -> InlineObject76 {
+    pub fn new(id: String, channel_id: String, display_name: String, description: String) -> InlineObject76 {
         InlineObject76 {
-            team_id,
-            channel_id: None,
-            creator_id: None,
-            description: None,
+            id,
+            channel_id,
             display_name,
-            trigger_words,
-            trigger_when: None,
-            callback_urls,
-            content_type: None,
+            description,
+            username: None,
+            icon_url: None,
         }
     }
 }

@@ -657,7 +657,7 @@ pub async fn autocomplete_channels_for_team_for_search(configuration: &configura
 }
 
 /// Get the set of users who are members of the channel minus the set of users who are members of the given groups. Each user object contains an array of group objects representing the group memberships for that user. Each user object contains the boolean fields `scheme_guest`, `scheme_user`, and `scheme_admin` representing the roles that user has for the given channel.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.14 
-pub async fn channel_members_minus_group_members(configuration: &configuration::Configuration, channel_id: &str, group_ids: &str, page: Option<i64>, per_page: Option<i64>) -> Result<(), Error<ChannelMembersMinusGroupMembersError>> {
+pub async fn channel_members_minus_group_members(configuration: &configuration::Configuration, channel_id: &str, group_ids: &str, page: Option<i32>, per_page: Option<i32>) -> Result<(), Error<ChannelMembersMinusGroupMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -854,7 +854,7 @@ pub async fn delete_channel(configuration: &configuration::Configuration, channe
 }
 
 /// ##### Permissions `manage_system` 
-pub async fn get_all_channels(configuration: &configuration::Configuration, not_associated_to_group: Option<&str>, page: Option<i64>, per_page: Option<i64>, exclude_default_channels: Option<bool>, include_deleted: Option<bool>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::ChannelWithTeamData>, Error<GetAllChannelsError>> {
+pub async fn get_all_channels(configuration: &configuration::Configuration, not_associated_to_group: Option<&str>, page: Option<i32>, per_page: Option<i32>, exclude_default_channels: Option<bool>, include_deleted: Option<bool>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::ChannelWithTeamData>, Error<GetAllChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1070,7 +1070,7 @@ pub async fn get_channel_member_counts_by_group(configuration: &configuration::C
 }
 
 /// Get a page of members for a channel. ##### Permissions `read_channel` permission for the channel. 
-pub async fn get_channel_members(configuration: &configuration::Configuration, channel_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::ChannelMember>, Error<GetChannelMembersError>> {
+pub async fn get_channel_members(configuration: &configuration::Configuration, channel_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::ChannelMember>, Error<GetChannelMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1294,7 +1294,7 @@ pub async fn get_channel_unread(configuration: &configuration::Configuration, us
 }
 
 /// Get all the channels on a team for a user. ##### Permissions Logged in as the user, or have `edit_other_users` permission, and `view_team` permission for the team. 
-pub async fn get_channels_for_team_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: &str, include_deleted: Option<bool>, last_delete_at: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForTeamForUserError>> {
+pub async fn get_channels_for_team_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: &str, include_deleted: Option<bool>, last_delete_at: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForTeamForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1331,7 +1331,7 @@ pub async fn get_channels_for_team_for_user(configuration: &configuration::Confi
 }
 
 /// Get all channels from all teams that a user is a member of.  __Minimum server version__: 6.1  ##### Permissions  Logged in as the user, or have `edit_other_users` permission. 
-pub async fn get_channels_for_user(configuration: &configuration::Configuration, user_id: &str, last_delete_at: Option<i64>, include_deleted: Option<bool>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForUserError>> {
+pub async fn get_channels_for_user(configuration: &configuration::Configuration, user_id: &str, last_delete_at: Option<i32>, include_deleted: Option<bool>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1368,7 +1368,7 @@ pub async fn get_channels_for_user(configuration: &configuration::Configuration,
 }
 
 /// Get a page of deleted channels on a team based on query string parameters - team_id, page and per_page.  __Minimum server version__: 3.10 
-pub async fn get_deleted_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetDeletedChannelsForTeamError>> {
+pub async fn get_deleted_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetDeletedChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1436,7 +1436,7 @@ pub async fn get_pinned_posts(configuration: &configuration::Configuration, chan
 }
 
 /// Get a page of private channels on a team based on query string parameters - team_id, page and per_page.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
-pub async fn get_private_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetPrivateChannelsForTeamError>> {
+pub async fn get_private_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetPrivateChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1505,7 +1505,7 @@ pub async fn get_public_channels_by_ids_for_team(configuration: &configuration::
 }
 
 /// Get a page of public channels on a team based on query string parameters - page and per_page. ##### Permissions Must be authenticated and have the `list_team_channels` permission. 
-pub async fn get_public_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetPublicChannelsForTeamError>> {
+pub async fn get_public_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetPublicChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -283,7 +283,7 @@ pub enum UnlinkLdapGroupError {
 
 
 /// Adds members to a custom group.  ##### Permissions Must have `custom_group_manage_members` permission for the given group.  __Minimum server version__: 6.3 
-pub async fn add_group_members(configuration: &configuration::Configuration, group_id: &str, inline_object90: crate::models::InlineObject90) -> Result<crate::models::StatusOk, Error<AddGroupMembersError>> {
+pub async fn add_group_members(configuration: &configuration::Configuration, group_id: &str, inline_object91: crate::models::InlineObject91) -> Result<crate::models::StatusOk, Error<AddGroupMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -297,7 +297,7 @@ pub async fn add_group_members(configuration: &configuration::Configuration, gro
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object90);
+    local_var_req_builder = local_var_req_builder.json(&inline_object91);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -315,7 +315,7 @@ pub async fn add_group_members(configuration: &configuration::Configuration, gro
 }
 
 /// Create a `custom` type group.  #### Permission Must have `create_custom_group` permission.  __Minimum server version__: 6.3 
-pub async fn create_group(configuration: &configuration::Configuration, inline_object86: crate::models::InlineObject86) -> Result<(), Error<CreateGroupError>> {
+pub async fn create_group(configuration: &configuration::Configuration, inline_object87: crate::models::InlineObject87) -> Result<(), Error<CreateGroupError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -329,7 +329,7 @@ pub async fn create_group(configuration: &configuration::Configuration, inline_o
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object86);
+    local_var_req_builder = local_var_req_builder.json(&inline_object87);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -378,7 +378,7 @@ pub async fn delete_group(configuration: &configuration::Configuration, group_id
 }
 
 /// Soft deletes a custom group members.  ##### Permissions Must have `custom_group_manage_members` permission for the given group.  __Minimum server version__: 6.3 
-pub async fn delete_group_members(configuration: &configuration::Configuration, group_id: &str, inline_object91: crate::models::InlineObject91) -> Result<crate::models::StatusOk, Error<DeleteGroupMembersError>> {
+pub async fn delete_group_members(configuration: &configuration::Configuration, group_id: &str, inline_object92: crate::models::InlineObject92) -> Result<crate::models::StatusOk, Error<DeleteGroupMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -392,7 +392,7 @@ pub async fn delete_group_members(configuration: &configuration::Configuration, 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object91);
+    local_var_req_builder = local_var_req_builder.json(&inline_object92);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -596,7 +596,7 @@ pub async fn get_group_syncables_teams(configuration: &configuration::Configurat
 }
 
 /// Retrieve the list of users associated with a given group.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn get_group_users(configuration: &configuration::Configuration, group_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::InlineResponse20013, Error<GetGroupUsersError>> {
+pub async fn get_group_users(configuration: &configuration::Configuration, group_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::InlineResponse20013, Error<GetGroupUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -633,7 +633,7 @@ pub async fn get_group_users(configuration: &configuration::Configuration, group
 }
 
 /// Retrieve a list of all groups not associated to a particular channel or team.  `not_associated_to_team` **OR** `not_associated_to_channel` is required.  If you use `not_associated_to_team`, you must be a team admin for that particular team (permission to manage that team).  If you use `not_associated_to_channel`, you must be a channel admin for that particular channel (permission to manage that channel).  __Minimum server version__: 5.11 
-pub async fn get_groups(configuration: &configuration::Configuration, not_associated_to_team: &str, not_associated_to_channel: &str, page: Option<i64>, per_page: Option<i64>, q: Option<&str>, include_member_count: Option<bool>, since: Option<i64>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsError>> {
+pub async fn get_groups(configuration: &configuration::Configuration, not_associated_to_team: &str, not_associated_to_channel: &str, page: Option<i32>, per_page: Option<i32>, q: Option<&str>, include_member_count: Option<bool>, since: Option<i32>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -684,7 +684,7 @@ pub async fn get_groups(configuration: &configuration::Configuration, not_associ
 }
 
 /// Retrieve the set of groups associated with the channels in the given team grouped by channel.  ##### Permissions Must have `manage_system` permission or can access only for current user  __Minimum server version__: 5.11 
-pub async fn get_groups_associated_to_channels_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>, filter_allow_reference: Option<bool>, paginate: Option<bool>) -> Result<serde_json::Value, Error<GetGroupsAssociatedToChannelsByTeamError>> {
+pub async fn get_groups_associated_to_channels_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>, paginate: Option<bool>) -> Result<Vec<crate::models::Map>, Error<GetGroupsAssociatedToChannelsByTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -727,7 +727,7 @@ pub async fn get_groups_associated_to_channels_by_team(configuration: &configura
 }
 
 /// Retrieve the list of groups associated with a given channel.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn get_groups_by_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i64>, per_page: Option<i64>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByChannelError>> {
+pub async fn get_groups_by_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -767,7 +767,7 @@ pub async fn get_groups_by_channel(configuration: &configuration::Configuration,
 }
 
 /// Retrieve the list of groups associated with a given team.  __Minimum server version__: 5.11 
-pub async fn get_groups_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByTeamError>> {
+pub async fn get_groups_by_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>, filter_allow_reference: Option<bool>) -> Result<Vec<crate::models::Group>, Error<GetGroupsByTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -900,7 +900,7 @@ pub async fn link_group_syncable_for_team(configuration: &configuration::Configu
 }
 
 /// Partially update a group by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn patch_group(configuration: &configuration::Configuration, group_id: &str, inline_object87: crate::models::InlineObject87) -> Result<crate::models::Group, Error<PatchGroupError>> {
+pub async fn patch_group(configuration: &configuration::Configuration, group_id: &str, inline_object88: crate::models::InlineObject88) -> Result<crate::models::Group, Error<PatchGroupError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -914,7 +914,7 @@ pub async fn patch_group(configuration: &configuration::Configuration, group_id:
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object87);
+    local_var_req_builder = local_var_req_builder.json(&inline_object88);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -932,7 +932,7 @@ pub async fn patch_group(configuration: &configuration::Configuration, group_id:
 }
 
 /// Partially update a GroupSyncable by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn patch_group_syncable_for_channel(configuration: &configuration::Configuration, group_id: &str, channel_id: &str, inline_object89: crate::models::InlineObject89) -> Result<crate::models::GroupSyncableChannel, Error<PatchGroupSyncableForChannelError>> {
+pub async fn patch_group_syncable_for_channel(configuration: &configuration::Configuration, group_id: &str, channel_id: &str, inline_object90: crate::models::InlineObject90) -> Result<crate::models::GroupSyncableChannel, Error<PatchGroupSyncableForChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -946,7 +946,7 @@ pub async fn patch_group_syncable_for_channel(configuration: &configuration::Con
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object89);
+    local_var_req_builder = local_var_req_builder.json(&inline_object90);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -964,7 +964,7 @@ pub async fn patch_group_syncable_for_channel(configuration: &configuration::Con
 }
 
 /// Partially update a GroupSyncable by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
-pub async fn patch_group_syncable_for_team(configuration: &configuration::Configuration, group_id: &str, team_id: &str, inline_object88: crate::models::InlineObject88) -> Result<crate::models::GroupSyncableTeam, Error<PatchGroupSyncableForTeamError>> {
+pub async fn patch_group_syncable_for_team(configuration: &configuration::Configuration, group_id: &str, team_id: &str, inline_object89: crate::models::InlineObject89) -> Result<crate::models::GroupSyncableTeam, Error<PatchGroupSyncableForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -978,7 +978,7 @@ pub async fn patch_group_syncable_for_team(configuration: &configuration::Config
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object88);
+    local_var_req_builder = local_var_req_builder.json(&inline_object89);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

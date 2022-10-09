@@ -16,7 +16,7 @@ pub struct InlineResponse20013 {
     #[serde(rename = "members", skip_serializing_if = "Option::is_none")]
     pub members: Option<Vec<crate::models::User>>,
     #[serde(rename = "total_member_count", skip_serializing_if = "Option::is_none")]
-    pub total_member_count: Option<i64>,
+    pub total_member_count: Option<i32>,
 }
 
 impl InlineResponse20013 {

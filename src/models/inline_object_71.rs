@@ -13,15 +13,19 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject71 {
-    /// Flag which determines if the ack for the metric warning should be directly stored (without trying to send email first) or not
-    #[serde(rename = "forceAck", skip_serializing_if = "Option::is_none")]
-    pub force_ack: Option<bool>,
+    /// The error level, ERROR or DEBUG
+    #[serde(rename = "level")]
+    pub level: String,
+    /// Message to send to the server logs
+    #[serde(rename = "message")]
+    pub message: String,
 }
 
 impl InlineObject71 {
-    pub fn new() -> InlineObject71 {
+    pub fn new(level: String, message: String) -> InlineObject71 {
         InlineObject71 {
-            force_ack: None,
+            level,
+            message,
         }
     }
 }

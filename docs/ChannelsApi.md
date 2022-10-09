@@ -166,8 +166,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
 **group_ids** | **String** | A comma-separated list of group ids. | [required] |[default to ]
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of users per page. |  |[default to 0]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of users per page. |  |[default to 0]
 
 ### Return type
 
@@ -350,8 +350,8 @@ Get a list of all channels
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **not_associated_to_group** | Option<**String**> | A group id to exclude channels that are associated with that group via GroupChannel records. This can also be left blank with `not_associated_to_group=`. |  |
-**page** | Option<**i64**> |  |  |[default to 0]
-**per_page** | Option<**i64**> |  |  |[default to 0]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of channels per page. |  |[default to 0]
 **exclude_default_channels** | Option<**bool**> | Whether to exclude default channels (ex Town Square, Off-Topic) from the results. |  |[default to false]
 **include_deleted** | Option<**bool**> | Include channels that have been archived. This correlates to the `DeleteAt` flag being set in the database. |  |[default to false]
 **include_total_count** | Option<**bool**> | Appends a total count of returned channels inside the response object - ex: `{ \"channels\": [], \"total_count\" : 0 }`.       |  |[default to false]
@@ -542,8 +542,8 @@ Get a page of members for a channel. ##### Permissions `read_channel` permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of members per page. There is a maximum limit of 200 members. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of members per page. There is a maximum limit of 200 members. |  |[default to 60]
 
 ### Return type
 
@@ -759,7 +759,7 @@ Name | Type | Description  | Required | Notes
 **user_id** | **String** | User GUID | [required] |
 **team_id** | **String** | Team GUID | [required] |
 **include_deleted** | Option<**bool**> | Defines if deleted channels should be returned or not |  |[default to false]
-**last_delete_at** | Option<**i64**> | Filters the deleted channels by this time in epoch format. Does not have any effect if include_deleted is set to false. |  |[default to 0]
+**last_delete_at** | Option<**i32**> | Filters the deleted channels by this time in epoch format. Does not have any effect if include_deleted is set to false. |  |[default to 0]
 
 ### Return type
 
@@ -790,7 +790,7 @@ Get all channels from all teams that a user is a member of.  __Minimum server ve
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
-**last_delete_at** | Option<**i64**> | Filters the deleted channels by this time in epoch format. Does not have any effect if include_deleted is set to false. |  |[default to 0]
+**last_delete_at** | Option<**i32**> | Filters the deleted channels by this time in epoch format. Does not have any effect if include_deleted is set to false. |  |[default to 0]
 **include_deleted** | Option<**bool**> | Defines if deleted channels should be returned or not |  |[default to false]
 
 ### Return type
@@ -822,8 +822,8 @@ Get a page of deleted channels on a team based on query string parameters - team
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of public channels per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of public channels per page. |  |[default to 60]
 
 ### Return type
 
@@ -884,8 +884,8 @@ Get a page of private channels on a team based on query string parameters - team
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of private channels per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of private channels per page. |  |[default to 60]
 
 ### Return type
 
@@ -947,8 +947,8 @@ Get a page of public channels on a team based on query string parameters - page 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of public channels per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of public channels per page. |  |[default to 60]
 
 ### Return type
 

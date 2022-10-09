@@ -34,16 +34,8 @@ pub struct ApiKey {
 
 
 impl Configuration {
-    pub fn new(base_path: String, user_agent: Option<String>, bearer_token: Option<String>) -> Configuration {
-        Configuration {
-            base_path: base_path,
-            user_agent: user_agent,
-            client: reqwest::Client::new(),
-            basic_auth: None,
-            oauth_access_token: None,
-            bearer_access_token: bearer_token,
-            api_key: None,
-        }
+    pub fn new() -> Configuration {
+        Configuration::default()
     }
 }
 
@@ -51,12 +43,13 @@ impl Default for Configuration {
     fn default() -> Self {
         Configuration {
             base_path: "http://your-mattermost-url.com/api/v4".to_owned(),
-            user_agent: Some("Mattermost-rust-client/4.0.0".to_owned()),
+            user_agent: Some("OpenAPI-Generator/4.0.0/rust".to_owned()),
             client: reqwest::Client::new(),
             basic_auth: None,
             oauth_access_token: None,
             bearer_access_token: None,
             api_key: None,
+
         }
     }
 }

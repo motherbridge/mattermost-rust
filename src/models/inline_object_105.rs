@@ -13,15 +13,19 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct InlineObject105 {
-    /// The URL to get Open Graph Metadata.
-    #[serde(rename = "url")]
-    pub url: String,
+    /// The human readable name of the scheme
+    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
+    pub name: Option<String>,
+    /// The description of the scheme
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
 }
 
 impl InlineObject105 {
-    pub fn new(url: String) -> InlineObject105 {
+    pub fn new() -> InlineObject105 {
         InlineObject105 {
-            url,
+            name: None,
+            description: None,
         }
     }
 }

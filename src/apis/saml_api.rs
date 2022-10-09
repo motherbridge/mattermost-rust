@@ -280,7 +280,7 @@ pub async fn get_saml_metadata(configuration: &configuration::Configuration, ) -
 }
 
 /// Get SAML metadata from the Identity Provider. SAML must be configured properly. ##### Permissions No permission required. 
-pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configuration, inline_object78: Option<crate::models::InlineObject78>) -> Result<String, Error<GetSamlMetadataFromIdpError>> {
+pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configuration, inline_object79: Option<crate::models::InlineObject79>) -> Result<String, Error<GetSamlMetadataFromIdpError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -294,7 +294,7 @@ pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configura
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object78);
+    local_var_req_builder = local_var_req_builder.json(&inline_object79);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -344,7 +344,7 @@ pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, 
 }
 
 /// Reset the AuthData field of SAML users to their email. This is meant to be used when the \"id\" attribute is set to an empty value (\"\") from a previously non-empty value. __Minimum server version__: 5.35 ##### Permissions Must have `manage_system` permission. 
-pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Configuration, inline_object82: Option<crate::models::InlineObject82>) -> Result<crate::models::InlineResponse20012, Error<ResetSamlAuthDataToEmailError>> {
+pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Configuration, inline_object83: Option<crate::models::InlineObject83>) -> Result<crate::models::InlineResponse20012, Error<ResetSamlAuthDataToEmailError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -358,7 +358,7 @@ pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Config
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object82);
+    local_var_req_builder = local_var_req_builder.json(&inline_object83);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -376,7 +376,7 @@ pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Config
 }
 
 /// Upload the IDP certificate to be used with your SAML configuration. The server will pick a hard-coded filename for the IdpCertificateFile setting in your `config.json`. ##### Permissions Must have `sysconsole_write_authentication` permission. 
-pub async fn upload_saml_idp_certificate(configuration: &configuration::Configuration, _certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlIdpCertificateError>> {
+pub async fn upload_saml_idp_certificate(configuration: &configuration::Configuration, certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlIdpCertificateError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -390,7 +390,7 @@ pub async fn upload_saml_idp_certificate(configuration: &configuration::Configur
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'certificate' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 
@@ -410,7 +410,7 @@ pub async fn upload_saml_idp_certificate(configuration: &configuration::Configur
 }
 
 /// Upload the private key to be used for encryption with your SAML configuration. The server will pick a hard-coded filename for the PrivateKeyFile setting in your `config.json`. ##### Permissions Must have `sysconsole_write_authentication` permission. 
-pub async fn upload_saml_private_certificate(configuration: &configuration::Configuration, _certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPrivateCertificateError>> {
+pub async fn upload_saml_private_certificate(configuration: &configuration::Configuration, certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPrivateCertificateError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -424,7 +424,7 @@ pub async fn upload_saml_private_certificate(configuration: &configuration::Conf
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'certificate' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 
@@ -444,7 +444,7 @@ pub async fn upload_saml_private_certificate(configuration: &configuration::Conf
 }
 
 /// Upload the public certificate to be used for encryption with your SAML configuration. The server will pick a hard-coded filename for the PublicCertificateFile setting in your `config.json`. ##### Permissions Must have `sysconsole_write_authentication` permission. 
-pub async fn upload_saml_public_certificate(configuration: &configuration::Configuration, _certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPublicCertificateError>> {
+pub async fn upload_saml_public_certificate(configuration: &configuration::Configuration, certificate: std::path::PathBuf) -> Result<crate::models::StatusOk, Error<UploadSamlPublicCertificateError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -458,7 +458,7 @@ pub async fn upload_saml_public_certificate(configuration: &configuration::Confi
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    let local_var_form = reqwest::multipart::Form::new();
+    let mut local_var_form = reqwest::multipart::Form::new();
     // TODO: support file upload for 'certificate' parameter
     local_var_req_builder = local_var_req_builder.multipart(local_var_form);
 

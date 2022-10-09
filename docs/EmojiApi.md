@@ -208,8 +208,8 @@ Get a page of metadata for custom emoji on the system. Since server version 4.7,
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of emojis per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of emojis per page. |  |[default to 60]
 **sort** | Option<**String**> | Either blank for no sorting or \"name\" to sort by emoji names. Minimum server version for sorting is 4.7. |  |[default to ]
 
 ### Return type
@@ -230,7 +230,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_emoji
 
-> Vec<crate::models::Emoji> search_emoji(inline_object73)
+> Vec<crate::models::Emoji> search_emoji(inline_object74)
 Search custom emoji
 
 Search for custom emoji by name based on search criteria provided in the request body. A maximum of 200 results are returned. ##### Permissions Must be authenticated.  __Minimum server version__: 4.7 
@@ -240,7 +240,7 @@ Search for custom emoji by name based on search criteria provided in the request
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object73** | [**InlineObject73**](InlineObject73.md) |  | [required] |
+**inline_object74** | [**InlineObject74**](InlineObject74.md) |  | [required] |
 
 ### Return type
 

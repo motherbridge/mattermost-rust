@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **purpose** | Option<**String**> |  | [optional]
 **header** | Option<**String**> |  | [optional]
 **creator_id** | Option<**String**> | Id of the user that shared the channel | [optional]
-**create_at** | Option<**i64**> | Time in milliseconds that the channel was shared | [optional]
-**update_at** | Option<**i64**> | Time in milliseconds that the shared channel record was last updated | [optional]
+**create_at** | Option<**i32**> | Time in milliseconds that the channel was shared | [optional]
+**update_at** | Option<**i32**> | Time in milliseconds that the shared channel record was last updated | [optional]
 **remote_id** | Option<**String**> | Id of the remote cluster where the shared channel is homed | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**patch_post**](PostsApi.md#patch_post) | **PUT** /posts/{post_id}/patch | Patch a post
 [**pin_post**](PostsApi.md#pin_post) | **POST** /posts/{post_id}/pin | Pin a post to the channel
 [**search_posts**](PostsApi.md#search_posts) | **POST** /teams/{team_id}/posts/search | Search for team posts
+[**set_post_reminder**](PostsApi.md#set_post_reminder) | **POST** /users/{user_id}/posts/{post_id}/reminder | Set a post reminder
 [**set_post_unread**](PostsApi.md#set_post_unread) | **POST** /users/{user_id}/posts/{post_id}/set_unread | Mark as unread from a post.
 [**unpin_post**](PostsApi.md#unpin_post) | **POST** /posts/{post_id}/unpin | Unpin a post to the channel
 [**update_post**](PostsApi.md#update_post) | **PUT** /posts/{post_id} | Update a post
@@ -148,7 +149,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_file_infos_for_post
 
-> Vec<crate::models::FileInfo> get_file_infos_for_post(post_id)
+> Vec<crate::models::FileInfo> get_file_infos_for_post(post_id, include_deleted)
 Get file info for post
 
 Gets a list of file information objects for the files attached to a post. ##### Permissions Must have `read_channel` permission for the channel the post is in. 
@@ -159,6 +160,7 @@ Gets a list of file information objects for the files attached to a post. ##### 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** | ID of the post | [required] |
+**include_deleted** | Option<**bool**> | Defines if result should include deleted posts, must have 'manage_system' (admin) permission. |  |[default to false]
 
 ### Return type
 
@@ -191,8 +193,8 @@ Name | Type | Description  | Required | Notes
 **user_id** | **String** | ID of the user | [required] |
 **team_id** | Option<**String**> | Team ID |  |
 **channel_id** | Option<**String**> | Channel ID |  |
-**page** | Option<**i64**> | The page to select |  |[default to 0]
-**per_page** | Option<**i64**> | The number of posts per page |  |[default to 60]
+**page** | Option<**i32**> | The page to select |  |[default to 0]
+**per_page** | Option<**i32**> | The number of posts per page |  |[default to 60]
 
 ### Return type
 
@@ -212,7 +214,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_post
 
-> crate::models::Post get_post(post_id)
+> crate::models::Post get_post(post_id, include_deleted)
 Get a post
 
 Get a single post. ##### Permissions Must have `read_channel` permission for the channel the post is in or if the channel is public, have the `read_public_channels` permission for the team. 
@@ -223,6 +225,7 @@ Get a single post. ##### Permissions Must have `read_channel` permission for the
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** | ID of the post to get | [required] |
+**include_deleted** | Option<**bool**> | Defines if result should include deleted posts, must have 'manage_system' (admin) permission. |  |[default to false]
 
 ### Return type
 
@@ -253,9 +256,9 @@ Get a post and the rest of the posts in the same thread. ##### Permissions Must 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** | ID of a post in the thread | [required] |
-**per_page** | Option<**i64**> | The number of posts per page |  |[default to 0]
+**per_page** | Option<**i32**> | The number of posts per page |  |[default to 0]
 **from_post** | Option<**String**> | The post_id to return the next page of posts from |  |[default to ]
-**from_create_at** | Option<**i64**> | The create_at timestamp to return the next page of posts from |  |[default to 0]
+**from_create_at** | Option<**i32**> | The create_at timestamp to return the next page of posts from |  |[default to 0]
 **direction** | Option<**String**> | The direction to return the posts. Either up or down. |  |[default to ]
 **skip_fetch_threads** | Option<**bool**> | Whether to skip fetching threads or not |  |[default to false]
 **collapsed_threads** | Option<**bool**> | Whether the client uses CRT or not |  |[default to false]
@@ -291,8 +294,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | ID of the user | [required] |
 **channel_id** | **String** | The channel ID to get the posts for | [required] |
-**limit_before** | Option<**i64**> | Number of posts before the oldest unread posts. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
-**limit_after** | Option<**i64**> | Number of posts after and including the oldest unread post. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
+**limit_before** | Option<**i32**> | Number of posts before the oldest unread posts. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
+**limit_after** | Option<**i32**> | Number of posts after and including the oldest unread post. Maximum is 200 posts if limit is set greater than that. |  |[default to 60]
 **skip_fetch_threads** | Option<**bool**> | Whether to skip fetching threads or not |  |[default to false]
 **collapsed_threads** | Option<**bool**> | Whether the client uses CRT or not |  |[default to false]
 **collapsed_threads_extended** | Option<**bool**> | Whether to return the associated users as part of the response or not |  |[default to false]
@@ -345,7 +348,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_posts_for_channel
 
-> crate::models::PostList get_posts_for_channel(channel_id, page, per_page, since, before, after)
+> crate::models::PostList get_posts_for_channel(channel_id, page, per_page, since, before, after, include_deleted)
 Get posts for a channel
 
 Get a page of posts in a channel. Use the query parameters to modify the behaviour of this endpoint. The parameter `since` must not be used with any of `before`, `after`, `page`, and `per_page` parameters. If `since` is used, it will always return all posts modified since that time, ordered by their create time limited till 1000. A caveat with this parameter is that there is no guarantee that the returned posts will be consecutive. It is left to the clients to maintain state and fill any missing holes in the post order. ##### Permissions Must have `read_channel` permission for the channel. 
@@ -356,11 +359,12 @@ Get a page of posts in a channel. Use the query parameters to modify the behavio
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | The channel ID to get the posts for | [required] |
-**page** | Option<**i64**> | The page to select |  |[default to 0]
-**per_page** | Option<**i64**> | The number of posts per page |  |[default to 60]
-**since** | Option<**i64**> | Provide a non-zero value in Unix time milliseconds to select posts modified after that time |  |
+**page** | Option<**i32**> | The page to select |  |[default to 0]
+**per_page** | Option<**i32**> | The number of posts per page |  |[default to 60]
+**since** | Option<**i32**> | Provide a non-zero value in Unix time milliseconds to select posts modified after that time |  |
 **before** | Option<**String**> | A post id to select the posts that came before this one |  |
 **after** | Option<**String**> | A post id to select the posts that came after this one |  |
+**include_deleted** | Option<**bool**> | Whether to include deleted posts or not. Must have system admin permissions. |  |[default to false]
 
 ### Return type
 
@@ -457,6 +461,38 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::PostListWithSearchMatches**](PostListWithSearchMatches.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## set_post_reminder
+
+> crate::models::StatusOk set_post_reminder(user_id, post_id, inline_object63)
+Set a post reminder
+
+Set a reminder for the user for the post. ##### Permissions Must have `read_channel` permission for the channel the post is in.  __Minimum server version__: 7.2 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**user_id** | **String** | User GUID | [required] |
+**post_id** | **String** | Post GUID | [required] |
+**inline_object63** | [**InlineObject63**](InlineObject63.md) |  | [required] |
+
+### Return type
+
+[**crate::models::StatusOk**](StatusOK.md)
 
 ### Authorization
 

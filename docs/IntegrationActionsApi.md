@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## open_interactive_dialog
 
-> crate::models::StatusOk open_interactive_dialog(inline_object106)
+> crate::models::StatusOk open_interactive_dialog(inline_object107)
 Open a dialog
 
 Open an interactive dialog using a trigger ID provided by a slash command, or some other action payload. See https://docs.mattermost.com/developer/interactive-dialogs.html for more information on interactive dialogs. __Minimum server version: 5.6__ 
@@ -21,7 +21,7 @@ Open an interactive dialog using a trigger ID provided by a slash command, or so
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object106** | [**InlineObject106**](InlineObject106.md) |  | [required] |
+**inline_object107** | [**InlineObject107**](InlineObject107.md) |  | [required] |
 
 ### Return type
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## submit_interactive_dialog
 
-> crate::models::StatusOk submit_interactive_dialog(inline_object107)
+> crate::models::StatusOk submit_interactive_dialog(inline_object108)
 Submit a dialog
 
 Endpoint used by the Mattermost clients to submit a dialog. See https://docs.mattermost.com/developer/interactive-dialogs.html for more information on interactive dialogs. __Minimum server version: 5.6__ 
@@ -51,7 +51,7 @@ Endpoint used by the Mattermost clients to submit a dialog. See https://docs.mat
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object107** | [**InlineObject107**](InlineObject107.md) |  | [required] |
+**inline_object108** | [**InlineObject108**](InlineObject108.md) |  | [required] |
 
 ### Return type
 

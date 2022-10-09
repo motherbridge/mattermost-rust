@@ -53,7 +53,7 @@ pub enum UploadDataError {
 
 
 /// Creates a new upload session.  __Minimum server version__: 5.28 ##### Permissions Must have `upload_file` permission. 
-pub async fn create_upload(configuration: &configuration::Configuration, inline_object65: crate::models::InlineObject65) -> Result<crate::models::UploadSession, Error<CreateUploadError>> {
+pub async fn create_upload(configuration: &configuration::Configuration, inline_object66: crate::models::InlineObject66) -> Result<crate::models::UploadSession, Error<CreateUploadError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -67,7 +67,7 @@ pub async fn create_upload(configuration: &configuration::Configuration, inline_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object65);
+    local_var_req_builder = local_var_req_builder.json(&inline_object66);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

@@ -27,7 +27,7 @@ pub enum SearchFilesError {
 
 
 /// Search for files in a team based on file name, extention and file content (if file content extraction is enabled and supported for the files). __Minimum server version__: 5.34 ##### Permissions Must be authenticated and have the `view_team` permission. 
-pub async fn search_files(configuration: &configuration::Configuration, team_id: &str, terms: &str, is_or_search: bool, time_zone_offset: Option<i64>, include_deleted_channels: Option<bool>, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::FileInfoList, Error<SearchFilesError>> {
+pub async fn search_files(configuration: &configuration::Configuration, team_id: &str, terms: &str, is_or_search: bool, time_zone_offset: Option<i32>, include_deleted_channels: Option<bool>, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::FileInfoList, Error<SearchFilesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

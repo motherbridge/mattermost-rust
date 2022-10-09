@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 **name** | **String** | Username, nickname first name or last name | [required] |
 **team_id** | Option<**String**> | Team ID |  |
 **channel_id** | Option<**String**> | Channel ID |  |
-**limit** | Option<**i64**> | The maximum number of users to return in each subresult  __Available as of server version 5.6. Defaults to `100` if not provided or on an earlier server version.__  |  |[default to 100]
+**limit** | Option<**i32**> | The maximum number of users to return in each subresult  __Available as of server version 5.6. Defaults to `100` if not provided or on an earlier server version.__  |  |[default to 100]
 
 ### Return type
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Required | Notes
 
 ## convert_bot_to_user
 
-> crate::models::StatusOk convert_bot_to_user(bot_user_id, inline_object111, set_system_admin)
+> crate::models::StatusOk convert_bot_to_user(bot_user_id, inline_object112, set_system_admin)
 Convert a bot into a user
 
 Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
@@ -175,7 +175,7 @@ Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bot_user_id** | **String** | Bot user ID | [required] |
-**inline_object111** | [**InlineObject111**](InlineObject111.md) |  | [required] |
+**inline_object112** | [**InlineObject112**](InlineObject112.md) |  | [required] |
 **set_system_admin** | Option<**bool**> | Whether to give the user the system admin role. |  |[default to false]
 
 ### Return type
@@ -450,8 +450,8 @@ Get all channel members from all teams for a user.  __Minimum server version__: 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | The ID of the user. This can also be \"me\" which will point to the current user. | [required] |
-**page** | Option<**i64**> | Page specifies which part of the results to return, by PageSize. |  |
-**page_size** | Option<**i64**> | PageSize specifies the size of the returned chunk of results. |  |
+**page** | Option<**i32**> | Page specifies which part of the results to return, by PageSize. |  |
+**page_size** | Option<**i32**> | PageSize specifies the size of the returned chunk of results. |  |
 
 ### Return type
 
@@ -752,8 +752,8 @@ Get a page of user access tokens for users on the system. Does not include the a
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of tokens per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of tokens per page. |  |[default to 60]
 
 ### Return type
 
@@ -784,8 +784,8 @@ Get a list of user access tokens for a user. Does not include the actual authent
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of tokens per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of tokens per page. |  |[default to 60]
 
 ### Return type
 
@@ -935,8 +935,8 @@ Get a page of a list of users. Based on query string parameters, select users fr
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of users per page. There is a maximum limit of 200 users per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of users per page. There is a maximum limit of 200 users per page. |  |[default to 60]
 **in_team** | Option<**String**> | The ID of the team to get users for. |  |
 **not_in_team** | Option<**String**> | The ID of the team to exclude users for. Must not be used with \"in_team\" query parameter. |  |
 **in_channel** | Option<**String**> | The ID of the channel to get users for. |  |
@@ -1011,7 +1011,7 @@ Get a list of users based on a provided list of user ids. ##### Permissions Requ
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **request_body** | [**Vec<String>**](String.md) | List of user ids | [required] |
-**since** | Option<**i64**> | Only return users that have been modified since the given Unix timestamp (in milliseconds).  __Minimum server version__: 5.14  |  |
+**since** | Option<**i32**> | Only return users that have been modified since the given Unix timestamp (in milliseconds).  __Minimum server version__: 5.14  |  |
 
 ### Return type
 

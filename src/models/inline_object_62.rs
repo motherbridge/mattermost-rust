@@ -21,16 +21,16 @@ pub struct InlineObject62 {
     pub is_or_search: bool,
     /// Offset from UTC of user timezone for date searches.
     #[serde(rename = "time_zone_offset", skip_serializing_if = "Option::is_none")]
-    pub time_zone_offset: Option<i64>,
+    pub time_zone_offset: Option<i32>,
     /// Set to true if deleted channels should be included in the search. (archived channels)
     #[serde(rename = "include_deleted_channels", skip_serializing_if = "Option::is_none")]
     pub include_deleted_channels: Option<bool>,
     /// The page to select. (Only works with Elasticsearch)
     #[serde(rename = "page", skip_serializing_if = "Option::is_none")]
-    pub page: Option<i64>,
+    pub page: Option<i32>,
     /// The number of posts per page. (Only works with Elasticsearch)
     #[serde(rename = "per_page", skip_serializing_if = "Option::is_none")]
-    pub per_page: Option<i64>,
+    pub per_page: Option<i32>,
 }
 
 impl InlineObject62 {

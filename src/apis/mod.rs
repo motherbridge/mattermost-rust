@@ -77,8 +77,10 @@ pub mod exports_api;
 pub mod files_api;
 pub mod groups_api;
 pub mod imports_api;
+pub mod insights_api;
 pub mod integration_actions_api;
 pub mod jobs_api;
+pub mod ldap_api;
 pub mod ldap_api;
 pub mod migrate_api;
 pub mod o_auth_api;
@@ -100,6 +102,7 @@ pub mod teams_api;
 pub mod terms_of_service_api;
 pub mod threads_api;
 pub mod uploads_api;
+pub mod usage_api;
 pub mod users_api;
 pub mod webhooks_api;
 

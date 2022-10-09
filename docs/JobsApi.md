@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_job
 
-> crate::models::Job create_job(inline_object66)
+> crate::models::Job create_job(inline_object67)
 Create a new job.
 
 Create a new job. __Minimum server version: 4.1__ ##### Permissions Must have `manage_jobs` permission. 
@@ -55,7 +55,7 @@ Create a new job. __Minimum server version: 4.1__ ##### Permissions Must have `m
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object66** | [**InlineObject66**](InlineObject66.md) |  | [required] |
+**inline_object67** | [**InlineObject67**](InlineObject67.md) |  | [required] |
 
 ### Return type
 
@@ -145,8 +145,8 @@ Get a page of jobs. Use the query parameters to modify the behaviour of this end
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of jobs per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of jobs per page. |  |[default to 60]
 
 ### Return type
 
@@ -177,8 +177,8 @@ Get a page of jobs of the given type. Use the query parameters to modify the beh
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **_type** | **String** | Job type | [required] |
-**page** | Option<**i64**> | The page to select. |  |[default to 0]
-**per_page** | Option<**i64**> | The number of jobs per page. |  |[default to 60]
+**page** | Option<**i32**> | The page to select. |  |[default to 0]
+**per_page** | Option<**i32**> | The number of jobs per page. |  |[default to 60]
 
 ### Return type
 
