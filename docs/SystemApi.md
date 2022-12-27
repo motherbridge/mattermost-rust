@@ -352,7 +352,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/_*, application/json
+- **Accept**: image/*, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -481,7 +481,7 @@ This endpoint does not need any parameter.
 
 ## get_redirect_location
 
-> crate::models::InlineResponse20010 get_redirect_location(url)
+> crate::models::GetRedirectLocation200Response get_redirect_location(url)
 Get redirect location
 
 __Minimum server version__: 3.10 ##### Permissions Must be logged in. 
@@ -495,7 +495,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20010**](inline_response_200_10.md)
+[**crate::models::GetRedirectLocation200Response**](GetRedirectLocation_200_response.md)
 
 ### Authorization
 
@@ -504,7 +504,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/_*, application/json
+- **Accept**: image/*, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -679,7 +679,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_log
 
-> Vec<String> post_log(inline_object71)
+> Vec<String> post_log(post_log_request)
 Add log message
 
 Add log messages to the server logs. ##### Permissions Users with `manage_system` permission can log ERROR or DEBUG messages. Logged in users can log ERROR or DEBUG messages when `ServiceSettings.EnableDeveloper` is `true` or just DEBUG messages when `false`. Non-logged in users can log ERROR or DEBUG messages when `ServiceSettings.EnableDeveloper` is `true` and cannot log when `false`. 
@@ -689,7 +689,7 @@ Add log messages to the server logs. ##### Permissions Users with `manage_system
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object71** | [**InlineObject71**](InlineObject71.md) |  | [required] |
+**post_log_request** | [**PostLogRequest**](PostLogRequest.md) |  | [required] |
 
 ### Return type
 
@@ -790,7 +790,7 @@ This endpoint does not need any parameter.
 
 ## request_trial_license
 
-> request_trial_license(inline_object70)
+> request_trial_license(request_trial_license_request)
 Request and install a trial license for your server
 
 Request and install a trial license for your server __Minimum server version__: 5.25 ##### Permissions Must have `manage_system` permission. 
@@ -800,7 +800,7 @@ Request and install a trial license for your server __Minimum server version__: 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object70** | [**InlineObject70**](InlineObject70.md) |  | [required] |
+**request_trial_license_request** | [**RequestTrialLicenseRequest**](RequestTrialLicenseRequest.md) | License request | [required] |
 
 ### Return type
 
@@ -877,7 +877,7 @@ Name | Type | Description  | Required | Notes
 
 ## send_warn_metric_ack
 
-> crate::models::StatusOk send_warn_metric_ack(warn_metric_id, inline_object72)
+> crate::models::StatusOk send_warn_metric_ack(warn_metric_id, send_warn_metric_ack_request)
 Acknowledge a warning of a metric status
 
 Acknowledge a warning for the warn_metric_id metric crossing a threshold (or some similar condition being fulfilled) - attempts to send an ack email to acknowledge@mattermost.com and sets the \"ack\" status for all the warn metrics in the system.  __Minimum server version__: 5.26  ##### Permissions  Must have `manage_system` permission. 
@@ -888,7 +888,7 @@ Acknowledge a warning for the warn_metric_id metric crossing a threshold (or som
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **warn_metric_id** | **String** | Warn Metric Id. | [required] |
-**inline_object72** | [**InlineObject72**](InlineObject72.md) |  | [required] |
+**send_warn_metric_ack_request** | [**SendWarnMetricAckRequest**](SendWarnMetricAckRequest.md) | payload that contains the ack flag | [required] |
 
 ### Return type
 
@@ -998,7 +998,7 @@ Name | Type | Description  | Required | Notes
 
 ## test_site_url
 
-> crate::models::StatusOk test_site_url(inline_object68)
+> crate::models::StatusOk test_site_url(test_site_url_request)
 Checks the validity of a Site URL
 
 Sends a Ping request to the mattermost server using the specified Site URL.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
@@ -1008,7 +1008,7 @@ Sends a Ping request to the mattermost server using the specified Site URL.  ###
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object68** | [**InlineObject68**](InlineObject68.md) |  | [required] |
+**test_site_url_request** | [**TestSiteUrlRequest**](TestSiteUrlRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1115,7 +1115,7 @@ This endpoint does not need any parameter.
 
 ## upgrade_to_enterprise_status
 
-> crate::models::InlineResponse20011 upgrade_to_enterprise_status()
+> crate::models::UpgradeToEnterpriseStatus200Response upgrade_to_enterprise_status()
 Get the current status for the inplace upgrade from Team Edition to Enterprise Edition
 
 It returns the percentage of completion of the current upgrade or the error if there is any. __Minimum server version__: 5.27 ##### Permissions Must have `manage_system` permission. 
@@ -1126,7 +1126,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::InlineResponse20011**](inline_response_200_11.md)
+[**crate::models::UpgradeToEnterpriseStatus200Response**](UpgradeToEnterpriseStatus_200_response.md)
 
 ### Authorization
 

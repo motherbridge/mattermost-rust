@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## create_command
 
-> crate::models::Command create_command(inline_object94)
+> crate::models::Command create_command(create_command_request)
 Create a command
 
 Create a command for a team. ##### Permissions `manage_slash_commands` for the team the command is in. 
@@ -29,7 +29,7 @@ Create a command for a team. ##### Permissions `manage_slash_commands` for the t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object94** | [**InlineObject94**](InlineObject94.md) |  | [required] |
+**create_command_request** | [**CreateCommandRequest**](CreateCommandRequest.md) | command to be created | [required] |
 
 ### Return type
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 
 ## execute_command
 
-> crate::models::CommandResponse execute_command(inline_object96)
+> crate::models::CommandResponse execute_command(execute_command_request)
 Execute a command
 
 Execute a command on a team. ##### Permissions Must have `use_slash_commands` permission for the team the command is in. 
@@ -89,7 +89,7 @@ Execute a command on a team. ##### Permissions Must have `use_slash_commands` pe
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object96** | [**InlineObject96**](InlineObject96.md) |  | [required] |
+**execute_command_request** | [**ExecuteCommandRequest**](ExecuteCommandRequest.md) | command to be executed | [required] |
 
 ### Return type
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Required | Notes
 
 ## move_command
 
-> crate::models::StatusOk move_command(command_id, inline_object95)
+> crate::models::StatusOk move_command(command_id, move_command_request)
 Move a command
 
 Move a command to a different team based on command id string. ##### Permissions Must have `manage_slash_commands` permission for the team the command is currently in and the destination team.  __Minimum server version__: 5.22 
@@ -242,7 +242,7 @@ Move a command to a different team based on command id string. ##### Permissions
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **command_id** | **String** | ID of the command to move | [required] |
-**inline_object95** | [**InlineObject95**](InlineObject95.md) |  | [required] |
+**move_command_request** | [**MoveCommandRequest**](MoveCommandRequest.md) |  | [required] |
 
 ### Return type
 
@@ -262,7 +262,7 @@ Name | Type | Description  | Required | Notes
 
 ## regen_command_token
 
-> crate::models::InlineResponse20015 regen_command_token(command_id)
+> crate::models::RegenCommandToken200Response regen_command_token(command_id)
 Generate a new token
 
 Generate a new token for the command based on command id string. ##### Permissions Must have `manage_slash_commands` permission for the team the command is in. 
@@ -276,7 +276,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20015**](inline_response_200_15.md)
+[**crate::models::RegenCommandToken200Response**](RegenCommandToken_200_response.md)
 
 ### Authorization
 

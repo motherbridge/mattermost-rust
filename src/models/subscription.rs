@@ -28,7 +28,7 @@ pub struct Subscription {
     #[serde(rename = "create_at", skip_serializing_if = "Option::is_none")]
     pub create_at: Option<i64>,
     #[serde(rename = "seats", skip_serializing_if = "Option::is_none")]
-    pub seats: Option<i64>,
+    pub seats: Option<i32>,
     #[serde(rename = "dns", skip_serializing_if = "Option::is_none")]
     pub dns: Option<String>,
 }

@@ -136,7 +136,7 @@ pub enum UpdateOutgoingWebhookError {
 
 
 /// Create an incoming webhook for a channel. ##### Permissions `manage_webhooks` for the team the webhook is in.  `manage_others_incoming_webhooks` for the team the webhook is in if the user is different than the requester. 
-pub async fn create_incoming_webhook(configuration: &configuration::Configuration, inline_object75: crate::models::InlineObject75) -> Result<crate::models::IncomingWebhook, Error<CreateIncomingWebhookError>> {
+pub async fn create_incoming_webhook(configuration: &configuration::Configuration, create_incoming_webhook_request: crate::models::CreateIncomingWebhookRequest) -> Result<crate::models::IncomingWebhook, Error<CreateIncomingWebhookError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -150,7 +150,7 @@ pub async fn create_incoming_webhook(configuration: &configuration::Configuratio
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object75);
+    local_var_req_builder = local_var_req_builder.json(&create_incoming_webhook_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -168,7 +168,7 @@ pub async fn create_incoming_webhook(configuration: &configuration::Configuratio
 }
 
 /// Create an outgoing webhook for a team. ##### Permissions `manage_webhooks` for the team the webhook is in.  `manage_others_outgoing_webhooks` for the team the webhook is in if the user is different than the requester. 
-pub async fn create_outgoing_webhook(configuration: &configuration::Configuration, inline_object77: crate::models::InlineObject77) -> Result<crate::models::OutgoingWebhook, Error<CreateOutgoingWebhookError>> {
+pub async fn create_outgoing_webhook(configuration: &configuration::Configuration, create_outgoing_webhook_request: crate::models::CreateOutgoingWebhookRequest) -> Result<crate::models::OutgoingWebhook, Error<CreateOutgoingWebhookError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -182,7 +182,7 @@ pub async fn create_outgoing_webhook(configuration: &configuration::Configuratio
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object77);
+    local_var_req_builder = local_var_req_builder.json(&create_outgoing_webhook_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -293,7 +293,7 @@ pub async fn get_incoming_webhook(configuration: &configuration::Configuration, 
 }
 
 /// Get a page of a list of incoming webhooks. Optionally filter for a specific team using query parameters. ##### Permissions `manage_webhooks` for the system or `manage_webhooks` for the specific team. 
-pub async fn get_incoming_webhooks(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>) -> Result<Vec<crate::models::IncomingWebhook>, Error<GetIncomingWebhooksError>> {
+pub async fn get_incoming_webhooks(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>) -> Result<Vec<crate::models::IncomingWebhook>, Error<GetIncomingWebhooksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -364,7 +364,7 @@ pub async fn get_outgoing_webhook(configuration: &configuration::Configuration, 
 }
 
 /// Get a page of a list of outgoing webhooks. Optionally filter for a specific team or channel using query parameters. ##### Permissions `manage_webhooks` for the system or `manage_webhooks` for the specific team/channel. 
-pub async fn get_outgoing_webhooks(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, team_id: Option<&str>, channel_id: Option<&str>) -> Result<Vec<crate::models::OutgoingWebhook>, Error<GetOutgoingWebhooksError>> {
+pub async fn get_outgoing_webhooks(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, team_id: Option<&str>, channel_id: Option<&str>) -> Result<Vec<crate::models::OutgoingWebhook>, Error<GetOutgoingWebhooksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -438,7 +438,7 @@ pub async fn regen_outgoing_hook_token(configuration: &configuration::Configurat
 }
 
 /// Update an incoming webhook given the hook id. ##### Permissions `manage_webhooks` for system or `manage_webhooks` for the specific team or `manage_webhooks` for the channel. 
-pub async fn update_incoming_webhook(configuration: &configuration::Configuration, hook_id: &str, inline_object76: crate::models::InlineObject76) -> Result<crate::models::IncomingWebhook, Error<UpdateIncomingWebhookError>> {
+pub async fn update_incoming_webhook(configuration: &configuration::Configuration, hook_id: &str, update_incoming_webhook_request: crate::models::UpdateIncomingWebhookRequest) -> Result<crate::models::IncomingWebhook, Error<UpdateIncomingWebhookError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -452,7 +452,7 @@ pub async fn update_incoming_webhook(configuration: &configuration::Configuratio
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object76);
+    local_var_req_builder = local_var_req_builder.json(&update_incoming_webhook_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -470,7 +470,7 @@ pub async fn update_incoming_webhook(configuration: &configuration::Configuratio
 }
 
 /// Update an outgoing webhook given the hook id. ##### Permissions `manage_webhooks` for system or `manage_webhooks` for the specific team or `manage_webhooks` for the channel. 
-pub async fn update_outgoing_webhook(configuration: &configuration::Configuration, hook_id: &str, inline_object78: crate::models::InlineObject78) -> Result<crate::models::OutgoingWebhook, Error<UpdateOutgoingWebhookError>> {
+pub async fn update_outgoing_webhook(configuration: &configuration::Configuration, hook_id: &str, update_outgoing_webhook_request: crate::models::UpdateOutgoingWebhookRequest) -> Result<crate::models::OutgoingWebhook, Error<UpdateOutgoingWebhookError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -484,7 +484,7 @@ pub async fn update_outgoing_webhook(configuration: &configuration::Configuratio
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object78);
+    local_var_req_builder = local_var_req_builder.json(&update_outgoing_webhook_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

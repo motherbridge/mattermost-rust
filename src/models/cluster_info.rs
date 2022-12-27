@@ -30,7 +30,7 @@ pub struct ClusterInfo {
     pub hostname: Option<String>,
     /// The time of the last ping to this node
     #[serde(rename = "last_ping", skip_serializing_if = "Option::is_none")]
-    pub last_ping: Option<i64>,
+    pub last_ping: Option<i32>,
     /// Whether or not the node is alive and well
     #[serde(rename = "is_alive", skip_serializing_if = "Option::is_none")]
     pub is_alive: Option<bool>,

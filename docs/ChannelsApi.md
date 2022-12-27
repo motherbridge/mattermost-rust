@@ -61,7 +61,7 @@ Method | HTTP request | Description
 
 ## add_channel_member
 
-> crate::models::ChannelMember add_channel_member(channel_id, inline_object53)
+> crate::models::ChannelMember add_channel_member(channel_id, add_channel_member_request)
 Add user to channel
 
 Add a user to a channel by creating a channel member object.
@@ -72,7 +72,7 @@ Add a user to a channel by creating a channel member object.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | The channel ID | [required] |
-**inline_object53** | [**InlineObject53**](InlineObject53.md) |  | [required] |
+**add_channel_member_request** | [**AddChannelMemberRequest**](AddChannelMemberRequest.md) |  | [required] |
 
 ### Return type
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_channel
 
-> crate::models::Channel create_channel(inline_object44)
+> crate::models::Channel create_channel(create_channel_request)
 Create a channel
 
 Create a new channel. ##### Permissions If creating a public channel, `create_public_channel` permission is required. If creating a private channel, `create_private_channel` permission is required. 
@@ -197,7 +197,7 @@ Create a new channel. ##### Permissions If creating a public channel, `create_pu
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object44** | [**InlineObject44**](InlineObject44.md) |  | [required] |
+**create_channel_request** | [**CreateChannelRequest**](CreateChannelRequest.md) | Channel object to be created | [required] |
 
 ### Return type
 
@@ -1062,7 +1062,7 @@ Name | Type | Description  | Required | Notes
 
 ## move_channel
 
-> crate::models::Channel move_channel(channel_id, inline_object50)
+> crate::models::Channel move_channel(channel_id, move_channel_request)
 Move a channel
 
 Move a channel to another team.  __Minimum server version__: 5.26  ##### Permissions  Must have `manage_system` permission. 
@@ -1073,7 +1073,7 @@ Move a channel to another team.  __Minimum server version__: 5.26  ##### Permiss
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object50** | [**InlineObject50**](InlineObject50.md) |  | [required] |
+**move_channel_request** | [**MoveChannelRequest**](MoveChannelRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1093,7 +1093,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_channel
 
-> crate::models::Channel patch_channel(channel_id, inline_object48)
+> crate::models::Channel patch_channel(channel_id, patch_channel_request)
 Patch a channel
 
 Partially update a channel by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions If updating a public channel, `manage_public_channel_members` permission is required. If updating a private channel, `manage_private_channel_members` permission is required. 
@@ -1104,7 +1104,7 @@ Partially update a channel by providing only the fields you want to update. Omit
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object48** | [**InlineObject48**](InlineObject48.md) |  | [required] |
+**patch_channel_request** | [**PatchChannelRequest**](PatchChannelRequest.md) | Channel object to be updated | [required] |
 
 ### Return type
 
@@ -1248,7 +1248,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_all_channels
 
-> crate::models::InlineResponse2007 search_all_channels(inline_object45, system_console)
+> crate::models::SearchAllChannels200Response search_all_channels(search_all_channels_request, system_console)
 Search all private and open type channels across all teams
 
 Returns all private and open type channels where 'term' matches on the name, display name, or purpose of the channel.  Configured 'default' channels (ex Town Square and Off-Topic) can be excluded from the results with the `exclude_default_channels` boolean parameter.  Channels that are associated (via GroupChannel records) to a given group can be excluded from the results with the `not_associated_to_group` parameter and a group id string. 
@@ -1258,12 +1258,12 @@ Returns all private and open type channels where 'term' matches on the name, dis
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object45** | [**InlineObject45**](InlineObject45.md) |  | [required] |
+**search_all_channels_request** | [**SearchAllChannelsRequest**](SearchAllChannelsRequest.md) | The search terms and logic to use in the search. | [required] |
 **system_console** | Option<**bool**> | Is the request from system_console. If this is set to true, it filters channels by the logged in user.  |  |[default to true]
 
 ### Return type
 
-[**crate::models::InlineResponse2007**](inline_response_200_7.md)
+[**crate::models::SearchAllChannels200Response**](SearchAllChannels_200_response.md)
 
 ### Authorization
 
@@ -1279,7 +1279,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_archived_channels
 
-> Vec<crate::models::Channel> search_archived_channels(team_id, inline_object52)
+> Vec<crate::models::Channel> search_archived_channels(team_id, search_archived_channels_request)
 Search archived channels
 
 Search archived channels on a team based on the search term provided in the request body.  __Minimum server version__: 5.18  ##### Permissions Must have the `list_team_channels` permission.  In server version 5.18 and later, a user without the `list_team_channels` permission will be able to use this endpoint, with the search results limited to the channels that the user is a member of. 
@@ -1290,7 +1290,7 @@ Search archived channels on a team based on the search term provided in the requ
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object52** | [**InlineObject52**](InlineObject52.md) |  | [required] |
+**search_archived_channels_request** | [**SearchArchivedChannelsRequest**](SearchArchivedChannelsRequest.md) | Search criteria | [required] |
 
 ### Return type
 
@@ -1310,7 +1310,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_channels
 
-> Vec<crate::models::Channel> search_channels(team_id, inline_object51)
+> Vec<crate::models::Channel> search_channels(team_id, search_channels_request)
 Search channels
 
 Search public channels on a team based on the search term provided in the request body. ##### Permissions Must have the `list_team_channels` permission.  In server version 5.16 and later, a user without the `list_team_channels` permission will be able to use this endpoint, with the search results limited to the channels that the user is a member of. 
@@ -1321,7 +1321,7 @@ Search public channels on a team based on the search term provided in the reques
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object51** | [**InlineObject51**](InlineObject51.md) |  | [required] |
+**search_channels_request** | [**SearchChannelsRequest**](SearchChannelsRequest.md) | Search criteria | [required] |
 
 ### Return type
 
@@ -1341,7 +1341,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_group_channels
 
-> Vec<crate::models::Channel> search_group_channels(inline_object46)
+> Vec<crate::models::Channel> search_group_channels(search_group_channels_request)
 Search Group Channels
 
 Get a list of group channels for a user which members' usernames match the search term.  __Minimum server version__: 5.14 
@@ -1351,7 +1351,7 @@ Get a list of group channels for a user which members' usernames match the searc
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object46** | [**InlineObject46**](InlineObject46.md) |  | [required] |
+**search_group_channels_request** | [**SearchGroupChannelsRequest**](SearchGroupChannelsRequest.md) | Search criteria | [required] |
 
 ### Return type
 
@@ -1371,7 +1371,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_channel
 
-> crate::models::Channel update_channel(channel_id, inline_object47)
+> crate::models::Channel update_channel(channel_id, update_channel_request)
 Update a channel
 
 Update a channel. The fields that can be updated are listed as parameters. Omitted fields will be treated as blanks. ##### Permissions If updating a public channel, `manage_public_channel_members` permission is required. If updating a private channel, `manage_private_channel_members` permission is required. 
@@ -1382,7 +1382,7 @@ Update a channel. The fields that can be updated are listed as parameters. Omitt
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object47** | [**InlineObject47**](InlineObject47.md) |  | [required] |
+**update_channel_request** | [**UpdateChannelRequest**](UpdateChannelRequest.md) | Channel object to be updated | [required] |
 
 ### Return type
 
@@ -1402,7 +1402,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_channel_member_scheme_roles
 
-> crate::models::StatusOk update_channel_member_scheme_roles(channel_id, user_id, inline_object55)
+> crate::models::StatusOk update_channel_member_scheme_roles(channel_id, user_id, update_team_member_scheme_roles_request)
 Update the scheme-derived roles of a channel member.
 
 Update a channel member's scheme_admin/scheme_user properties. Typically this should either be `scheme_admin=false, scheme_user=true` for ordinary channel member, or `scheme_admin=true, scheme_user=true` for a channel admin. __Minimum server version__: 5.0 ##### Permissions Must be authenticated and have the `manage_channel_roles` permission. 
@@ -1414,7 +1414,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
 **user_id** | **String** | User GUID | [required] |
-**inline_object55** | [**InlineObject55**](InlineObject55.md) |  | [required] |
+**update_team_member_scheme_roles_request** | [**UpdateTeamMemberSchemeRolesRequest**](UpdateTeamMemberSchemeRolesRequest.md) | Scheme properties. | [required] |
 
 ### Return type
 
@@ -1466,7 +1466,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_channel_privacy
 
-> crate::models::Channel update_channel_privacy(channel_id, inline_object49)
+> crate::models::Channel update_channel_privacy(channel_id, update_channel_privacy_request)
 Update channel's privacy
 
 Updates channel's privacy allowing changing a channel from Public to Private and back.  __Minimum server version__: 5.16  ##### Permissions `manage_team` permission for the channels team on version < 5.28. `convert_public_channel_to_private` permission for the channel if updating privacy to 'P' on version >= 5.28. `convert_private_channel_to_public` permission for the channel if updating privacy to 'O' on version >= 5.28. 
@@ -1477,7 +1477,7 @@ Updates channel's privacy allowing changing a channel from Public to Private and
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object49** | [**InlineObject49**](InlineObject49.md) |  | [required] |
+**update_channel_privacy_request** | [**UpdateChannelPrivacyRequest**](UpdateChannelPrivacyRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1497,7 +1497,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_channel_roles
 
-> crate::models::StatusOk update_channel_roles(channel_id, user_id, inline_object54)
+> crate::models::StatusOk update_channel_roles(channel_id, user_id, update_user_roles_request)
 Update channel roles
 
 Update a user's roles for a channel. ##### Permissions Must have `manage_channel_roles` permission for the channel. 
@@ -1509,7 +1509,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
 **user_id** | **String** | User GUID | [required] |
-**inline_object54** | [**InlineObject54**](InlineObject54.md) |  | [required] |
+**update_user_roles_request** | [**UpdateUserRolesRequest**](UpdateUserRolesRequest.md) | Space-delimited channel roles to assign to the user | [required] |
 
 ### Return type
 
@@ -1529,7 +1529,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_channel_scheme
 
-> crate::models::StatusOk update_channel_scheme(channel_id, inline_object57)
+> crate::models::StatusOk update_channel_scheme(channel_id, update_team_scheme_request)
 Set a channel's scheme
 
 Set a channel's scheme, more specifically sets the scheme_id value of a channel record.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 4.10 
@@ -1540,7 +1540,7 @@ Set a channel's scheme, more specifically sets the scheme_id value of a channel 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object57** | [**InlineObject57**](InlineObject57.md) |  | [required] |
+**update_team_scheme_request** | [**UpdateTeamSchemeRequest**](UpdateTeamSchemeRequest.md) | Scheme GUID | [required] |
 
 ### Return type
 
@@ -1657,7 +1657,7 @@ Name | Type | Description  | Required | Notes
 
 ## view_channel
 
-> crate::models::InlineResponse2008 view_channel(user_id, inline_object56)
+> crate::models::ViewChannel200Response view_channel(user_id, view_channel_request)
 View channel
 
 Perform all the actions involved in viewing a channel. This includes marking channels as read, clearing push notifications, and updating the active channel. ##### Permissions Must be logged in as user or have `edit_other_users` permission.  __Response only includes `last_viewed_at_times` in Mattermost server 4.3 and newer.__ 
@@ -1668,11 +1668,11 @@ Perform all the actions involved in viewing a channel. This includes marking cha
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User ID to perform the view action for | [required] |
-**inline_object56** | [**InlineObject56**](InlineObject56.md) |  | [required] |
+**view_channel_request** | [**ViewChannelRequest**](ViewChannelRequest.md) | Paremeters affecting how and which channels to view | [required] |
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::ViewChannel200Response**](ViewChannel_200_response.md)
 
 ### Authorization
 

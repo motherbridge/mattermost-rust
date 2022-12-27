@@ -131,7 +131,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_role
 
-> crate::models::Role patch_role(role_id, inline_object103)
+> crate::models::Role patch_role(role_id, patch_role_request)
 Patch a role
 
 Partially update a role by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 4.9 
@@ -142,7 +142,7 @@ Partially update a role by providing only the fields you want to update. Omitted
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **role_id** | **String** | Role GUID | [required] |
-**inline_object103** | [**InlineObject103**](InlineObject103.md) |  | [required] |
+**patch_role_request** | [**PatchRoleRequest**](PatchRoleRequest.md) | Role object to be updated | [required] |
 
 ### Return type
 

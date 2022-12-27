@@ -97,7 +97,7 @@ Name | Type | Description  | Required | Notes
 
 ## register_terms_of_service_action
 
-> crate::models::StatusOk register_terms_of_service_action(user_id, inline_object24)
+> crate::models::StatusOk register_terms_of_service_action(user_id, register_terms_of_service_action_request)
 Records user action when they accept or decline custom terms of service
 
 Records user action when they accept or decline custom terms of service. Records the action in audit table. Updates user's last accepted terms of service ID if they accepted it.  __Minimum server version__: 5.4 ##### Permissions Must be logged in as the user being acted on. 
@@ -108,7 +108,7 @@ Records user action when they accept or decline custom terms of service. Records
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object24** | [**InlineObject24**](InlineObject24.md) |  | [required] |
+**register_terms_of_service_action_request** | [**RegisterTermsOfServiceActionRequest**](RegisterTermsOfServiceActionRequest.md) | terms of service details | [required] |
 
 ### Return type
 

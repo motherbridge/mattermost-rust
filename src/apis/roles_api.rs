@@ -191,7 +191,7 @@ pub async fn get_roles_by_names(configuration: &configuration::Configuration, re
 }
 
 /// Partially update a role by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 4.9 
-pub async fn patch_role(configuration: &configuration::Configuration, role_id: &str, inline_object103: crate::models::InlineObject103) -> Result<crate::models::Role, Error<PatchRoleError>> {
+pub async fn patch_role(configuration: &configuration::Configuration, role_id: &str, patch_role_request: crate::models::PatchRoleRequest) -> Result<crate::models::Role, Error<PatchRoleError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -205,7 +205,7 @@ pub async fn patch_role(configuration: &configuration::Configuration, role_id: &
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object103);
+    local_var_req_builder = local_var_req_builder.json(&patch_role_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

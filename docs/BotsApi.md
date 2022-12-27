@@ -52,7 +52,7 @@ Name | Type | Description  | Required | Notes
 
 ## convert_bot_to_user
 
-> crate::models::StatusOk convert_bot_to_user(bot_user_id, inline_object112, set_system_admin)
+> crate::models::StatusOk convert_bot_to_user(bot_user_id, convert_bot_to_user_request, set_system_admin)
 Convert a bot into a user
 
 Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
@@ -63,7 +63,7 @@ Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bot_user_id** | **String** | Bot user ID | [required] |
-**inline_object112** | [**InlineObject112**](InlineObject112.md) |  | [required] |
+**convert_bot_to_user_request** | [**ConvertBotToUserRequest**](ConvertBotToUserRequest.md) | Data to be used in the user creation | [required] |
 **set_system_admin** | Option<**bool**> | Whether to give the user the system admin role. |  |[default to false]
 
 ### Return type
@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_bot
 
-> crate::models::Bot create_bot(inline_object109)
+> crate::models::Bot create_bot(create_bot_request)
 Create a bot
 
 Create a new bot account on the system. Username is required. ##### Permissions Must have `create_bot` permission. __Minimum server version__: 5.10 
@@ -124,7 +124,7 @@ Create a new bot account on the system. Username is required. ##### Permissions 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object109** | [**InlineObject109**](InlineObject109.md) |  | [required] |
+**create_bot_request** | [**CreateBotRequest**](CreateBotRequest.md) | Bot to be created | [required] |
 
 ### Return type
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_bot
 
-> crate::models::Bot patch_bot(bot_user_id, inline_object110)
+> crate::models::Bot patch_bot(bot_user_id, create_bot_request)
 Patch a bot
 
 Partially update a bot by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have `manage_bots` permission.  __Minimum server version__: 5.10 
@@ -339,7 +339,7 @@ Partially update a bot by providing only the fields you want to update. Omitted 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bot_user_id** | **String** | Bot user ID | [required] |
-**inline_object110** | [**InlineObject110**](InlineObject110.md) |  | [required] |
+**create_bot_request** | [**CreateBotRequest**](CreateBotRequest.md) | Bot to be created | [required] |
 
 ### Return type
 

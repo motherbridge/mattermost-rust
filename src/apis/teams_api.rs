@@ -410,7 +410,7 @@ pub enum UpdateTeamSchemeError {
 
 
 /// Add user to the team by user_id. ##### Permissions Must be authenticated and team be open to add self. For adding another user, authenticated user must have the `add_user_to_team` permission. 
-pub async fn add_team_member(configuration: &configuration::Configuration, team_id: &str, inline_object37: crate::models::InlineObject37) -> Result<crate::models::TeamMember, Error<AddTeamMemberError>> {
+pub async fn add_team_member(configuration: &configuration::Configuration, team_id: &str, add_team_member_request: crate::models::AddTeamMemberRequest) -> Result<crate::models::TeamMember, Error<AddTeamMemberError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -424,7 +424,7 @@ pub async fn add_team_member(configuration: &configuration::Configuration, team_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object37);
+    local_var_req_builder = local_var_req_builder.json(&add_team_member_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -509,7 +509,7 @@ pub async fn add_team_members(configuration: &configuration::Configuration, team
 }
 
 /// Create a new team on the system. ##### Permissions Must be authenticated and have the `create_team` permission. 
-pub async fn create_team(configuration: &configuration::Configuration, inline_object32: crate::models::InlineObject32) -> Result<crate::models::Team, Error<CreateTeamError>> {
+pub async fn create_team(configuration: &configuration::Configuration, create_team_request: crate::models::CreateTeamRequest) -> Result<crate::models::Team, Error<CreateTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -523,7 +523,7 @@ pub async fn create_team(configuration: &configuration::Configuration, inline_ob
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object32);
+    local_var_req_builder = local_var_req_builder.json(&create_team_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -541,7 +541,7 @@ pub async fn create_team(configuration: &configuration::Configuration, inline_ob
 }
 
 /// For regular users only returns open teams. Users with the \"manage_system\" permission will return teams regardless of type. The result is based on query string parameters - page and per_page. ##### Permissions Must be authenticated. \"manage_system\" permission is required to show all teams. 
-pub async fn get_all_teams(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::Team>, Error<GetAllTeamsError>> {
+pub async fn get_all_teams(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::Team>, Error<GetAllTeamsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -677,7 +677,7 @@ pub async fn get_team_icon(configuration: &configuration::Configuration, team_id
 }
 
 /// Get the `name`, `display_name`, `description` and `id` for a team from the invite id.  __Minimum server version__: 4.0  ##### Permissions No authentication required. 
-pub async fn get_team_invite_info(configuration: &configuration::Configuration, invite_id: &str) -> Result<crate::models::InlineResponse2006, Error<GetTeamInviteInfoError>> {
+pub async fn get_team_invite_info(configuration: &configuration::Configuration, invite_id: &str) -> Result<crate::models::GetTeamInviteInfo200Response, Error<GetTeamInviteInfoError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -739,7 +739,7 @@ pub async fn get_team_member(configuration: &configuration::Configuration, team_
 }
 
 /// Get a page team members list based on query string parameters - team id, page and per page. ##### Permissions Must be authenticated and have the `view_team` permission. 
-pub async fn get_team_members(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::TeamMember>, Error<GetTeamMembersError>> {
+pub async fn get_team_members(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::TeamMember>, Error<GetTeamMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -967,7 +967,7 @@ pub async fn get_teams_unread_for_user(configuration: &configuration::Configurat
 }
 
 /// Import a team into a existing team. Import users, channels, posts, hooks. ##### Permissions Must have `permission_import_team` permission. 
-pub async fn import_team(configuration: &configuration::Configuration, team_id: &str, file: std::path::PathBuf, filesize: i64, import_from: &str) -> Result<crate::models::InlineResponse2005, Error<ImportTeamError>> {
+pub async fn import_team(configuration: &configuration::Configuration, team_id: &str, file: std::path::PathBuf, filesize: i32, import_from: &str) -> Result<crate::models::ImportTeam200Response, Error<ImportTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1034,7 +1034,7 @@ pub async fn invalidate_email_invites(configuration: &configuration::Configurati
 }
 
 /// Invite guests to existing team channels usign the user's email.  The number of emails that can be sent is rate limited to 20 per hour with a burst of 20 emails. If the rate limit exceeds, the error message contains details on when to retry and when the timer will be reset.  __Minimum server version__: 5.16  ##### Permissions Must have `invite_guest` permission for the team. 
-pub async fn invite_guests_to_team(configuration: &configuration::Configuration, team_id: &str, inline_object41: crate::models::InlineObject41) -> Result<crate::models::StatusOk, Error<InviteGuestsToTeamError>> {
+pub async fn invite_guests_to_team(configuration: &configuration::Configuration, team_id: &str, invite_guests_to_team_request: crate::models::InviteGuestsToTeamRequest) -> Result<crate::models::StatusOk, Error<InviteGuestsToTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1048,7 +1048,7 @@ pub async fn invite_guests_to_team(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object41);
+    local_var_req_builder = local_var_req_builder.json(&invite_guests_to_team_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1098,7 +1098,7 @@ pub async fn invite_users_to_team(configuration: &configuration::Configuration, 
 }
 
 /// Partially update a team by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have the `manage_team` permission. 
-pub async fn patch_team(configuration: &configuration::Configuration, team_id: &str, inline_object34: crate::models::InlineObject34) -> Result<crate::models::Team, Error<PatchTeamError>> {
+pub async fn patch_team(configuration: &configuration::Configuration, team_id: &str, patch_team_request: crate::models::PatchTeamRequest) -> Result<crate::models::Team, Error<PatchTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1112,7 +1112,7 @@ pub async fn patch_team(configuration: &configuration::Configuration, team_id: &
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object34);
+    local_var_req_builder = local_var_req_builder.json(&patch_team_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1254,7 +1254,7 @@ pub async fn restore_team(configuration: &configuration::Configuration, team_id:
 }
 
 /// Search for files in a team based on file name, extention and file content (if file content extraction is enabled and supported for the files). __Minimum server version__: 5.34 ##### Permissions Must be authenticated and have the `view_team` permission. 
-pub async fn search_files(configuration: &configuration::Configuration, team_id: &str, terms: &str, is_or_search: bool, time_zone_offset: Option<i64>, include_deleted_channels: Option<bool>, page: Option<i64>, per_page: Option<i64>) -> Result<crate::models::FileInfoList, Error<SearchFilesError>> {
+pub async fn search_files(configuration: &configuration::Configuration, team_id: &str, terms: &str, is_or_search: bool, time_zone_offset: Option<i32>, include_deleted_channels: Option<bool>, page: Option<i32>, per_page: Option<i32>) -> Result<crate::models::FileInfoList, Error<SearchFilesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1301,7 +1301,7 @@ pub async fn search_files(configuration: &configuration::Configuration, team_id:
 }
 
 /// Search teams based on search term and options provided in the request body.  ##### Permissions Logged in user only shows open teams Logged in user with \"manage_system\" permission shows all teams 
-pub async fn search_teams(configuration: &configuration::Configuration, inline_object36: crate::models::InlineObject36) -> Result<crate::models::InlineResponse2004, Error<SearchTeamsError>> {
+pub async fn search_teams(configuration: &configuration::Configuration, search_teams_request: crate::models::SearchTeamsRequest) -> Result<crate::models::SearchTeams200Response, Error<SearchTeamsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1315,7 +1315,7 @@ pub async fn search_teams(configuration: &configuration::Configuration, inline_o
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object36);
+    local_var_req_builder = local_var_req_builder.json(&search_teams_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1432,7 +1432,7 @@ pub async fn team_exists(configuration: &configuration::Configuration, name: &st
 }
 
 /// Get the set of users who are members of the team minus the set of users who are members of the given groups. Each user object contains an array of group objects representing the group memberships for that user. Each user object contains the boolean fields `scheme_guest`, `scheme_user`, and `scheme_admin` representing the roles that user has for the given team.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.14 
-pub async fn team_members_minus_group_members(configuration: &configuration::Configuration, team_id: &str, group_ids: &str, page: Option<i64>, per_page: Option<i64>) -> Result<(), Error<TeamMembersMinusGroupMembersError>> {
+pub async fn team_members_minus_group_members(configuration: &configuration::Configuration, team_id: &str, group_ids: &str, page: Option<i32>, per_page: Option<i32>) -> Result<(), Error<TeamMembersMinusGroupMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1470,7 +1470,7 @@ pub async fn team_members_minus_group_members(configuration: &configuration::Con
 }
 
 /// Update a team by providing the team object. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have the `manage_team` permission. 
-pub async fn update_team(configuration: &configuration::Configuration, team_id: &str, inline_object33: crate::models::InlineObject33) -> Result<crate::models::Team, Error<UpdateTeamError>> {
+pub async fn update_team(configuration: &configuration::Configuration, team_id: &str, update_team_request: crate::models::UpdateTeamRequest) -> Result<crate::models::Team, Error<UpdateTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1484,7 +1484,7 @@ pub async fn update_team(configuration: &configuration::Configuration, team_id: 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object33);
+    local_var_req_builder = local_var_req_builder.json(&update_team_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1502,7 +1502,7 @@ pub async fn update_team(configuration: &configuration::Configuration, team_id: 
 }
 
 /// Update a team member roles. Valid team roles are \"team_user\", \"team_admin\" or both of them. Overwrites any previously assigned team roles. ##### Permissions Must be authenticated and have the `manage_team_roles` permission. 
-pub async fn update_team_member_roles(configuration: &configuration::Configuration, team_id: &str, user_id: &str, inline_object39: crate::models::InlineObject39) -> Result<crate::models::StatusOk, Error<UpdateTeamMemberRolesError>> {
+pub async fn update_team_member_roles(configuration: &configuration::Configuration, team_id: &str, user_id: &str, update_user_roles_request: crate::models::UpdateUserRolesRequest) -> Result<crate::models::StatusOk, Error<UpdateTeamMemberRolesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1516,7 +1516,7 @@ pub async fn update_team_member_roles(configuration: &configuration::Configurati
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object39);
+    local_var_req_builder = local_var_req_builder.json(&update_user_roles_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1534,7 +1534,7 @@ pub async fn update_team_member_roles(configuration: &configuration::Configurati
 }
 
 /// Update a team member's scheme_admin/scheme_user properties. Typically this should either be `scheme_admin=false, scheme_user=true` for ordinary team member, or `scheme_admin=true, scheme_user=true` for a team admin.  __Minimum server version__: 5.0  ##### Permissions Must be authenticated and have the `manage_team_roles` permission. 
-pub async fn update_team_member_scheme_roles(configuration: &configuration::Configuration, team_id: &str, user_id: &str, inline_object40: crate::models::InlineObject40) -> Result<crate::models::StatusOk, Error<UpdateTeamMemberSchemeRolesError>> {
+pub async fn update_team_member_scheme_roles(configuration: &configuration::Configuration, team_id: &str, user_id: &str, update_team_member_scheme_roles_request: crate::models::UpdateTeamMemberSchemeRolesRequest) -> Result<crate::models::StatusOk, Error<UpdateTeamMemberSchemeRolesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1548,7 +1548,7 @@ pub async fn update_team_member_scheme_roles(configuration: &configuration::Conf
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object40);
+    local_var_req_builder = local_var_req_builder.json(&update_team_member_scheme_roles_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1566,7 +1566,7 @@ pub async fn update_team_member_scheme_roles(configuration: &configuration::Conf
 }
 
 /// Updates team's privacy allowing changing a team from Public (open) to Private (invitation only) and back.  __Minimum server version__: 5.24  ##### Permissions `manage_team` permission for the team of the team. 
-pub async fn update_team_privacy(configuration: &configuration::Configuration, team_id: &str, inline_object35: crate::models::InlineObject35) -> Result<crate::models::Team, Error<UpdateTeamPrivacyError>> {
+pub async fn update_team_privacy(configuration: &configuration::Configuration, team_id: &str, update_team_privacy_request: crate::models::UpdateTeamPrivacyRequest) -> Result<crate::models::Team, Error<UpdateTeamPrivacyError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1580,7 +1580,7 @@ pub async fn update_team_privacy(configuration: &configuration::Configuration, t
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object35);
+    local_var_req_builder = local_var_req_builder.json(&update_team_privacy_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1598,7 +1598,7 @@ pub async fn update_team_privacy(configuration: &configuration::Configuration, t
 }
 
 /// Set a team's scheme, more specifically sets the scheme_id value of a team record.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.0 
-pub async fn update_team_scheme(configuration: &configuration::Configuration, team_id: &str, inline_object43: crate::models::InlineObject43) -> Result<crate::models::StatusOk, Error<UpdateTeamSchemeError>> {
+pub async fn update_team_scheme(configuration: &configuration::Configuration, team_id: &str, update_team_scheme_request: crate::models::UpdateTeamSchemeRequest) -> Result<crate::models::StatusOk, Error<UpdateTeamSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1612,7 +1612,7 @@ pub async fn update_team_scheme(configuration: &configuration::Configuration, te
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object43);
+    local_var_req_builder = local_var_req_builder.json(&update_team_scheme_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

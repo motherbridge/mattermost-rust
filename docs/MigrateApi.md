@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## migrate_auth_to_ldap
 
-> migrate_auth_to_ldap(inline_object26)
+> migrate_auth_to_ldap(migrate_auth_to_ldap_request)
 Migrate user accounts authentication type to LDAP.
 
 Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to LDAP. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
@@ -21,7 +21,7 @@ Migrates accounts from one authentication provider to another. For example, you 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object26** | Option<[**InlineObject26**](InlineObject26.md)> |  |  |
+**migrate_auth_to_ldap_request** | Option<[**MigrateAuthToLdapRequest**](MigrateAuthToLdapRequest.md)> |  |  |
 
 ### Return type
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## migrate_auth_to_saml
 
-> migrate_auth_to_saml(inline_object27)
+> migrate_auth_to_saml(migrate_auth_to_saml_request)
 Migrate user accounts authentication type to SAML.
 
 Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to SAML. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
@@ -51,7 +51,7 @@ Migrates accounts from one authentication provider to another. For example, you 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object27** | Option<[**InlineObject27**](InlineObject27.md)> |  |  |
+**migrate_auth_to_saml_request** | Option<[**MigrateAuthToSamlRequest**](MigrateAuthToSamlRequest.md)> |  |  |
 
 ### Return type
 

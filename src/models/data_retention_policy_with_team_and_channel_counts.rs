@@ -18,16 +18,16 @@ pub struct DataRetentionPolicyWithTeamAndChannelCounts {
     pub display_name: Option<String>,
     /// The number of days a message will be retained before being deleted by this policy. If this value is less than 0, the policy has infinite retention (i.e. messages are never deleted). 
     #[serde(rename = "post_duration", skip_serializing_if = "Option::is_none")]
-    pub post_duration: Option<i64>,
+    pub post_duration: Option<i32>,
     /// The ID of this retention policy.
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     /// The number of teams to which this policy is applied.
     #[serde(rename = "team_count", skip_serializing_if = "Option::is_none")]
-    pub team_count: Option<i64>,
+    pub team_count: Option<i32>,
     /// The number of channels to which this policy is applied.
     #[serde(rename = "channel_count", skip_serializing_if = "Option::is_none")]
-    pub channel_count: Option<i64>,
+    pub channel_count: Option<i32>,
 }
 
 impl DataRetentionPolicyWithTeamAndChannelCounts {

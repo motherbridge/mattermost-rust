@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **channel_id** | Option<**String**> |  | [optional]
 **root_id** | Option<**String**> |  | [optional]
 **channel_name** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **sender_id** | Option<**String**> |  | [optional]
 **sender_name** | Option<**String**> |  | [optional]
 **override_username** | Option<**String**> |  | [optional]

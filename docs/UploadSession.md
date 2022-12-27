@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> | The unique identifier for the upload. | [optional]
-**_type** | Option<**String**> | The type of the upload. | [optional]
+**r#type** | Option<**String**> | The type of the upload. | [optional]
 **create_at** | Option<**i64**> | The time the upload was created in milliseconds. | [optional]
 **user_id** | Option<**String**> | The ID of the user performing the upload. | [optional]
 **channel_id** | Option<**String**> | The ID of the channel to upload to. | [optional]

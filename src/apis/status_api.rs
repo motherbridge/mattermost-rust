@@ -143,7 +143,7 @@ pub async fn get_users_statuses_by_ids(configuration: &configuration::Configurat
 }
 
 /// Deletes a user's recent custom status by removing the specific status from the recentCustomStatuses in the user's props and updates the user. ##### Permissions Must be logged in as the user whose recent custom status is being deleted. 
-pub async fn post_user_recent_custom_status_delete(configuration: &configuration::Configuration, user_id: &str, inline_object31: crate::models::InlineObject31) -> Result<(), Error<PostUserRecentCustomStatusDeleteError>> {
+pub async fn post_user_recent_custom_status_delete(configuration: &configuration::Configuration, user_id: &str, remove_recent_custom_status_request: crate::models::RemoveRecentCustomStatusRequest) -> Result<(), Error<PostUserRecentCustomStatusDeleteError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -157,7 +157,7 @@ pub async fn post_user_recent_custom_status_delete(configuration: &configuration
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object31);
+    local_var_req_builder = local_var_req_builder.json(&remove_recent_custom_status_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -175,7 +175,7 @@ pub async fn post_user_recent_custom_status_delete(configuration: &configuration
 }
 
 /// Deletes a user's recent custom status by removing the specific status from the recentCustomStatuses in the user's props and updates the user. ##### Permissions Must be logged in as the user whose recent custom status is being deleted. 
-pub async fn remove_recent_custom_status(configuration: &configuration::Configuration, user_id: &str, inline_object30: crate::models::InlineObject30) -> Result<(), Error<RemoveRecentCustomStatusError>> {
+pub async fn remove_recent_custom_status(configuration: &configuration::Configuration, user_id: &str, remove_recent_custom_status_request: crate::models::RemoveRecentCustomStatusRequest) -> Result<(), Error<RemoveRecentCustomStatusError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -189,7 +189,7 @@ pub async fn remove_recent_custom_status(configuration: &configuration::Configur
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object30);
+    local_var_req_builder = local_var_req_builder.json(&remove_recent_custom_status_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -238,7 +238,7 @@ pub async fn unset_user_custom_status(configuration: &configuration::Configurati
 }
 
 /// Updates a user's custom status by setting the value in the user's props and updates the user. Also save the given custom status to the recent custom statuses in the user's props ##### Permissions Must be logged in as the user whose custom status is being updated. 
-pub async fn update_user_custom_status(configuration: &configuration::Configuration, user_id: &str, inline_object29: crate::models::InlineObject29) -> Result<(), Error<UpdateUserCustomStatusError>> {
+pub async fn update_user_custom_status(configuration: &configuration::Configuration, user_id: &str, update_user_custom_status_request: crate::models::UpdateUserCustomStatusRequest) -> Result<(), Error<UpdateUserCustomStatusError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -252,7 +252,7 @@ pub async fn update_user_custom_status(configuration: &configuration::Configurat
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object29);
+    local_var_req_builder = local_var_req_builder.json(&update_user_custom_status_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -270,7 +270,7 @@ pub async fn update_user_custom_status(configuration: &configuration::Configurat
 }
 
 /// Manually set a user's status. When setting a user's status, the status will remain that value until set \"online\" again, which will return the status to being automatically updated based on user activity. ##### Permissions Must have `edit_other_users` permission for the team. 
-pub async fn update_user_status(configuration: &configuration::Configuration, user_id: &str, inline_object28: crate::models::InlineObject28) -> Result<crate::models::Status, Error<UpdateUserStatusError>> {
+pub async fn update_user_status(configuration: &configuration::Configuration, user_id: &str, update_user_status_request: crate::models::UpdateUserStatusRequest) -> Result<crate::models::Status, Error<UpdateUserStatusError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -284,7 +284,7 @@ pub async fn update_user_status(configuration: &configuration::Configuration, us
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object28);
+    local_var_req_builder = local_var_req_builder.json(&update_user_status_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

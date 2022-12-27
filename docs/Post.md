@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **root_id** | Option<**String**> |  | [optional]
 **original_id** | Option<**String**> |  | [optional]
 **message** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **props** | Option<[**serde_json::Value**](.md)> |  | [optional]
 **hashtag** | Option<**String**> |  | [optional]
 **file_ids** | Option<**Vec<String>**> |  | [optional]

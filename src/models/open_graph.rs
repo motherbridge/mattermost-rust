@@ -15,7 +15,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct OpenGraph {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
@@ -48,7 +48,7 @@ impl OpenGraph {
     /// OpenGraph metadata of a webpage
     pub fn new() -> OpenGraph {
         OpenGraph {
-            _type: None,
+            r#type: None,
             url: None,
             title: None,
             description: None,

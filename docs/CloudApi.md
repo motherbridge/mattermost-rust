@@ -269,7 +269,7 @@ This endpoint does not need any parameter.
 
 ## update_cloud_customer
 
-> crate::models::CloudCustomer update_cloud_customer(inline_object114)
+> crate::models::CloudCustomer update_cloud_customer(update_cloud_customer_request)
 Update cloud customer
 
 Updates the customer information for the Mattermost Cloud customer bound to this installation. ##### Permissions Must have `manage_system` permission and be licensed for Cloud. __Minimum server version__: 5.29 __Note:__ This is intended for internal use and is subject to change. 
@@ -279,7 +279,7 @@ Updates the customer information for the Mattermost Cloud customer bound to this
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object114** | [**InlineObject114**](InlineObject114.md) |  | [required] |
+**update_cloud_customer_request** | [**UpdateCloudCustomerRequest**](UpdateCloudCustomerRequest.md) | Customer patch including information to update | [required] |
 
 ### Return type
 

@@ -18,7 +18,7 @@ pub struct Job {
     pub id: Option<String>,
     /// The type of job
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     /// The time at which the job was created
     #[serde(rename = "create_at", skip_serializing_if = "Option::is_none")]
     pub create_at: Option<i64>,
@@ -33,7 +33,7 @@ pub struct Job {
     pub status: Option<String>,
     /// The progress (as a percentage) of the job
     #[serde(rename = "progress", skip_serializing_if = "Option::is_none")]
-    pub progress: Option<i64>,
+    pub progress: Option<i32>,
     /// A freeform data field containing additional information about the job
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
     pub data: Option<serde_json::Value>,
@@ -43,7 +43,7 @@ impl Job {
     pub fn new() -> Job {
         Job {
             id: None,
-            _type: None,
+            r#type: None,
             create_at: None,
             start_at: None,
             last_activity_at: None,

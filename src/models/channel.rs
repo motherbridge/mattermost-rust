@@ -27,7 +27,7 @@ pub struct Channel {
     #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
     pub team_id: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
@@ -38,9 +38,9 @@ pub struct Channel {
     pub purpose: Option<String>,
     /// The time in milliseconds of the last post of a channel
     #[serde(rename = "last_post_at", skip_serializing_if = "Option::is_none")]
-    pub last_post_at: Option<i64>,
+    pub last_post_at: Option<i32>,
     #[serde(rename = "total_msg_count", skip_serializing_if = "Option::is_none")]
-    pub total_msg_count: Option<i64>,
+    pub total_msg_count: Option<i32>,
     /// Deprecated in Mattermost 5.0 release
     #[serde(rename = "extra_update_at", skip_serializing_if = "Option::is_none")]
     pub extra_update_at: Option<i64>,
@@ -56,7 +56,7 @@ impl Channel {
             update_at: None,
             delete_at: None,
             team_id: None,
-            _type: None,
+            r#type: None,
             display_name: None,
             name: None,
             header: None,

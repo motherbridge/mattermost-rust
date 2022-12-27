@@ -29,7 +29,7 @@ pub struct NewTeamMember {
     pub position: Option<String>,
     /// The creation timestamp of the team member record.
     #[serde(rename = "create_at", skip_serializing_if = "Option::is_none")]
-    pub create_at: Option<i64>,
+    pub create_at: Option<i32>,
 }
 
 impl NewTeamMember {

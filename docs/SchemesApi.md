@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## create_scheme
 
-> crate::models::Scheme create_scheme(inline_object104)
+> crate::models::Scheme create_scheme(create_scheme_request)
 Create a scheme
 
 Create a new scheme.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.0 
@@ -26,7 +26,7 @@ Create a new scheme.  ##### Permissions Must have `manage_system` permission.  _
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object104** | [**InlineObject104**](InlineObject104.md) |  | [required] |
+**create_scheme_request** | [**CreateSchemeRequest**](CreateSchemeRequest.md) | Scheme object to create | [required] |
 
 ### Return type
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_scheme
 
-> crate::models::Scheme patch_scheme(scheme_id, inline_object105)
+> crate::models::Scheme patch_scheme(scheme_id, patch_scheme_request)
 Patch a scheme
 
 Partially update a scheme by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions `manage_system` permission is required.  __Minimum server version__: 5.0 
@@ -213,7 +213,7 @@ Partially update a scheme by providing only the fields you want to update. Omitt
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **scheme_id** | **String** | Scheme GUID | [required] |
-**inline_object105** | [**InlineObject105**](InlineObject105.md) |  | [required] |
+**patch_scheme_request** | [**PatchSchemeRequest**](PatchSchemeRequest.md) | Scheme object to be updated | [required] |
 
 ### Return type
 

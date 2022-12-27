@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **name** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
 **email** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **allowed_domains** | Option<**String**> |  | [optional]
 **invite_id** | Option<**String**> |  | [optional]
 **allow_open_invite** | Option<**bool**> |  | [optional]

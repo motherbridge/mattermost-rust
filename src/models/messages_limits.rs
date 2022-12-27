@@ -13,8 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MessagesLimits {
-    #[serde(rename = "history", skip_serializing_if = "Option::is_none")]
-    pub history: Option<i64>,
+    #[serde(rename = "history", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub history: Option<Option<i32>>,
 }
 
 impl MessagesLimits {

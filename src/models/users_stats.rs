@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct UsersStats {
     #[serde(rename = "total_users_count", skip_serializing_if = "Option::is_none")]
-    pub total_users_count: Option<i64>,
+    pub total_users_count: Option<i32>,
 }
 
 impl UsersStats {

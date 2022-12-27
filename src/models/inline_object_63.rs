@@ -15,11 +15,11 @@
 pub struct InlineObject63 {
     /// Target time for the reminder
     #[serde(rename = "target_time")]
-    pub target_time: i64,
+    pub target_time: i32,
 }
 
 impl InlineObject63 {
-    pub fn new(target_time: i64) -> InlineObject63 {
+    pub fn new(target_time: i32) -> InlineObject63 {
         InlineObject63 {
             target_time,
         }

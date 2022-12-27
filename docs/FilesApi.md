@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_file_link
 
-> crate::models::InlineResponse2009 get_file_link(file_id)
+> crate::models::GetFileLink200Response get_file_link(file_id)
 Get a public file link
 
 Gets a public link for a file that can be accessed without logging into Mattermost. ##### Permissions Must have `read_channel` permission or be uploader of the file. 
@@ -91,7 +91,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2009**](inline_response_200_9.md)
+[**crate::models::GetFileLink200Response**](GetFileLink_200_response.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Required | Notes
 
 ## upload_file
 
-> crate::models::InlineResponse201 upload_file(channel_id, filename, files, channel_id2, client_ids)
+> crate::models::UploadFile201Response upload_file(channel_id, filename, files, channel_id2, client_ids)
 Upload a file
 
 Uploads a file that can later be attached to a post.  This request can either be a multipart/form-data request with a channel_id, files and optional client_ids defined in the FormData, or it can be a request with the channel_id and filename defined as query parameters with the contents of a single file in the body of the request.  Only multipart/form-data requests are supported by server versions up to and including 4.7. Server versions 4.8 and higher support both types of requests.  ##### Permissions Must have `upload_file` permission. 
@@ -252,7 +252,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse201**](inline_response_201.md)
+[**crate::models::UploadFile201Response**](UploadFile_201_response.md)
 
 ### Authorization
 

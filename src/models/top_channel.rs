@@ -16,7 +16,7 @@ pub struct TopChannel {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
@@ -32,7 +32,7 @@ impl TopChannel {
     pub fn new() -> TopChannel {
         TopChannel {
             id: None,
-            _type: None,
+            r#type: None,
             display_name: None,
             name: None,
             team_id: None,

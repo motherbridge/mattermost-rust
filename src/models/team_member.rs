@@ -24,7 +24,7 @@ pub struct TeamMember {
     pub roles: Option<String>,
     /// The time in milliseconds that this team member was deleted.
     #[serde(rename = "delete_at", skip_serializing_if = "Option::is_none")]
-    pub delete_at: Option<i64>,
+    pub delete_at: Option<i32>,
     /// Whether this team member holds the default user role defined by the team's permissions scheme.
     #[serde(rename = "scheme_user", skip_serializing_if = "Option::is_none")]
     pub scheme_user: Option<bool>,

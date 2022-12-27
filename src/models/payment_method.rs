@@ -14,13 +14,13 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct PaymentMethod {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "last_four", skip_serializing_if = "Option::is_none")]
-    pub last_four: Option<i64>,
+    pub last_four: Option<i32>,
     #[serde(rename = "exp_month", skip_serializing_if = "Option::is_none")]
-    pub exp_month: Option<i64>,
+    pub exp_month: Option<i32>,
     #[serde(rename = "exp_year", skip_serializing_if = "Option::is_none")]
-    pub exp_year: Option<i64>,
+    pub exp_year: Option<i32>,
     #[serde(rename = "card_brand", skip_serializing_if = "Option::is_none")]
     pub card_brand: Option<String>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
@@ -30,7 +30,7 @@ pub struct PaymentMethod {
 impl PaymentMethod {
     pub fn new() -> PaymentMethod {
         PaymentMethod {
-            _type: None,
+            r#type: None,
             last_four: None,
             exp_month: None,
             exp_year: None,

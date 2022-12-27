@@ -20,9 +20,9 @@ pub struct ConfigSqlSettings {
     #[serde(rename = "DataSourceReplicas", skip_serializing_if = "Option::is_none")]
     pub data_source_replicas: Option<Vec<String>>,
     #[serde(rename = "MaxIdleConns", skip_serializing_if = "Option::is_none")]
-    pub max_idle_conns: Option<i64>,
+    pub max_idle_conns: Option<i32>,
     #[serde(rename = "MaxOpenConns", skip_serializing_if = "Option::is_none")]
-    pub max_open_conns: Option<i64>,
+    pub max_open_conns: Option<i32>,
     #[serde(rename = "Trace", skip_serializing_if = "Option::is_none")]
     pub trace: Option<bool>,
     #[serde(rename = "AtRestEncryptKey", skip_serializing_if = "Option::is_none")]

@@ -22,11 +22,11 @@ pub struct Compliance {
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     #[serde(rename = "count", skip_serializing_if = "Option::is_none")]
-    pub count: Option<i64>,
+    pub count: Option<i32>,
     #[serde(rename = "desc", skip_serializing_if = "Option::is_none")]
     pub desc: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "start_at", skip_serializing_if = "Option::is_none")]
     pub start_at: Option<i64>,
     #[serde(rename = "end_at", skip_serializing_if = "Option::is_none")]
@@ -46,7 +46,7 @@ impl Compliance {
             status: None,
             count: None,
             desc: None,
-            _type: None,
+            r#type: None,
             start_at: None,
             end_at: None,
             keywords: None,

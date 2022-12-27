@@ -39,7 +39,7 @@ pub enum MigrateAuthToSamlError {
 
 
 /// Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to LDAP. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
-pub async fn migrate_auth_to_ldap(configuration: &configuration::Configuration, inline_object26: Option<crate::models::InlineObject26>) -> Result<(), Error<MigrateAuthToLdapError>> {
+pub async fn migrate_auth_to_ldap(configuration: &configuration::Configuration, migrate_auth_to_ldap_request: Option<crate::models::MigrateAuthToLdapRequest>) -> Result<(), Error<MigrateAuthToLdapError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -53,7 +53,7 @@ pub async fn migrate_auth_to_ldap(configuration: &configuration::Configuration, 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object26);
+    local_var_req_builder = local_var_req_builder.json(&migrate_auth_to_ldap_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -71,7 +71,7 @@ pub async fn migrate_auth_to_ldap(configuration: &configuration::Configuration, 
 }
 
 /// Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to SAML. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
-pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, inline_object27: Option<crate::models::InlineObject27>) -> Result<(), Error<MigrateAuthToSamlError>> {
+pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, migrate_auth_to_saml_request: Option<crate::models::MigrateAuthToSamlRequest>) -> Result<(), Error<MigrateAuthToSamlError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -85,7 +85,7 @@ pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object27);
+    local_var_req_builder = local_var_req_builder.json(&migrate_auth_to_saml_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

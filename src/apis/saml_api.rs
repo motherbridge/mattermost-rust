@@ -280,7 +280,7 @@ pub async fn get_saml_metadata(configuration: &configuration::Configuration, ) -
 }
 
 /// Get SAML metadata from the Identity Provider. SAML must be configured properly. ##### Permissions No permission required. 
-pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configuration, inline_object79: Option<crate::models::InlineObject79>) -> Result<String, Error<GetSamlMetadataFromIdpError>> {
+pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configuration, get_saml_metadata_from_idp_request: Option<crate::models::GetSamlMetadataFromIdpRequest>) -> Result<String, Error<GetSamlMetadataFromIdpError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -294,7 +294,7 @@ pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configura
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object79);
+    local_var_req_builder = local_var_req_builder.json(&get_saml_metadata_from_idp_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -312,7 +312,7 @@ pub async fn get_saml_metadata_from_idp(configuration: &configuration::Configura
 }
 
 /// Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to SAML. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
-pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, inline_object27: Option<crate::models::InlineObject27>) -> Result<(), Error<MigrateAuthToSamlError>> {
+pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, migrate_auth_to_saml_request: Option<crate::models::MigrateAuthToSamlRequest>) -> Result<(), Error<MigrateAuthToSamlError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -326,7 +326,7 @@ pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object27);
+    local_var_req_builder = local_var_req_builder.json(&migrate_auth_to_saml_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -344,7 +344,7 @@ pub async fn migrate_auth_to_saml(configuration: &configuration::Configuration, 
 }
 
 /// Reset the AuthData field of SAML users to their email. This is meant to be used when the \"id\" attribute is set to an empty value (\"\") from a previously non-empty value. __Minimum server version__: 5.35 ##### Permissions Must have `manage_system` permission. 
-pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Configuration, inline_object83: Option<crate::models::InlineObject83>) -> Result<crate::models::InlineResponse20012, Error<ResetSamlAuthDataToEmailError>> {
+pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Configuration, reset_saml_auth_data_to_email_request: Option<crate::models::ResetSamlAuthDataToEmailRequest>) -> Result<crate::models::ResetSamlAuthDataToEmail200Response, Error<ResetSamlAuthDataToEmailError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -358,7 +358,7 @@ pub async fn reset_saml_auth_data_to_email(configuration: &configuration::Config
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object83);
+    local_var_req_builder = local_var_req_builder.json(&reset_saml_auth_data_to_email_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

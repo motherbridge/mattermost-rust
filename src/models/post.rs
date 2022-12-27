@@ -37,7 +37,7 @@ pub struct Post {
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "props", skip_serializing_if = "Option::is_none")]
     pub props: Option<serde_json::Value>,
     #[serde(rename = "hashtag", skip_serializing_if = "Option::is_none")]
@@ -63,7 +63,7 @@ impl Post {
             root_id: None,
             original_id: None,
             message: None,
-            _type: None,
+            r#type: None,
             props: None,
             hashtag: None,
             file_ids: None,

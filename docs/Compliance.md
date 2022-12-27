@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **status** | Option<**String**> |  | [optional]
 **count** | Option<**i32**> |  | [optional]
 **desc** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **start_at** | Option<**i64**> |  | [optional]
 **end_at** | Option<**i64**> |  | [optional]
 **keywords** | Option<**String**> |  | [optional]

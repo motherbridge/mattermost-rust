@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_user_recent_custom_status_delete
 
-> post_user_recent_custom_status_delete(user_id, inline_object31)
+> post_user_recent_custom_status_delete(user_id, remove_recent_custom_status_request)
 Delete user's recent custom status
 
 Deletes a user's recent custom status by removing the specific status from the recentCustomStatuses in the user's props and updates the user. ##### Permissions Must be logged in as the user whose recent custom status is being deleted. 
@@ -87,7 +87,7 @@ Deletes a user's recent custom status by removing the specific status from the r
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User ID | [required] |
-**inline_object31** | [**InlineObject31**](InlineObject31.md) |  | [required] |
+**remove_recent_custom_status_request** | [**RemoveRecentCustomStatusRequest**](RemoveRecentCustomStatusRequest.md) | Custom Status object that is to be removed from the recent custom statuses. | [required] |
 
 ### Return type
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 ## remove_recent_custom_status
 
-> remove_recent_custom_status(user_id, inline_object30)
+> remove_recent_custom_status(user_id, remove_recent_custom_status_request)
 Delete user's recent custom status
 
 Deletes a user's recent custom status by removing the specific status from the recentCustomStatuses in the user's props and updates the user. ##### Permissions Must be logged in as the user whose recent custom status is being deleted. 
@@ -118,7 +118,7 @@ Deletes a user's recent custom status by removing the specific status from the r
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User ID | [required] |
-**inline_object30** | [**InlineObject30**](InlineObject30.md) |  | [required] |
+**remove_recent_custom_status_request** | [**RemoveRecentCustomStatusRequest**](RemoveRecentCustomStatusRequest.md) | Custom Status object that is to be removed from the recent custom statuses. | [required] |
 
 ### Return type
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user_custom_status
 
-> update_user_custom_status(user_id, inline_object29)
+> update_user_custom_status(user_id, update_user_custom_status_request)
 Update user custom status
 
 Updates a user's custom status by setting the value in the user's props and updates the user. Also save the given custom status to the recent custom statuses in the user's props ##### Permissions Must be logged in as the user whose custom status is being updated. 
@@ -179,7 +179,7 @@ Updates a user's custom status by setting the value in the user's props and upda
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User ID | [required] |
-**inline_object29** | [**InlineObject29**](InlineObject29.md) |  | [required] |
+**update_user_custom_status_request** | [**UpdateUserCustomStatusRequest**](UpdateUserCustomStatusRequest.md) | Custom status object that is to be updated | [required] |
 
 ### Return type
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user_status
 
-> crate::models::Status update_user_status(user_id, inline_object28)
+> crate::models::Status update_user_status(user_id, update_user_status_request)
 Update user status
 
 Manually set a user's status. When setting a user's status, the status will remain that value until set \"online\" again, which will return the status to being automatically updated based on user activity. ##### Permissions Must have `edit_other_users` permission for the team. 
@@ -210,7 +210,7 @@ Manually set a user's status. When setting a user's status, the status will rema
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User ID | [required] |
-**inline_object28** | [**InlineObject28**](InlineObject28.md) |  | [required] |
+**update_user_status_request** | [**UpdateUserStatusRequest**](UpdateUserStatusRequest.md) | Status object that is to be updated | [required] |
 
 ### Return type
 

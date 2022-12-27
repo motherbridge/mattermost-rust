@@ -13,10 +13,10 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct BoardsLimits {
-    #[serde(rename = "cards", skip_serializing_if = "Option::is_none")]
-    pub cards: Option<i64>,
-    #[serde(rename = "views", skip_serializing_if = "Option::is_none")]
-    pub views: Option<i64>,
+    #[serde(rename = "cards", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub cards: Option<Option<i32>>,
+    #[serde(rename = "views", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub views: Option<Option<i32>>,
 }
 
 impl BoardsLimits {

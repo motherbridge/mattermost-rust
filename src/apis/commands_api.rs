@@ -122,7 +122,7 @@ pub enum UpdateCommandError {
 
 
 /// Create a command for a team. ##### Permissions `manage_slash_commands` for the team the command is in. 
-pub async fn create_command(configuration: &configuration::Configuration, inline_object94: crate::models::InlineObject94) -> Result<crate::models::Command, Error<CreateCommandError>> {
+pub async fn create_command(configuration: &configuration::Configuration, create_command_request: crate::models::CreateCommandRequest) -> Result<crate::models::Command, Error<CreateCommandError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -136,7 +136,7 @@ pub async fn create_command(configuration: &configuration::Configuration, inline
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object94);
+    local_var_req_builder = local_var_req_builder.json(&create_command_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -185,7 +185,7 @@ pub async fn delete_command(configuration: &configuration::Configuration, comman
 }
 
 /// Execute a command on a team. ##### Permissions Must have `use_slash_commands` permission for the team the command is in. 
-pub async fn execute_command(configuration: &configuration::Configuration, inline_object96: crate::models::InlineObject96) -> Result<crate::models::CommandResponse, Error<ExecuteCommandError>> {
+pub async fn execute_command(configuration: &configuration::Configuration, execute_command_request: crate::models::ExecuteCommandRequest) -> Result<crate::models::CommandResponse, Error<ExecuteCommandError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -199,7 +199,7 @@ pub async fn execute_command(configuration: &configuration::Configuration, inlin
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object96);
+    local_var_req_builder = local_var_req_builder.json(&execute_command_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -348,7 +348,7 @@ pub async fn list_commands(configuration: &configuration::Configuration, team_id
 }
 
 /// Move a command to a different team based on command id string. ##### Permissions Must have `manage_slash_commands` permission for the team the command is currently in and the destination team.  __Minimum server version__: 5.22 
-pub async fn move_command(configuration: &configuration::Configuration, command_id: &str, inline_object95: crate::models::InlineObject95) -> Result<crate::models::StatusOk, Error<MoveCommandError>> {
+pub async fn move_command(configuration: &configuration::Configuration, command_id: &str, move_command_request: crate::models::MoveCommandRequest) -> Result<crate::models::StatusOk, Error<MoveCommandError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -362,7 +362,7 @@ pub async fn move_command(configuration: &configuration::Configuration, command_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object95);
+    local_var_req_builder = local_var_req_builder.json(&move_command_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -380,7 +380,7 @@ pub async fn move_command(configuration: &configuration::Configuration, command_
 }
 
 /// Generate a new token for the command based on command id string. ##### Permissions Must have `manage_slash_commands` permission for the team the command is in. 
-pub async fn regen_command_token(configuration: &configuration::Configuration, command_id: &str) -> Result<crate::models::InlineResponse20015, Error<RegenCommandTokenError>> {
+pub async fn regen_command_token(configuration: &configuration::Configuration, command_id: &str) -> Result<crate::models::RegenCommandToken200Response, Error<RegenCommandTokenError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

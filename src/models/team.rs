@@ -33,7 +33,7 @@ pub struct Team {
     #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "allowed_domains", skip_serializing_if = "Option::is_none")]
     pub allowed_domains: Option<String>,
     #[serde(rename = "invite_id", skip_serializing_if = "Option::is_none")]
@@ -56,7 +56,7 @@ impl Team {
             name: None,
             description: None,
             email: None,
-            _type: None,
+            r#type: None,
             allowed_domains: None,
             invite_id: None,
             allow_open_invite: None,

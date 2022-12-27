@@ -561,7 +561,7 @@ pub enum ViewChannelError {
 
 
 /// Add a user to a channel by creating a channel member object.
-pub async fn add_channel_member(configuration: &configuration::Configuration, channel_id: &str, inline_object53: crate::models::InlineObject53) -> Result<crate::models::ChannelMember, Error<AddChannelMemberError>> {
+pub async fn add_channel_member(configuration: &configuration::Configuration, channel_id: &str, add_channel_member_request: crate::models::AddChannelMemberRequest) -> Result<crate::models::ChannelMember, Error<AddChannelMemberError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -575,7 +575,7 @@ pub async fn add_channel_member(configuration: &configuration::Configuration, ch
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object53);
+    local_var_req_builder = local_var_req_builder.json(&add_channel_member_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -657,7 +657,7 @@ pub async fn autocomplete_channels_for_team_for_search(configuration: &configura
 }
 
 /// Get the set of users who are members of the channel minus the set of users who are members of the given groups. Each user object contains an array of group objects representing the group memberships for that user. Each user object contains the boolean fields `scheme_guest`, `scheme_user`, and `scheme_admin` representing the roles that user has for the given channel.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.14 
-pub async fn channel_members_minus_group_members(configuration: &configuration::Configuration, channel_id: &str, group_ids: &str, page: Option<i64>, per_page: Option<i64>) -> Result<(), Error<ChannelMembersMinusGroupMembersError>> {
+pub async fn channel_members_minus_group_members(configuration: &configuration::Configuration, channel_id: &str, group_ids: &str, page: Option<i32>, per_page: Option<i32>) -> Result<(), Error<ChannelMembersMinusGroupMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -695,7 +695,7 @@ pub async fn channel_members_minus_group_members(configuration: &configuration::
 }
 
 /// Create a new channel. ##### Permissions If creating a public channel, `create_public_channel` permission is required. If creating a private channel, `create_private_channel` permission is required. 
-pub async fn create_channel(configuration: &configuration::Configuration, inline_object44: crate::models::InlineObject44) -> Result<crate::models::Channel, Error<CreateChannelError>> {
+pub async fn create_channel(configuration: &configuration::Configuration, create_channel_request: crate::models::CreateChannelRequest) -> Result<crate::models::Channel, Error<CreateChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -709,7 +709,7 @@ pub async fn create_channel(configuration: &configuration::Configuration, inline
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object44);
+    local_var_req_builder = local_var_req_builder.json(&create_channel_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -854,7 +854,7 @@ pub async fn delete_channel(configuration: &configuration::Configuration, channe
 }
 
 /// ##### Permissions `manage_system` 
-pub async fn get_all_channels(configuration: &configuration::Configuration, not_associated_to_group: Option<&str>, page: Option<i64>, per_page: Option<i64>, exclude_default_channels: Option<bool>, include_deleted: Option<bool>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::ChannelWithTeamData>, Error<GetAllChannelsError>> {
+pub async fn get_all_channels(configuration: &configuration::Configuration, not_associated_to_group: Option<&str>, page: Option<i32>, per_page: Option<i32>, exclude_default_channels: Option<bool>, include_deleted: Option<bool>, include_total_count: Option<bool>, exclude_policy_constrained: Option<bool>) -> Result<Vec<crate::models::ChannelWithTeamData>, Error<GetAllChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1070,7 +1070,7 @@ pub async fn get_channel_member_counts_by_group(configuration: &configuration::C
 }
 
 /// Get a page of members for a channel. ##### Permissions `read_channel` permission for the channel. 
-pub async fn get_channel_members(configuration: &configuration::Configuration, channel_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::ChannelMember>, Error<GetChannelMembersError>> {
+pub async fn get_channel_members(configuration: &configuration::Configuration, channel_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::ChannelMember>, Error<GetChannelMembersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1294,7 +1294,7 @@ pub async fn get_channel_unread(configuration: &configuration::Configuration, us
 }
 
 /// Get all the channels on a team for a user. ##### Permissions Logged in as the user, or have `edit_other_users` permission, and `view_team` permission for the team. 
-pub async fn get_channels_for_team_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: &str, include_deleted: Option<bool>, last_delete_at: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForTeamForUserError>> {
+pub async fn get_channels_for_team_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: &str, include_deleted: Option<bool>, last_delete_at: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForTeamForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1331,7 +1331,7 @@ pub async fn get_channels_for_team_for_user(configuration: &configuration::Confi
 }
 
 /// Get all channels from all teams that a user is a member of.  __Minimum server version__: 6.1  ##### Permissions  Logged in as the user, or have `edit_other_users` permission. 
-pub async fn get_channels_for_user(configuration: &configuration::Configuration, user_id: &str, last_delete_at: Option<i64>, include_deleted: Option<bool>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForUserError>> {
+pub async fn get_channels_for_user(configuration: &configuration::Configuration, user_id: &str, last_delete_at: Option<i32>, include_deleted: Option<bool>) -> Result<Vec<crate::models::Channel>, Error<GetChannelsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1368,7 +1368,7 @@ pub async fn get_channels_for_user(configuration: &configuration::Configuration,
 }
 
 /// Get a page of deleted channels on a team based on query string parameters - team_id, page and per_page.  __Minimum server version__: 3.10 
-pub async fn get_deleted_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetDeletedChannelsForTeamError>> {
+pub async fn get_deleted_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetDeletedChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1436,7 +1436,7 @@ pub async fn get_pinned_posts(configuration: &configuration::Configuration, chan
 }
 
 /// Get a page of private channels on a team based on query string parameters - team_id, page and per_page.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
-pub async fn get_private_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetPrivateChannelsForTeamError>> {
+pub async fn get_private_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetPrivateChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1505,7 +1505,7 @@ pub async fn get_public_channels_by_ids_for_team(configuration: &configuration::
 }
 
 /// Get a page of public channels on a team based on query string parameters - page and per_page. ##### Permissions Must be authenticated and have the `list_team_channels` permission. 
-pub async fn get_public_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Channel>, Error<GetPublicChannelsForTeamError>> {
+pub async fn get_public_channels_for_team(configuration: &configuration::Configuration, team_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Channel>, Error<GetPublicChannelsForTeamError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1635,7 +1635,7 @@ pub async fn get_sidebar_category_order_for_team_for_user(configuration: &config
 }
 
 /// Move a channel to another team.  __Minimum server version__: 5.26  ##### Permissions  Must have `manage_system` permission. 
-pub async fn move_channel(configuration: &configuration::Configuration, channel_id: &str, inline_object50: crate::models::InlineObject50) -> Result<crate::models::Channel, Error<MoveChannelError>> {
+pub async fn move_channel(configuration: &configuration::Configuration, channel_id: &str, move_channel_request: crate::models::MoveChannelRequest) -> Result<crate::models::Channel, Error<MoveChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1649,7 +1649,7 @@ pub async fn move_channel(configuration: &configuration::Configuration, channel_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object50);
+    local_var_req_builder = local_var_req_builder.json(&move_channel_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1667,7 +1667,7 @@ pub async fn move_channel(configuration: &configuration::Configuration, channel_
 }
 
 /// Partially update a channel by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions If updating a public channel, `manage_public_channel_members` permission is required. If updating a private channel, `manage_private_channel_members` permission is required. 
-pub async fn patch_channel(configuration: &configuration::Configuration, channel_id: &str, inline_object48: crate::models::InlineObject48) -> Result<crate::models::Channel, Error<PatchChannelError>> {
+pub async fn patch_channel(configuration: &configuration::Configuration, channel_id: &str, patch_channel_request: crate::models::PatchChannelRequest) -> Result<crate::models::Channel, Error<PatchChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1681,7 +1681,7 @@ pub async fn patch_channel(configuration: &configuration::Configuration, channel
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object48);
+    local_var_req_builder = local_var_req_builder.json(&patch_channel_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1824,7 +1824,7 @@ pub async fn restore_channel(configuration: &configuration::Configuration, chann
 }
 
 /// Returns all private and open type channels where 'term' matches on the name, display name, or purpose of the channel.  Configured 'default' channels (ex Town Square and Off-Topic) can be excluded from the results with the `exclude_default_channels` boolean parameter.  Channels that are associated (via GroupChannel records) to a given group can be excluded from the results with the `not_associated_to_group` parameter and a group id string. 
-pub async fn search_all_channels(configuration: &configuration::Configuration, inline_object45: crate::models::InlineObject45, system_console: Option<bool>) -> Result<crate::models::InlineResponse2007, Error<SearchAllChannelsError>> {
+pub async fn search_all_channels(configuration: &configuration::Configuration, search_all_channels_request: crate::models::SearchAllChannelsRequest, system_console: Option<bool>) -> Result<crate::models::SearchAllChannels200Response, Error<SearchAllChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1841,7 +1841,7 @@ pub async fn search_all_channels(configuration: &configuration::Configuration, i
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object45);
+    local_var_req_builder = local_var_req_builder.json(&search_all_channels_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1859,7 +1859,7 @@ pub async fn search_all_channels(configuration: &configuration::Configuration, i
 }
 
 /// Search archived channels on a team based on the search term provided in the request body.  __Minimum server version__: 5.18  ##### Permissions Must have the `list_team_channels` permission.  In server version 5.18 and later, a user without the `list_team_channels` permission will be able to use this endpoint, with the search results limited to the channels that the user is a member of. 
-pub async fn search_archived_channels(configuration: &configuration::Configuration, team_id: &str, inline_object52: crate::models::InlineObject52) -> Result<Vec<crate::models::Channel>, Error<SearchArchivedChannelsError>> {
+pub async fn search_archived_channels(configuration: &configuration::Configuration, team_id: &str, search_archived_channels_request: crate::models::SearchArchivedChannelsRequest) -> Result<Vec<crate::models::Channel>, Error<SearchArchivedChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1873,7 +1873,7 @@ pub async fn search_archived_channels(configuration: &configuration::Configurati
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object52);
+    local_var_req_builder = local_var_req_builder.json(&search_archived_channels_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1891,7 +1891,7 @@ pub async fn search_archived_channels(configuration: &configuration::Configurati
 }
 
 /// Search public channels on a team based on the search term provided in the request body. ##### Permissions Must have the `list_team_channels` permission.  In server version 5.16 and later, a user without the `list_team_channels` permission will be able to use this endpoint, with the search results limited to the channels that the user is a member of. 
-pub async fn search_channels(configuration: &configuration::Configuration, team_id: &str, inline_object51: crate::models::InlineObject51) -> Result<Vec<crate::models::Channel>, Error<SearchChannelsError>> {
+pub async fn search_channels(configuration: &configuration::Configuration, team_id: &str, search_channels_request: crate::models::SearchChannelsRequest) -> Result<Vec<crate::models::Channel>, Error<SearchChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1905,7 +1905,7 @@ pub async fn search_channels(configuration: &configuration::Configuration, team_
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object51);
+    local_var_req_builder = local_var_req_builder.json(&search_channels_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1923,7 +1923,7 @@ pub async fn search_channels(configuration: &configuration::Configuration, team_
 }
 
 /// Get a list of group channels for a user which members' usernames match the search term.  __Minimum server version__: 5.14 
-pub async fn search_group_channels(configuration: &configuration::Configuration, inline_object46: crate::models::InlineObject46) -> Result<Vec<crate::models::Channel>, Error<SearchGroupChannelsError>> {
+pub async fn search_group_channels(configuration: &configuration::Configuration, search_group_channels_request: crate::models::SearchGroupChannelsRequest) -> Result<Vec<crate::models::Channel>, Error<SearchGroupChannelsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1937,7 +1937,7 @@ pub async fn search_group_channels(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object46);
+    local_var_req_builder = local_var_req_builder.json(&search_group_channels_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1955,7 +1955,7 @@ pub async fn search_group_channels(configuration: &configuration::Configuration,
 }
 
 /// Update a channel. The fields that can be updated are listed as parameters. Omitted fields will be treated as blanks. ##### Permissions If updating a public channel, `manage_public_channel_members` permission is required. If updating a private channel, `manage_private_channel_members` permission is required. 
-pub async fn update_channel(configuration: &configuration::Configuration, channel_id: &str, inline_object47: crate::models::InlineObject47) -> Result<crate::models::Channel, Error<UpdateChannelError>> {
+pub async fn update_channel(configuration: &configuration::Configuration, channel_id: &str, update_channel_request: crate::models::UpdateChannelRequest) -> Result<crate::models::Channel, Error<UpdateChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -1969,7 +1969,7 @@ pub async fn update_channel(configuration: &configuration::Configuration, channe
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object47);
+    local_var_req_builder = local_var_req_builder.json(&update_channel_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -1987,7 +1987,7 @@ pub async fn update_channel(configuration: &configuration::Configuration, channe
 }
 
 /// Update a channel member's scheme_admin/scheme_user properties. Typically this should either be `scheme_admin=false, scheme_user=true` for ordinary channel member, or `scheme_admin=true, scheme_user=true` for a channel admin. __Minimum server version__: 5.0 ##### Permissions Must be authenticated and have the `manage_channel_roles` permission. 
-pub async fn update_channel_member_scheme_roles(configuration: &configuration::Configuration, channel_id: &str, user_id: &str, inline_object55: crate::models::InlineObject55) -> Result<crate::models::StatusOk, Error<UpdateChannelMemberSchemeRolesError>> {
+pub async fn update_channel_member_scheme_roles(configuration: &configuration::Configuration, channel_id: &str, user_id: &str, update_team_member_scheme_roles_request: crate::models::UpdateTeamMemberSchemeRolesRequest) -> Result<crate::models::StatusOk, Error<UpdateChannelMemberSchemeRolesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2001,7 +2001,7 @@ pub async fn update_channel_member_scheme_roles(configuration: &configuration::C
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object55);
+    local_var_req_builder = local_var_req_builder.json(&update_team_member_scheme_roles_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -2051,7 +2051,7 @@ pub async fn update_channel_notify_props(configuration: &configuration::Configur
 }
 
 /// Updates channel's privacy allowing changing a channel from Public to Private and back.  __Minimum server version__: 5.16  ##### Permissions `manage_team` permission for the channels team on version < 5.28. `convert_public_channel_to_private` permission for the channel if updating privacy to 'P' on version >= 5.28. `convert_private_channel_to_public` permission for the channel if updating privacy to 'O' on version >= 5.28. 
-pub async fn update_channel_privacy(configuration: &configuration::Configuration, channel_id: &str, inline_object49: crate::models::InlineObject49) -> Result<crate::models::Channel, Error<UpdateChannelPrivacyError>> {
+pub async fn update_channel_privacy(configuration: &configuration::Configuration, channel_id: &str, update_channel_privacy_request: crate::models::UpdateChannelPrivacyRequest) -> Result<crate::models::Channel, Error<UpdateChannelPrivacyError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2065,7 +2065,7 @@ pub async fn update_channel_privacy(configuration: &configuration::Configuration
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object49);
+    local_var_req_builder = local_var_req_builder.json(&update_channel_privacy_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -2083,7 +2083,7 @@ pub async fn update_channel_privacy(configuration: &configuration::Configuration
 }
 
 /// Update a user's roles for a channel. ##### Permissions Must have `manage_channel_roles` permission for the channel. 
-pub async fn update_channel_roles(configuration: &configuration::Configuration, channel_id: &str, user_id: &str, inline_object54: crate::models::InlineObject54) -> Result<crate::models::StatusOk, Error<UpdateChannelRolesError>> {
+pub async fn update_channel_roles(configuration: &configuration::Configuration, channel_id: &str, user_id: &str, update_user_roles_request: crate::models::UpdateUserRolesRequest) -> Result<crate::models::StatusOk, Error<UpdateChannelRolesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2097,7 +2097,7 @@ pub async fn update_channel_roles(configuration: &configuration::Configuration, 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object54);
+    local_var_req_builder = local_var_req_builder.json(&update_user_roles_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -2115,7 +2115,7 @@ pub async fn update_channel_roles(configuration: &configuration::Configuration, 
 }
 
 /// Set a channel's scheme, more specifically sets the scheme_id value of a channel record.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 4.10 
-pub async fn update_channel_scheme(configuration: &configuration::Configuration, channel_id: &str, inline_object57: crate::models::InlineObject57) -> Result<crate::models::StatusOk, Error<UpdateChannelSchemeError>> {
+pub async fn update_channel_scheme(configuration: &configuration::Configuration, channel_id: &str, update_team_scheme_request: crate::models::UpdateTeamSchemeRequest) -> Result<crate::models::StatusOk, Error<UpdateChannelSchemeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2129,7 +2129,7 @@ pub async fn update_channel_scheme(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object57);
+    local_var_req_builder = local_var_req_builder.json(&update_team_scheme_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -2243,7 +2243,7 @@ pub async fn update_sidebar_category_order_for_team_for_user(configuration: &con
 }
 
 /// Perform all the actions involved in viewing a channel. This includes marking channels as read, clearing push notifications, and updating the active channel. ##### Permissions Must be logged in as user or have `edit_other_users` permission.  __Response only includes `last_viewed_at_times` in Mattermost server 4.3 and newer.__ 
-pub async fn view_channel(configuration: &configuration::Configuration, user_id: &str, inline_object56: crate::models::InlineObject56) -> Result<crate::models::InlineResponse2008, Error<ViewChannelError>> {
+pub async fn view_channel(configuration: &configuration::Configuration, user_id: &str, view_channel_request: crate::models::ViewChannelRequest) -> Result<crate::models::ViewChannel200Response, Error<ViewChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2257,7 +2257,7 @@ pub async fn view_channel(configuration: &configuration::Configuration, user_id:
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object56);
+    local_var_req_builder = local_var_req_builder.json(&view_channel_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

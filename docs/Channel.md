@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **update_at** | Option<**i64**> | The time in milliseconds a channel was last updated | [optional]
 **delete_at** | Option<**i64**> | The time in milliseconds a channel was deleted | [optional]
 **team_id** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **display_name** | Option<**String**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **header** | Option<**String**> |  | [optional]

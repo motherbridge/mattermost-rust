@@ -71,7 +71,7 @@ Method | HTTP request | Description
 
 ## attach_device_id
 
-> crate::models::StatusOk attach_device_id(inline_object15)
+> crate::models::StatusOk attach_device_id(attach_device_id_request)
 Attach mobile device
 
 Attach a mobile device id to the currently logged in session. This will enable push notifications for a user, if configured by the server. ##### Permissions Must be authenticated. 
@@ -81,7 +81,7 @@ Attach a mobile device id to the currently logged in session. This will enable p
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object15** | [**InlineObject15**](InlineObject15.md) |  | [required] |
+**attach_device_id_request** | [**AttachDeviceIdRequest**](AttachDeviceIdRequest.md) |  | [required] |
 
 ### Return type
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Required | Notes
 
 ## check_user_mfa
 
-> crate::models::InlineResponse2002 check_user_mfa(inline_object11)
+> crate::models::CheckUserMfa200Response check_user_mfa(check_user_mfa_request)
 Check MFA
 
 Check if a user has multi-factor authentication active on their account by providing a login id. Used to check whether an MFA code needs to be provided when logging in. ##### Permissions No permission required. 
@@ -144,11 +144,11 @@ Check if a user has multi-factor authentication active on their account by provi
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object11** | [**InlineObject11**](InlineObject11.md) |  | [required] |
+**check_user_mfa_request** | [**CheckUserMfaRequest**](CheckUserMfaRequest.md) |  | [required] |
 
 ### Return type
 
-[**crate::models::InlineResponse2002**](inline_response_200_2.md)
+[**crate::models::CheckUserMfa200Response**](CheckUserMfa_200_response.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Required | Notes
 
 ## convert_bot_to_user
 
-> crate::models::StatusOk convert_bot_to_user(bot_user_id, inline_object112, set_system_admin)
+> crate::models::StatusOk convert_bot_to_user(bot_user_id, convert_bot_to_user_request, set_system_admin)
 Convert a bot into a user
 
 Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions Must have `manage_system` permission. 
@@ -175,7 +175,7 @@ Convert a bot into a user.  __Minimum server version__: 5.26  ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bot_user_id** | **String** | Bot user ID | [required] |
-**inline_object112** | [**InlineObject112**](InlineObject112.md) |  | [required] |
+**convert_bot_to_user_request** | [**ConvertBotToUserRequest**](ConvertBotToUserRequest.md) | Data to be used in the user creation | [required] |
 **set_system_admin** | Option<**bool**> | Whether to give the user the system admin role. |  |[default to false]
 
 ### Return type
@@ -226,7 +226,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_user
 
-> crate::models::User create_user(inline_object2, t, iid)
+> crate::models::User create_user(create_user_request, t, iid)
 Create a user
 
 Create a new user on the system. Password is required for email login. For other authentication types such as LDAP or SAML, auth_data and auth_service fields are required. ##### Permissions No permission required for creating email/username accounts on an open server. Auth Token is required for other authentication types such as LDAP or SAML. 
@@ -236,7 +236,7 @@ Create a new user on the system. Password is required for email login. For other
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object2** | [**InlineObject2**](InlineObject2.md) |  | [required] |
+**create_user_request** | [**CreateUserRequest**](CreateUserRequest.md) | User object to be created | [required] |
 **t** | Option<**String**> | Token id from an email invitation |  |
 **iid** | Option<**String**> | Token id from an invitation link |  |
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_user_access_token
 
-> crate::models::UserAccessToken create_user_access_token(user_id, inline_object19)
+> crate::models::UserAccessToken create_user_access_token(user_id, create_user_access_token_request)
 Create a user access token
 
 Generate a user access token that can be used to authenticate with the Mattermost REST API.  __Minimum server version__: 4.1  ##### Permissions Must have `create_user_access_token` permission. For non-self requests, must also have the `edit_other_users` permission. 
@@ -269,7 +269,7 @@ Generate a user access token that can be used to authenticate with the Mattermos
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object19** | [**InlineObject19**](InlineObject19.md) |  | [required] |
+**create_user_access_token_request** | [**CreateUserAccessTokenRequest**](CreateUserAccessTokenRequest.md) |  | [required] |
 
 ### Return type
 
@@ -349,7 +349,7 @@ Name | Type | Description  | Required | Notes
 
 ## disable_user_access_token
 
-> crate::models::StatusOk disable_user_access_token(inline_object21)
+> crate::models::StatusOk disable_user_access_token(disable_user_access_token_request)
 Disable personal access token
 
 Disable a personal access token and delete any sessions using the token. The token can be re-enabled using `/users/tokens/enable`.  __Minimum server version__: 4.4  ##### Permissions Must have `revoke_user_access_token` permission. For non-self requests, must also have the `edit_other_users` permission. 
@@ -359,7 +359,7 @@ Disable a personal access token and delete any sessions using the token. The tok
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object21** | [**InlineObject21**](InlineObject21.md) |  | [required] |
+**disable_user_access_token_request** | [**DisableUserAccessTokenRequest**](DisableUserAccessTokenRequest.md) |  | [required] |
 
 ### Return type
 
@@ -379,7 +379,7 @@ Name | Type | Description  | Required | Notes
 
 ## enable_user_access_token
 
-> crate::models::StatusOk enable_user_access_token(inline_object22)
+> crate::models::StatusOk enable_user_access_token(enable_user_access_token_request)
 Enable personal access token
 
 Re-enable a personal access token that has been disabled.  __Minimum server version__: 4.4  ##### Permissions Must have `create_user_access_token` permission. For non-self requests, must also have the `edit_other_users` permission. 
@@ -389,7 +389,7 @@ Re-enable a personal access token that has been disabled.  __Minimum server vers
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object22** | [**InlineObject22**](InlineObject22.md) |  | [required] |
+**enable_user_access_token_request** | [**EnableUserAccessTokenRequest**](EnableUserAccessTokenRequest.md) |  | [required] |
 
 ### Return type
 
@@ -409,7 +409,7 @@ Name | Type | Description  | Required | Notes
 
 ## generate_mfa_secret
 
-> crate::models::InlineResponse2001 generate_mfa_secret(user_id)
+> crate::models::GenerateMfaSecret200Response generate_mfa_secret(user_id)
 Generate MFA secret
 
 Generates an multi-factor authentication secret for a user and returns it as a string and as base64 encoded QR code image. ##### Permissions Must be logged in as the user or have the `edit_other_users` permission. 
@@ -423,7 +423,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2001**](inline_response_200_1.md)
+[**crate::models::GenerateMfaSecret200Response**](GenerateMfaSecret_200_response.md)
 
 ### Authorization
 
@@ -970,7 +970,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_users_by_group_channel_ids
 
-> crate::models::InlineResponse200 get_users_by_group_channel_ids(request_body)
+> crate::models::GetUsersByGroupChannelIds200Response get_users_by_group_channel_ids(request_body)
 Get users by group channels ids
 
 Get an object containing a key per group channel id in the query and its value as a list of users members of that group channel.  The user must be a member of the group ids in the query, or they will be omitted from the response. ##### Permissions Requires an active session but no other permissions.  __Minimum server version__: 5.14 
@@ -984,7 +984,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse200**](inline_response_200.md)
+[**crate::models::GetUsersByGroupChannelIds200Response**](GetUsersByGroupChannelIds_200_response.md)
 
 ### Authorization
 
@@ -1061,7 +1061,7 @@ Name | Type | Description  | Required | Notes
 
 ## login
 
-> crate::models::User login(inline_object)
+> crate::models::User login(login_request)
 Login to Mattermost server
 
 ##### Permissions No permission required 
@@ -1071,7 +1071,7 @@ Login to Mattermost server
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object** | [**InlineObject**](InlineObject.md) |  | [required] |
+**login_request** | [**LoginRequest**](LoginRequest.md) | User authentication object | [required] |
 
 ### Return type
 
@@ -1091,7 +1091,7 @@ Name | Type | Description  | Required | Notes
 
 ## login_by_cws_token
 
-> login_by_cws_token(inline_object1)
+> login_by_cws_token(login_by_cws_token_request)
 Auto-Login to Mattermost server using CWS token
 
 CWS stands for Customer Web Server which is the cloud service used to manage cloud instances. ##### Permissions A Cloud license is required 
@@ -1101,7 +1101,7 @@ CWS stands for Customer Web Server which is the cloud service used to manage clo
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object1** | [**InlineObject1**](InlineObject1.md) |  | [required] |
+**login_by_cws_token_request** | [**LoginByCwsTokenRequest**](LoginByCwsTokenRequest.md) | User authentication object | [required] |
 
 ### Return type
 
@@ -1148,7 +1148,7 @@ This endpoint does not need any parameter.
 
 ## migrate_auth_to_ldap
 
-> migrate_auth_to_ldap(inline_object26)
+> migrate_auth_to_ldap(migrate_auth_to_ldap_request)
 Migrate user accounts authentication type to LDAP.
 
 Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to LDAP. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
@@ -1158,7 +1158,7 @@ Migrates accounts from one authentication provider to another. For example, you 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object26** | Option<[**InlineObject26**](InlineObject26.md)> |  |  |
+**migrate_auth_to_ldap_request** | Option<[**MigrateAuthToLdapRequest**](MigrateAuthToLdapRequest.md)> |  |  |
 
 ### Return type
 
@@ -1178,7 +1178,7 @@ Name | Type | Description  | Required | Notes
 
 ## migrate_auth_to_saml
 
-> migrate_auth_to_saml(inline_object27)
+> migrate_auth_to_saml(migrate_auth_to_saml_request)
 Migrate user accounts authentication type to SAML.
 
 Migrates accounts from one authentication provider to another. For example, you can upgrade your authentication provider from email to SAML. __Minimum server version__: 5.28 ##### Permissions Must have `manage_system` permission. 
@@ -1188,7 +1188,7 @@ Migrates accounts from one authentication provider to another. For example, you 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object27** | Option<[**InlineObject27**](InlineObject27.md)> |  |  |
+**migrate_auth_to_saml_request** | Option<[**MigrateAuthToSamlRequest**](MigrateAuthToSamlRequest.md)> |  |  |
 
 ### Return type
 
@@ -1208,7 +1208,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_user
 
-> crate::models::User patch_user(user_id, inline_object5)
+> crate::models::User patch_user(user_id, patch_user_request)
 Patch a user
 
 Partially update a user by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must be logged in as the user being updated or have the `edit_other_users` permission. 
@@ -1219,7 +1219,7 @@ Partially update a user by providing only the fields you want to update. Omitted
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object5** | [**InlineObject5**](InlineObject5.md) |  | [required] |
+**patch_user_request** | [**PatchUserRequest**](PatchUserRequest.md) | User object that is to be updated | [required] |
 
 ### Return type
 
@@ -1296,7 +1296,7 @@ Name | Type | Description  | Required | Notes
 
 ## publish_user_typing
 
-> publish_user_typing(user_id, inline_object25)
+> publish_user_typing(user_id, publish_user_typing_request)
 Publish a user typing websocket event.
 
 Notify users in the given channel via websocket that the given user is typing. __Minimum server version__: 5.26 ##### Permissions Must have `manage_system` permission to publish for any user other than oneself. 
@@ -1307,7 +1307,7 @@ Notify users in the given channel via websocket that the given user is typing. _
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object25** | Option<[**InlineObject25**](InlineObject25.md)> |  |  |
+**publish_user_typing_request** | Option<[**PublishUserTypingRequest**](PublishUserTypingRequest.md)> |  |  |
 
 ### Return type
 
@@ -1327,7 +1327,7 @@ Name | Type | Description  | Required | Notes
 
 ## register_terms_of_service_action
 
-> crate::models::StatusOk register_terms_of_service_action(user_id, inline_object24)
+> crate::models::StatusOk register_terms_of_service_action(user_id, register_terms_of_service_action_request)
 Records user action when they accept or decline custom terms of service
 
 Records user action when they accept or decline custom terms of service. Records the action in audit table. Updates user's last accepted terms of service ID if they accepted it.  __Minimum server version__: 5.4 ##### Permissions Must be logged in as the user being acted on. 
@@ -1338,7 +1338,7 @@ Records user action when they accept or decline custom terms of service. Records
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object24** | [**InlineObject24**](InlineObject24.md) |  | [required] |
+**register_terms_of_service_action_request** | [**RegisterTermsOfServiceActionRequest**](RegisterTermsOfServiceActionRequest.md) | terms of service details | [required] |
 
 ### Return type
 
@@ -1358,7 +1358,7 @@ Name | Type | Description  | Required | Notes
 
 ## reset_password
 
-> crate::models::StatusOk reset_password(inline_object9)
+> crate::models::StatusOk reset_password(reset_password_request)
 Reset password
 
 Update the password for a user using a one-use, timed recovery code tied to the user's account. Only works for non-SSO users. ##### Permissions No permissions required. 
@@ -1368,7 +1368,7 @@ Update the password for a user using a one-use, timed recovery code tied to the 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object9** | [**InlineObject9**](InlineObject9.md) |  | [required] |
+**reset_password_request** | [**ResetPasswordRequest**](ResetPasswordRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1418,7 +1418,7 @@ Name | Type | Description  | Required | Notes
 
 ## revoke_session
 
-> crate::models::StatusOk revoke_session(user_id, inline_object14)
+> crate::models::StatusOk revoke_session(user_id, revoke_session_request)
 Revoke a user session
 
 Revokes a user session from the provided user id and session id strings. ##### Permissions Must be logged in as the user being updated or have the `edit_other_users` permission. 
@@ -1429,7 +1429,7 @@ Revokes a user session from the provided user id and session id strings. ##### P
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object14** | [**InlineObject14**](InlineObject14.md) |  | [required] |
+**revoke_session_request** | [**RevokeSessionRequest**](RevokeSessionRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1476,7 +1476,7 @@ This endpoint does not need any parameter.
 
 ## revoke_user_access_token
 
-> crate::models::StatusOk revoke_user_access_token(inline_object20)
+> crate::models::StatusOk revoke_user_access_token(revoke_user_access_token_request)
 Revoke a user access token
 
 Revoke a user access token and delete any sessions using the token.  __Minimum server version__: 4.1  ##### Permissions Must have `revoke_user_access_token` permission. For non-self requests, must also have the `edit_other_users` permission. 
@@ -1486,7 +1486,7 @@ Revoke a user access token and delete any sessions using the token.  __Minimum s
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object20** | [**InlineObject20**](InlineObject20.md) |  | [required] |
+**revoke_user_access_token_request** | [**RevokeUserAccessTokenRequest**](RevokeUserAccessTokenRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1506,7 +1506,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_user_access_tokens
 
-> Vec<crate::models::UserAccessTokenSanitized> search_user_access_tokens(inline_object23)
+> Vec<crate::models::UserAccessTokenSanitized> search_user_access_tokens(search_user_access_tokens_request)
 Search tokens
 
 Get a list of tokens based on search criteria provided in the request body. Searches are done against the token id, user id and username.  __Minimum server version__: 4.7  ##### Permissions Must have `manage_system` permission. 
@@ -1516,7 +1516,7 @@ Get a list of tokens based on search criteria provided in the request body. Sear
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object23** | [**InlineObject23**](InlineObject23.md) |  | [required] |
+**search_user_access_tokens_request** | [**SearchUserAccessTokensRequest**](SearchUserAccessTokensRequest.md) | Search criteria | [required] |
 
 ### Return type
 
@@ -1536,7 +1536,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_users
 
-> Vec<crate::models::User> search_users(inline_object3)
+> Vec<crate::models::User> search_users(search_users_request)
 Search users
 
 Get a list of users based on search criteria provided in the request body. Searches are typically done against username, full name, nickname and email unless otherwise configured by the server. ##### Permissions Requires an active session and `read_channel` and/or `view_team` permissions for any channels or teams specified in the request body. 
@@ -1546,7 +1546,7 @@ Get a list of users based on search criteria provided in the request body. Searc
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object3** | [**InlineObject3**](InlineObject3.md) |  | [required] |
+**search_users_request** | [**SearchUsersRequest**](SearchUsersRequest.md) | Search criteria | [required] |
 
 ### Return type
 
@@ -1566,7 +1566,7 @@ Name | Type | Description  | Required | Notes
 
 ## send_password_reset_email
 
-> crate::models::StatusOk send_password_reset_email(inline_object13)
+> crate::models::StatusOk send_password_reset_email(send_password_reset_email_request)
 Send password reset email
 
 Send an email containing a link for resetting the user's password. The link will contain a one-use, timed recovery code tied to the user's account. Only works for non-SSO users. ##### Permissions No permissions required. 
@@ -1576,7 +1576,7 @@ Send an email containing a link for resetting the user's password. The link will
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object13** | [**InlineObject13**](InlineObject13.md) |  | [required] |
+**send_password_reset_email_request** | [**SendPasswordResetEmailRequest**](SendPasswordResetEmailRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1596,7 +1596,7 @@ Name | Type | Description  | Required | Notes
 
 ## send_verification_email
 
-> crate::models::StatusOk send_verification_email(inline_object17)
+> crate::models::StatusOk send_verification_email(send_verification_email_request)
 Send verification email
 
 Send an email with a verification link to a user that has an email matching the one in the request body. This endpoint will return success even if the email does not match any users on the system. ##### Permissions No permissions required. 
@@ -1606,7 +1606,7 @@ Send an email with a verification link to a user that has an email matching the 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object17** | [**InlineObject17**](InlineObject17.md) |  | [required] |
+**send_verification_email_request** | [**SendVerificationEmailRequest**](SendVerificationEmailRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1687,7 +1687,7 @@ Name | Type | Description  | Required | Notes
 
 ## switch_account_type
 
-> crate::models::InlineResponse2003 switch_account_type(inline_object18)
+> crate::models::SwitchAccountType200Response switch_account_type(switch_account_type_request)
 Switch login method
 
 Switch a user's login method from using email to OAuth2/SAML/LDAP or back to email. When switching to OAuth2/SAML, account switching is not complete until the user follows the returned link and completes any steps on the OAuth2/SAML service provider.  To switch from email to OAuth2/SAML, specify `current_service`, `new_service`, `email` and `password`.  To switch from OAuth2/SAML to email, specify `current_service`, `new_service`, `email` and `new_password`.  To switch from email to LDAP/AD, specify `current_service`, `new_service`, `email`, `password`, `ldap_ip` and `new_password` (this is the user's LDAP password).  To switch from LDAP/AD to email, specify `current_service`, `new_service`, `ldap_ip`, `password` (this is the user's LDAP password), `email`  and `new_password`.  Additionally, specify `mfa_code` when trying to switch an account on LDAP/AD or email that has MFA activated.  ##### Permissions No current authentication required except when switching from OAuth2/SAML to email. 
@@ -1697,11 +1697,11 @@ Switch a user's login method from using email to OAuth2/SAML/LDAP or back to ema
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object18** | [**InlineObject18**](InlineObject18.md) |  | [required] |
+**switch_account_type_request** | [**SwitchAccountTypeRequest**](SwitchAccountTypeRequest.md) |  | [required] |
 
 ### Return type
 
-[**crate::models::InlineResponse2003**](inline_response_200_3.md)
+[**crate::models::SwitchAccountType200Response**](SwitchAccountType_200_response.md)
 
 ### Authorization
 
@@ -1717,7 +1717,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user
 
-> crate::models::User update_user(user_id, inline_object4)
+> crate::models::User update_user(user_id, update_user_request)
 Update a user
 
 Update a user by providing the user object. The fields that can be updated are defined in the request body, all other provided fields will be ignored. Any fields not included in the request body will be set to null or reverted to default values. ##### Permissions Must be logged in as the user being updated or have the `edit_other_users` permission. 
@@ -1728,7 +1728,7 @@ Update a user by providing the user object. The fields that can be updated are d
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object4** | [**InlineObject4**](InlineObject4.md) |  | [required] |
+**update_user_request** | [**UpdateUserRequest**](UpdateUserRequest.md) | User object that is to be updated | [required] |
 
 ### Return type
 
@@ -1748,7 +1748,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user_active
 
-> crate::models::StatusOk update_user_active(user_id, inline_object7)
+> crate::models::StatusOk update_user_active(user_id, update_user_active_request)
 Update user active status
 
 Update user active or inactive status.  __Since server version 4.6, users using a SSO provider to login can be activated or deactivated with this endpoint. However, if their activation status in Mattermost does not reflect their status in the SSO provider, the next synchronization or login by that user will reset the activation status to that of their account in the SSO provider. Server versions 4.5 and before do not allow activation or deactivation of SSO users from this endpoint.__ ##### Permissions User can deactivate themselves. User with `manage_system` permission can activate or deactivate a user. 
@@ -1759,7 +1759,7 @@ Update user active or inactive status.  __Since server version 4.6, users using 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object7** | [**InlineObject7**](InlineObject7.md) |  | [required] |
+**update_user_active_request** | [**UpdateUserActiveRequest**](UpdateUserActiveRequest.md) | Use `true` to set the user active, `false` for inactive | [required] |
 
 ### Return type
 
@@ -1810,7 +1810,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user_mfa
 
-> crate::models::StatusOk update_user_mfa(user_id, inline_object10)
+> crate::models::StatusOk update_user_mfa(user_id, update_user_mfa_request)
 Update a user's MFA
 
 Activates multi-factor authentication for the user if `activate` is true and a valid `code` is provided. If activate is false, then `code` is not required and multi-factor authentication is disabled for the user. ##### Permissions Must be logged in as the user being updated or have the `edit_other_users` permission. 
@@ -1821,7 +1821,7 @@ Activates multi-factor authentication for the user if `activate` is true and a v
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object10** | [**InlineObject10**](InlineObject10.md) |  | [required] |
+**update_user_mfa_request** | [**UpdateUserMfaRequest**](UpdateUserMfaRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1841,7 +1841,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user_password
 
-> crate::models::StatusOk update_user_password(user_id, inline_object12)
+> crate::models::StatusOk update_user_password(user_id, update_user_password_request)
 Update a user's password
 
 Update a user's password. New password must meet password policy set by server configuration. Current password is required if you're updating your own password. ##### Permissions Must be logged in as the user the password is being changed for or have `manage_system` permission. 
@@ -1852,7 +1852,7 @@ Update a user's password. New password must meet password policy set by server c
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object12** | [**InlineObject12**](InlineObject12.md) |  | [required] |
+**update_user_password_request** | [**UpdateUserPasswordRequest**](UpdateUserPasswordRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1872,7 +1872,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_user_roles
 
-> crate::models::StatusOk update_user_roles(user_id, inline_object6)
+> crate::models::StatusOk update_user_roles(user_id, update_user_roles_request)
 Update a user's roles
 
 Update a user's system-level roles. Valid user roles are \"system_user\", \"system_admin\" or both of them. Overwrites any previously assigned system-level roles. ##### Permissions Must have the `manage_roles` permission. 
@@ -1883,7 +1883,7 @@ Update a user's system-level roles. Valid user roles are \"system_user\", \"syst
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
-**inline_object6** | [**InlineObject6**](InlineObject6.md) |  | [required] |
+**update_user_roles_request** | [**UpdateUserRolesRequest**](UpdateUserRolesRequest.md) | Space-delimited system roles to assign to the user | [required] |
 
 ### Return type
 
@@ -1903,7 +1903,7 @@ Name | Type | Description  | Required | Notes
 
 ## verify_user_email
 
-> crate::models::StatusOk verify_user_email(inline_object16)
+> crate::models::StatusOk verify_user_email(verify_user_email_request)
 Verify user email
 
 Verify the email used by a user to sign-up their account with. ##### Permissions No permissions required. 
@@ -1913,7 +1913,7 @@ Verify the email used by a user to sign-up their account with. ##### Permissions
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object16** | [**InlineObject16**](InlineObject16.md) |  | [required] |
+**verify_user_email_request** | [**VerifyUserEmailRequest**](VerifyUserEmailRequest.md) |  | [required] |
 
 ### Return type
 

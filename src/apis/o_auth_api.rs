@@ -109,7 +109,7 @@ pub enum UpdateOAuthAppError {
 
 
 /// Register an OAuth 2.0 client application with Mattermost as the service provider. ##### Permissions Must have `manage_oauth` permission. 
-pub async fn create_o_auth_app(configuration: &configuration::Configuration, inline_object97: crate::models::InlineObject97) -> Result<crate::models::OAuthApp, Error<CreateOAuthAppError>> {
+pub async fn create_o_auth_app(configuration: &configuration::Configuration, create_o_auth_app_request: crate::models::CreateOAuthAppRequest) -> Result<crate::models::OAuthApp, Error<CreateOAuthAppError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -123,7 +123,7 @@ pub async fn create_o_auth_app(configuration: &configuration::Configuration, inl
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object97);
+    local_var_req_builder = local_var_req_builder.json(&create_o_auth_app_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -172,7 +172,7 @@ pub async fn delete_o_auth_app(configuration: &configuration::Configuration, app
 }
 
 /// Get a page of OAuth 2.0 client applications authorized to access a user's account. ##### Permissions Must be authenticated as the user or have `edit_other_users` permission. 
-pub async fn get_authorized_o_auth_apps_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::OAuthApp>, Error<GetAuthorizedOAuthAppsForUserError>> {
+pub async fn get_authorized_o_auth_apps_for_user(configuration: &configuration::Configuration, user_id: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::OAuthApp>, Error<GetAuthorizedOAuthAppsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -271,7 +271,7 @@ pub async fn get_o_auth_app_info(configuration: &configuration::Configuration, a
 }
 
 /// Get a page of OAuth 2.0 client applications registered with Mattermost. ##### Permissions With `manage_oauth` permission, the apps registered by the logged in user are returned. With `manage_system_wide_oauth` permission, all apps regardless of creator are returned. 
-pub async fn get_o_auth_apps(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::OAuthApp>, Error<GetOAuthAppsError>> {
+pub async fn get_o_auth_apps(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::OAuthApp>, Error<GetOAuthAppsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -339,7 +339,7 @@ pub async fn regenerate_o_auth_app_secret(configuration: &configuration::Configu
 }
 
 /// Update an OAuth 2.0 client application based on OAuth struct. ##### Permissions If app creator, must have `mange_oauth` permission otherwise `manage_system_wide_oauth` permission is required. 
-pub async fn update_o_auth_app(configuration: &configuration::Configuration, app_id: &str, inline_object98: crate::models::InlineObject98) -> Result<crate::models::OAuthApp, Error<UpdateOAuthAppError>> {
+pub async fn update_o_auth_app(configuration: &configuration::Configuration, app_id: &str, update_o_auth_app_request: crate::models::UpdateOAuthAppRequest) -> Result<crate::models::OAuthApp, Error<UpdateOAuthAppError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -353,7 +353,7 @@ pub async fn update_o_auth_app(configuration: &configuration::Configuration, app
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object98);
+    local_var_req_builder = local_var_req_builder.json(&update_o_auth_app_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

@@ -46,7 +46,7 @@ Method | HTTP request | Description
 
 ## add_team_member
 
-> crate::models::TeamMember add_team_member(team_id, inline_object37)
+> crate::models::TeamMember add_team_member(team_id, add_team_member_request)
 Add user to team
 
 Add user to the team by user_id. ##### Permissions Must be authenticated and team be open to add self. For adding another user, authenticated user must have the `add_user_to_team` permission. 
@@ -57,7 +57,7 @@ Add user to the team by user_id. ##### Permissions Must be authenticated and tea
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object37** | [**InlineObject37**](InlineObject37.md) |  | [required] |
+**add_team_member_request** | [**AddTeamMemberRequest**](AddTeamMemberRequest.md) |  | [required] |
 
 ### Return type
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_team
 
-> crate::models::Team create_team(inline_object32)
+> crate::models::Team create_team(create_team_request)
 Create a team
 
 Create a new team on the system. ##### Permissions Must be authenticated and have the `create_team` permission. 
@@ -149,7 +149,7 @@ Create a new team on the system. ##### Permissions Must be authenticated and hav
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object32** | [**InlineObject32**](InlineObject32.md) |  | [required] |
+**create_team_request** | [**CreateTeamRequest**](CreateTeamRequest.md) | Team that is to be created | [required] |
 
 ### Return type
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_team_invite_info
 
-> crate::models::InlineResponse2006 get_team_invite_info(invite_id)
+> crate::models::GetTeamInviteInfo200Response get_team_invite_info(invite_id)
 Get invite info for a team
 
 Get the `name`, `display_name`, `description` and `id` for a team from the invite id.  __Minimum server version__: 4.0  ##### Permissions No authentication required. 
@@ -306,7 +306,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2006**](inline_response_200_6.md)
+[**crate::models::GetTeamInviteInfo200Response**](GetTeamInviteInfo_200_response.md)
 
 ### Authorization
 
@@ -569,7 +569,7 @@ Name | Type | Description  | Required | Notes
 
 ## import_team
 
-> crate::models::InlineResponse2005 import_team(team_id, file, filesize, import_from)
+> crate::models::ImportTeam200Response import_team(team_id, file, filesize, import_from)
 Import a Team from other application
 
 Import a team into a existing team. Import users, channels, posts, hooks. ##### Permissions Must have `permission_import_team` permission. 
@@ -586,7 +586,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2005**](inline_response_200_5.md)
+[**crate::models::ImportTeam200Response**](ImportTeam_200_response.md)
 
 ### Authorization
 
@@ -629,7 +629,7 @@ This endpoint does not need any parameter.
 
 ## invite_guests_to_team
 
-> crate::models::StatusOk invite_guests_to_team(team_id, inline_object41)
+> crate::models::StatusOk invite_guests_to_team(team_id, invite_guests_to_team_request)
 Invite guests to the team by email
 
 Invite guests to existing team channels usign the user's email.  The number of emails that can be sent is rate limited to 20 per hour with a burst of 20 emails. If the rate limit exceeds, the error message contains details on when to retry and when the timer will be reset.  __Minimum server version__: 5.16  ##### Permissions Must have `invite_guest` permission for the team. 
@@ -640,7 +640,7 @@ Invite guests to existing team channels usign the user's email.  The number of e
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object41** | [**InlineObject41**](InlineObject41.md) |  | [required] |
+**invite_guests_to_team_request** | [**InviteGuestsToTeamRequest**](InviteGuestsToTeamRequest.md) | Guests invite information | [required] |
 
 ### Return type
 
@@ -691,7 +691,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_team
 
-> crate::models::Team patch_team(team_id, inline_object34)
+> crate::models::Team patch_team(team_id, patch_team_request)
 Patch a team
 
 Partially update a team by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have the `manage_team` permission. 
@@ -702,7 +702,7 @@ Partially update a team by providing only the fields you want to update. Omitted
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object34** | [**InlineObject34**](InlineObject34.md) |  | [required] |
+**patch_team_request** | [**PatchTeamRequest**](PatchTeamRequest.md) | Team object that is to be updated | [required] |
 
 ### Return type
 
@@ -879,7 +879,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_teams
 
-> crate::models::InlineResponse2004 search_teams(inline_object36)
+> crate::models::SearchTeams200Response search_teams(search_teams_request)
 Search teams
 
 Search teams based on search term and options provided in the request body.  ##### Permissions Logged in user only shows open teams Logged in user with \"manage_system\" permission shows all teams 
@@ -889,11 +889,11 @@ Search teams based on search term and options provided in the request body.  ###
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object36** | [**InlineObject36**](InlineObject36.md) |  | [required] |
+**search_teams_request** | [**SearchTeamsRequest**](SearchTeamsRequest.md) | Search criteria | [required] |
 
 ### Return type
 
-[**crate::models::InlineResponse2004**](inline_response_200_4.md)
+[**crate::models::SearchTeams200Response**](SearchTeams_200_response.md)
 
 ### Authorization
 
@@ -1034,7 +1034,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_team
 
-> crate::models::Team update_team(team_id, inline_object33)
+> crate::models::Team update_team(team_id, update_team_request)
 Update a team
 
 Update a team by providing the team object. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have the `manage_team` permission. 
@@ -1045,7 +1045,7 @@ Update a team by providing the team object. The fields that can be updated are d
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object33** | [**InlineObject33**](InlineObject33.md) |  | [required] |
+**update_team_request** | [**UpdateTeamRequest**](UpdateTeamRequest.md) | Team to update | [required] |
 
 ### Return type
 
@@ -1065,7 +1065,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_team_member_roles
 
-> crate::models::StatusOk update_team_member_roles(team_id, user_id, inline_object39)
+> crate::models::StatusOk update_team_member_roles(team_id, user_id, update_user_roles_request)
 Update a team member roles
 
 Update a team member roles. Valid team roles are \"team_user\", \"team_admin\" or both of them. Overwrites any previously assigned team roles. ##### Permissions Must be authenticated and have the `manage_team_roles` permission. 
@@ -1077,7 +1077,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
 **user_id** | **String** | User GUID | [required] |
-**inline_object39** | [**InlineObject39**](InlineObject39.md) |  | [required] |
+**update_user_roles_request** | [**UpdateUserRolesRequest**](UpdateUserRolesRequest.md) | Space-delimited team roles to assign to the user | [required] |
 
 ### Return type
 
@@ -1097,7 +1097,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_team_member_scheme_roles
 
-> crate::models::StatusOk update_team_member_scheme_roles(team_id, user_id, inline_object40)
+> crate::models::StatusOk update_team_member_scheme_roles(team_id, user_id, update_team_member_scheme_roles_request)
 Update the scheme-derived roles of a team member.
 
 Update a team member's scheme_admin/scheme_user properties. Typically this should either be `scheme_admin=false, scheme_user=true` for ordinary team member, or `scheme_admin=true, scheme_user=true` for a team admin.  __Minimum server version__: 5.0  ##### Permissions Must be authenticated and have the `manage_team_roles` permission. 
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
 **user_id** | **String** | User GUID | [required] |
-**inline_object40** | [**InlineObject40**](InlineObject40.md) |  | [required] |
+**update_team_member_scheme_roles_request** | [**UpdateTeamMemberSchemeRolesRequest**](UpdateTeamMemberSchemeRolesRequest.md) | Scheme properties. | [required] |
 
 ### Return type
 
@@ -1129,7 +1129,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_team_privacy
 
-> crate::models::Team update_team_privacy(team_id, inline_object35)
+> crate::models::Team update_team_privacy(team_id, update_team_privacy_request)
 Update teams's privacy
 
 Updates team's privacy allowing changing a team from Public (open) to Private (invitation only) and back.  __Minimum server version__: 5.24  ##### Permissions `manage_team` permission for the team of the team. 
@@ -1140,7 +1140,7 @@ Updates team's privacy allowing changing a team from Public (open) to Private (i
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object35** | [**InlineObject35**](InlineObject35.md) |  | [required] |
+**update_team_privacy_request** | [**UpdateTeamPrivacyRequest**](UpdateTeamPrivacyRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1160,7 +1160,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_team_scheme
 
-> crate::models::StatusOk update_team_scheme(team_id, inline_object43)
+> crate::models::StatusOk update_team_scheme(team_id, update_team_scheme_request)
 Set a team's scheme
 
 Set a team's scheme, more specifically sets the scheme_id value of a team record.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.0 
@@ -1171,7 +1171,7 @@ Set a team's scheme, more specifically sets the scheme_id value of a team record
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object43** | [**InlineObject43**](InlineObject43.md) |  | [required] |
+**update_team_scheme_request** | [**UpdateTeamSchemeRequest**](UpdateTeamSchemeRequest.md) | Scheme GUID | [required] |
 
 ### Return type
 

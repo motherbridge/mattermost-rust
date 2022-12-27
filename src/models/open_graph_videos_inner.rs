@@ -19,11 +19,11 @@ pub struct OpenGraphVideosInner {
     #[serde(rename = "secure_url", skip_serializing_if = "Option::is_none")]
     pub secure_url: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "width", skip_serializing_if = "Option::is_none")]
-    pub width: Option<i64>,
+    pub width: Option<i32>,
     #[serde(rename = "height", skip_serializing_if = "Option::is_none")]
-    pub height: Option<i64>,
+    pub height: Option<i32>,
 }
 
 impl OpenGraphVideosInner {
@@ -32,7 +32,7 @@ impl OpenGraphVideosInner {
         OpenGraphVideosInner {
             url: None,
             secure_url: None,
-            _type: None,
+            r#type: None,
             width: None,
             height: None,
         }

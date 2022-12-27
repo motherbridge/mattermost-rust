@@ -148,7 +148,7 @@ pub async fn get_user_terms_of_service(configuration: &configuration::Configurat
 }
 
 /// Records user action when they accept or decline custom terms of service. Records the action in audit table. Updates user's last accepted terms of service ID if they accepted it.  __Minimum server version__: 5.4 ##### Permissions Must be logged in as the user being acted on. 
-pub async fn register_terms_of_service_action(configuration: &configuration::Configuration, user_id: &str, inline_object24: crate::models::InlineObject24) -> Result<crate::models::StatusOk, Error<RegisterTermsOfServiceActionError>> {
+pub async fn register_terms_of_service_action(configuration: &configuration::Configuration, user_id: &str, register_terms_of_service_action_request: crate::models::RegisterTermsOfServiceActionRequest) -> Result<crate::models::StatusOk, Error<RegisterTermsOfServiceActionError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -162,7 +162,7 @@ pub async fn register_terms_of_service_action(configuration: &configuration::Con
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object24);
+    local_var_req_builder = local_var_req_builder.json(&register_terms_of_service_action_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

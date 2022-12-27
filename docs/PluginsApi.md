@@ -168,7 +168,7 @@ This endpoint does not need any parameter.
 
 ## get_plugins
 
-> crate::models::InlineResponse20017 get_plugins()
+> crate::models::GetPlugins200Response get_plugins()
 Get plugins
 
 Get a list of inactive and a list of active plugin manifests. Plugins must be enabled in the server's config settings.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 4.4 
@@ -179,7 +179,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::InlineResponse20017**](inline_response_200_17.md)
+[**crate::models::GetPlugins200Response**](GetPlugins_200_response.md)
 
 ### Authorization
 
@@ -222,7 +222,7 @@ This endpoint does not need any parameter.
 
 ## install_marketplace_plugin
 
-> crate::models::PluginManifest install_marketplace_plugin(inline_object102)
+> crate::models::PluginManifest install_marketplace_plugin(install_marketplace_plugin_request)
 Installs a marketplace plugin
 
 Installs a plugin listed in the marketplace server.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
@@ -232,7 +232,7 @@ Installs a plugin listed in the marketplace server.  ##### Permissions Must have
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object102** | [**InlineObject102**](InlineObject102.md) |  | [required] |
+**install_marketplace_plugin_request** | [**InstallMarketplacePluginRequest**](InstallMarketplacePluginRequest.md) | The metadata identifying the plugin to install. | [required] |
 
 ### Return type
 

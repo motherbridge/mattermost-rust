@@ -243,7 +243,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_data_retention_policies_count
 
-> crate::models::InlineResponse20016 get_data_retention_policies_count()
+> crate::models::GetDataRetentionPoliciesCount200Response get_data_retention_policies_count()
 Get the number of granular data retention policies
 
 Gets the number of granular (i.e. team or channel-specific) data retention policies from the server.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
@@ -254,7 +254,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::InlineResponse20016**](inline_response_200_16.md)
+[**crate::models::GetDataRetentionPoliciesCount200Response**](GetDataRetentionPoliciesCount_200_response.md)
 
 ### Authorization
 
@@ -484,7 +484,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_channels_for_retention_policy
 
-> Vec<crate::models::ChannelWithTeamData> search_channels_for_retention_policy(policy_id, inline_object100)
+> Vec<crate::models::ChannelWithTeamData> search_channels_for_retention_policy(policy_id, search_channels_for_retention_policy_request)
 Search for the channels in a granular data retention policy
 
 Searches for the channels to which a granular data retention policy is applied.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
@@ -495,7 +495,7 @@ Searches for the channels to which a granular data retention policy is applied. 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**inline_object100** | [**InlineObject100**](InlineObject100.md) |  | [required] |
+**search_channels_for_retention_policy_request** | [**SearchChannelsForRetentionPolicyRequest**](SearchChannelsForRetentionPolicyRequest.md) |  | [required] |
 
 ### Return type
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_teams_for_retention_policy
 
-> Vec<crate::models::Team> search_teams_for_retention_policy(policy_id, inline_object99)
+> Vec<crate::models::Team> search_teams_for_retention_policy(policy_id, search_teams_for_retention_policy_request)
 Search for the teams in a granular data retention policy
 
 Searches for the teams to which a granular data retention policy is applied.  __Minimum server version__: 5.35  ##### Permissions Must have the `sysconsole_read_compliance_data_retention` permission.  ##### License Requires an E20 license. 
@@ -526,7 +526,7 @@ Searches for the teams to which a granular data retention policy is applied.  __
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_id** | **String** | The ID of the granular retention policy. | [required] |
-**inline_object99** | [**InlineObject99**](InlineObject99.md) |  | [required] |
+**search_teams_for_retention_policy_request** | [**SearchTeamsForRetentionPolicyRequest**](SearchTeamsForRetentionPolicyRequest.md) |  | [required] |
 
 ### Return type
 

@@ -421,7 +421,7 @@ pub async fn post_endpoint_for_cws_webhooks(configuration: &configuration::Confi
 }
 
 /// Updates the customer information for the Mattermost Cloud customer bound to this installation. ##### Permissions Must have `manage_system` permission and be licensed for Cloud. __Minimum server version__: 5.29 __Note:__ This is intended for internal use and is subject to change. 
-pub async fn update_cloud_customer(configuration: &configuration::Configuration, inline_object114: crate::models::InlineObject114) -> Result<crate::models::CloudCustomer, Error<UpdateCloudCustomerError>> {
+pub async fn update_cloud_customer(configuration: &configuration::Configuration, update_cloud_customer_request: crate::models::UpdateCloudCustomerRequest) -> Result<crate::models::CloudCustomer, Error<UpdateCloudCustomerError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -435,7 +435,7 @@ pub async fn update_cloud_customer(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object114);
+    local_var_req_builder = local_var_req_builder.json(&update_cloud_customer_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

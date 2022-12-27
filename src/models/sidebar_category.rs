@@ -23,7 +23,7 @@ pub struct SidebarCategory {
     #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<Type>,
+    pub r#type: Option<RHashType>,
 }
 
 impl SidebarCategory {
@@ -34,14 +34,14 @@ impl SidebarCategory {
             user_id: None,
             team_id: None,
             display_name: None,
-            _type: None,
+            r#type: None,
         }
     }
 }
 
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "channels")]
     Channels,
     #[serde(rename = "custom")]
@@ -52,8 +52,8 @@ pub enum Type {
     Favorites,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Channels
     }
 }

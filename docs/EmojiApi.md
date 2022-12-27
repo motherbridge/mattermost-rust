@@ -230,7 +230,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_emoji
 
-> Vec<crate::models::Emoji> search_emoji(inline_object74)
+> Vec<crate::models::Emoji> search_emoji(search_emoji_request)
 Search custom emoji
 
 Search for custom emoji by name based on search criteria provided in the request body. A maximum of 200 results are returned. ##### Permissions Must be authenticated.  __Minimum server version__: 4.7 
@@ -240,7 +240,7 @@ Search for custom emoji by name based on search criteria provided in the request
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object74** | [**InlineObject74**](InlineObject74.md) |  | [required] |
+**search_emoji_request** | [**SearchEmojiRequest**](SearchEmojiRequest.md) | Search criteria | [required] |
 
 ### Return type
 

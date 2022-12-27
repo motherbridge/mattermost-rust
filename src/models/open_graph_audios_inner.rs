@@ -19,7 +19,7 @@ pub struct OpenGraphAudiosInner {
     #[serde(rename = "secure_url", skip_serializing_if = "Option::is_none")]
     pub secure_url: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
 }
 
 impl OpenGraphAudiosInner {
@@ -28,7 +28,7 @@ impl OpenGraphAudiosInner {
         OpenGraphAudiosInner {
             url: None,
             secure_url: None,
-            _type: None,
+            r#type: None,
         }
     }
 }

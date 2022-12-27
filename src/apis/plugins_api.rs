@@ -202,7 +202,7 @@ pub async fn enable_plugin(configuration: &configuration::Configuration, plugin_
 }
 
 /// Gets all plugins from the marketplace server, merging data from locally installed plugins as well as prepackaged plugins shipped with the server.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
-pub async fn get_marketplace_plugins(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>, filter: Option<&str>, server_version: Option<&str>, local_only: Option<bool>) -> Result<Vec<crate::models::MarketplacePlugin>, Error<GetMarketplacePluginsError>> {
+pub async fn get_marketplace_plugins(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>, filter: Option<&str>, server_version: Option<&str>, local_only: Option<bool>) -> Result<Vec<crate::models::MarketplacePlugin>, Error<GetMarketplacePluginsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -310,7 +310,7 @@ pub async fn get_plugin_statuses(configuration: &configuration::Configuration, )
 }
 
 /// Get a list of inactive and a list of active plugin manifests. Plugins must be enabled in the server's config settings.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 4.4 
-pub async fn get_plugins(configuration: &configuration::Configuration, ) -> Result<crate::models::InlineResponse20017, Error<GetPluginsError>> {
+pub async fn get_plugins(configuration: &configuration::Configuration, ) -> Result<crate::models::GetPlugins200Response, Error<GetPluginsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -372,7 +372,7 @@ pub async fn get_webapp_plugins(configuration: &configuration::Configuration, ) 
 }
 
 /// Installs a plugin listed in the marketplace server.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.16 
-pub async fn install_marketplace_plugin(configuration: &configuration::Configuration, inline_object102: crate::models::InlineObject102) -> Result<crate::models::PluginManifest, Error<InstallMarketplacePluginError>> {
+pub async fn install_marketplace_plugin(configuration: &configuration::Configuration, install_marketplace_plugin_request: crate::models::InstallMarketplacePluginRequest) -> Result<crate::models::PluginManifest, Error<InstallMarketplacePluginError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -386,7 +386,7 @@ pub async fn install_marketplace_plugin(configuration: &configuration::Configura
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object102);
+    local_var_req_builder = local_var_req_builder.json(&install_marketplace_plugin_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

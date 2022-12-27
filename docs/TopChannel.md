@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **display_name** | Option<**String**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **team_id** | Option<**String**> |  | [optional]

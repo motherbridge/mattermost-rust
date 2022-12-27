@@ -19,7 +19,7 @@ pub struct UserThread {
     pub id: Option<String>,
     /// number of replies in this thread
     #[serde(rename = "reply_count", skip_serializing_if = "Option::is_none")]
-    pub reply_count: Option<i64>,
+    pub reply_count: Option<i32>,
     /// timestamp of the last post to this thread
     #[serde(rename = "last_reply_at", skip_serializing_if = "Option::is_none")]
     pub last_reply_at: Option<i64>,

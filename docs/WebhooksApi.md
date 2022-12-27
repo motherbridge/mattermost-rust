@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## create_incoming_webhook
 
-> crate::models::IncomingWebhook create_incoming_webhook(inline_object75)
+> crate::models::IncomingWebhook create_incoming_webhook(create_incoming_webhook_request)
 Create an incoming webhook
 
 Create an incoming webhook for a channel. ##### Permissions `manage_webhooks` for the team the webhook is in.  `manage_others_incoming_webhooks` for the team the webhook is in if the user is different than the requester. 
@@ -30,7 +30,7 @@ Create an incoming webhook for a channel. ##### Permissions `manage_webhooks` fo
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object75** | [**InlineObject75**](InlineObject75.md) |  | [required] |
+**create_incoming_webhook_request** | [**CreateIncomingWebhookRequest**](CreateIncomingWebhookRequest.md) | Incoming webhook to be created | [required] |
 
 ### Return type
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_outgoing_webhook
 
-> crate::models::OutgoingWebhook create_outgoing_webhook(inline_object77)
+> crate::models::OutgoingWebhook create_outgoing_webhook(create_outgoing_webhook_request)
 Create an outgoing webhook
 
 Create an outgoing webhook for a team. ##### Permissions `manage_webhooks` for the team the webhook is in.  `manage_others_outgoing_webhooks` for the team the webhook is in if the user is different than the requester. 
@@ -60,7 +60,7 @@ Create an outgoing webhook for a team. ##### Permissions `manage_webhooks` for t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object77** | [**InlineObject77**](InlineObject77.md) |  | [required] |
+**create_outgoing_webhook_request** | [**CreateOutgoingWebhookRequest**](CreateOutgoingWebhookRequest.md) | Outgoing webhook to be created | [required] |
 
 ### Return type
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_incoming_webhook
 
-> crate::models::IncomingWebhook update_incoming_webhook(hook_id, inline_object76)
+> crate::models::IncomingWebhook update_incoming_webhook(hook_id, update_incoming_webhook_request)
 Update an incoming webhook
 
 Update an incoming webhook given the hook id. ##### Permissions `manage_webhooks` for system or `manage_webhooks` for the specific team or `manage_webhooks` for the channel. 
@@ -306,7 +306,7 @@ Update an incoming webhook given the hook id. ##### Permissions `manage_webhooks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **hook_id** | **String** | Incoming Webhook GUID | [required] |
-**inline_object76** | [**InlineObject76**](InlineObject76.md) |  | [required] |
+**update_incoming_webhook_request** | [**UpdateIncomingWebhookRequest**](UpdateIncomingWebhookRequest.md) | Incoming webhook to be updated | [required] |
 
 ### Return type
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_outgoing_webhook
 
-> crate::models::OutgoingWebhook update_outgoing_webhook(hook_id, inline_object78)
+> crate::models::OutgoingWebhook update_outgoing_webhook(hook_id, update_outgoing_webhook_request)
 Update an outgoing webhook
 
 Update an outgoing webhook given the hook id. ##### Permissions `manage_webhooks` for system or `manage_webhooks` for the specific team or `manage_webhooks` for the channel. 
@@ -337,7 +337,7 @@ Update an outgoing webhook given the hook id. ##### Permissions `manage_webhooks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **hook_id** | **String** | outgoing Webhook GUID | [required] |
-**inline_object78** | [**InlineObject78**](InlineObject78.md) |  | [required] |
+**update_outgoing_webhook_request** | [**UpdateOutgoingWebhookRequest**](UpdateOutgoingWebhookRequest.md) | Outgoing webhook to be updated | [required] |
 
 ### Return type
 

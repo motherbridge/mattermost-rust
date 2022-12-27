@@ -21,7 +21,7 @@ pub struct NewTeamMembersList {
     pub items: Option<Vec<crate::models::NewTeamMember>>,
     /// The total count of new team members for the given time range.
     #[serde(rename = "total_count", skip_serializing_if = "Option::is_none")]
-    pub total_count: Option<i64>,
+    pub total_count: Option<i32>,
 }
 
 impl NewTeamMembersList {

@@ -199,7 +199,7 @@ pub enum UpdatePostError {
 
 
 /// Create a new post in a channel. To create the post as a comment on another post, provide `root_id`. ##### Permissions Must have `create_post` permission for the channel the post is being created in. 
-pub async fn create_post(configuration: &configuration::Configuration, inline_object58: crate::models::InlineObject58, set_online: Option<bool>) -> Result<crate::models::Post, Error<CreatePostError>> {
+pub async fn create_post(configuration: &configuration::Configuration, create_post_request: crate::models::CreatePostRequest, set_online: Option<bool>) -> Result<crate::models::Post, Error<CreatePostError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -216,7 +216,7 @@ pub async fn create_post(configuration: &configuration::Configuration, inline_ob
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object58);
+    local_var_req_builder = local_var_req_builder.json(&create_post_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -234,7 +234,7 @@ pub async fn create_post(configuration: &configuration::Configuration, inline_ob
 }
 
 /// Create a new ephemeral post in a channel. ##### Permissions Must have `create_post_ephemeral` permission (currently only given to system admin) 
-pub async fn create_post_ephemeral(configuration: &configuration::Configuration, inline_object59: crate::models::InlineObject59) -> Result<crate::models::Post, Error<CreatePostEphemeralError>> {
+pub async fn create_post_ephemeral(configuration: &configuration::Configuration, create_post_ephemeral_request: crate::models::CreatePostEphemeralRequest) -> Result<crate::models::Post, Error<CreatePostEphemeralError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -248,7 +248,7 @@ pub async fn create_post_ephemeral(configuration: &configuration::Configuration,
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object59);
+    local_var_req_builder = local_var_req_builder.json(&create_post_ephemeral_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -362,7 +362,7 @@ pub async fn get_file_infos_for_post(configuration: &configuration::Configuratio
 }
 
 /// Get a page of flagged posts of a user provided user id string. Selects from a channel, team, or all flagged posts by a user. Will only return posts from channels in which the user is member. ##### Permissions Must be user or have `manage_system` permission. 
-pub async fn get_flagged_posts_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: Option<&str>, channel_id: Option<&str>, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::PostList>, Error<GetFlaggedPostsForUserError>> {
+pub async fn get_flagged_posts_for_user(configuration: &configuration::Configuration, user_id: &str, team_id: Option<&str>, channel_id: Option<&str>, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::PostList>, Error<GetFlaggedPostsForUserError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -439,7 +439,7 @@ pub async fn get_post(configuration: &configuration::Configuration, post_id: &st
 }
 
 /// Get a post and the rest of the posts in the same thread. ##### Permissions Must have `read_channel` permission for the channel the post is in or if the channel is public, have the `read_public_channels` permission for the team. 
-pub async fn get_post_thread(configuration: &configuration::Configuration, post_id: &str, per_page: Option<i64>, from_post: Option<&str>, from_create_at: Option<i64>, direction: Option<&str>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostThreadError>> {
+pub async fn get_post_thread(configuration: &configuration::Configuration, post_id: &str, per_page: Option<i32>, from_post: Option<&str>, from_create_at: Option<i32>, direction: Option<&str>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostThreadError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -491,7 +491,7 @@ pub async fn get_post_thread(configuration: &configuration::Configuration, post_
 }
 
 /// Get the oldest unread post in the channel for the given user as well as the posts around it. The returned list is sorted in descending order (most recent post first). ##### Permissions Must be logged in as the user or have `edit_other_users` permission, and must have `read_channel` permission for the channel. __Minimum server version__: 5.14 
-pub async fn get_posts_around_last_unread(configuration: &configuration::Configuration, user_id: &str, channel_id: &str, limit_before: Option<i64>, limit_after: Option<i64>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsAroundLastUnreadError>> {
+pub async fn get_posts_around_last_unread(configuration: &configuration::Configuration, user_id: &str, channel_id: &str, limit_before: Option<i32>, limit_after: Option<i32>, skip_fetch_threads: Option<bool>, collapsed_threads: Option<bool>, collapsed_threads_extended: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsAroundLastUnreadError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -569,7 +569,7 @@ pub async fn get_posts_by_ids(configuration: &configuration::Configuration, requ
 }
 
 /// Get a page of posts in a channel. Use the query parameters to modify the behaviour of this endpoint. The parameter `since` must not be used with any of `before`, `after`, `page`, and `per_page` parameters. If `since` is used, it will always return all posts modified since that time, ordered by their create time limited till 1000. A caveat with this parameter is that there is no guarantee that the returned posts will be consecutive. It is left to the clients to maintain state and fill any missing holes in the post order. ##### Permissions Must have `read_channel` permission for the channel. 
-pub async fn get_posts_for_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i64>, per_page: Option<i64>, since: Option<i64>, before: Option<&str>, after: Option<&str>, include_deleted: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsForChannelError>> {
+pub async fn get_posts_for_channel(configuration: &configuration::Configuration, channel_id: &str, page: Option<i32>, per_page: Option<i32>, since: Option<i32>, before: Option<&str>, after: Option<&str>, include_deleted: Option<bool>) -> Result<crate::models::PostList, Error<GetPostsForChannelError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -618,7 +618,7 @@ pub async fn get_posts_for_channel(configuration: &configuration::Configuration,
 }
 
 /// Partially update a post by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have the `edit_post` permission. 
-pub async fn patch_post(configuration: &configuration::Configuration, post_id: &str, inline_object61: crate::models::InlineObject61) -> Result<crate::models::Post, Error<PatchPostError>> {
+pub async fn patch_post(configuration: &configuration::Configuration, post_id: &str, patch_post_request: crate::models::PatchPostRequest) -> Result<crate::models::Post, Error<PatchPostError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -632,7 +632,7 @@ pub async fn patch_post(configuration: &configuration::Configuration, post_id: &
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object61);
+    local_var_req_builder = local_var_req_builder.json(&patch_post_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -681,7 +681,7 @@ pub async fn pin_post(configuration: &configuration::Configuration, post_id: &st
 }
 
 /// Search posts in the team and from the provided terms string. ##### Permissions Must be authenticated and have the `view_team` permission. 
-pub async fn search_posts(configuration: &configuration::Configuration, team_id: &str, inline_object62: crate::models::InlineObject62) -> Result<crate::models::PostListWithSearchMatches, Error<SearchPostsError>> {
+pub async fn search_posts(configuration: &configuration::Configuration, team_id: &str, search_posts_request: crate::models::SearchPostsRequest) -> Result<crate::models::PostListWithSearchMatches, Error<SearchPostsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -695,7 +695,7 @@ pub async fn search_posts(configuration: &configuration::Configuration, team_id:
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object62);
+    local_var_req_builder = local_var_req_builder.json(&search_posts_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -713,7 +713,7 @@ pub async fn search_posts(configuration: &configuration::Configuration, team_id:
 }
 
 /// Set a reminder for the user for the post. ##### Permissions Must have `read_channel` permission for the channel the post is in.  __Minimum server version__: 7.2 
-pub async fn set_post_reminder(configuration: &configuration::Configuration, user_id: &str, post_id: &str, inline_object63: crate::models::InlineObject63) -> Result<crate::models::StatusOk, Error<SetPostReminderError>> {
+pub async fn set_post_reminder(configuration: &configuration::Configuration, user_id: &str, post_id: &str, set_post_reminder_request: crate::models::SetPostReminderRequest) -> Result<crate::models::StatusOk, Error<SetPostReminderError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -727,7 +727,7 @@ pub async fn set_post_reminder(configuration: &configuration::Configuration, use
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object63);
+    local_var_req_builder = local_var_req_builder.json(&set_post_reminder_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -807,7 +807,7 @@ pub async fn unpin_post(configuration: &configuration::Configuration, post_id: &
 }
 
 /// Update a post. Only the fields listed below are updatable, omitted fields will be treated as blank. ##### Permissions Must have `edit_post` permission for the channel the post is in. 
-pub async fn update_post(configuration: &configuration::Configuration, post_id: &str, inline_object60: crate::models::InlineObject60) -> Result<crate::models::Post, Error<UpdatePostError>> {
+pub async fn update_post(configuration: &configuration::Configuration, post_id: &str, update_post_request: crate::models::UpdatePostRequest) -> Result<crate::models::Post, Error<UpdatePostError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -821,7 +821,7 @@ pub async fn update_post(configuration: &configuration::Configuration, post_id: 
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object60);
+    local_var_req_builder = local_var_req_builder.json(&update_post_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

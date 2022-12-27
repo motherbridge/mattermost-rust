@@ -42,7 +42,7 @@ pub struct PushNotification {
     #[serde(rename = "channel_name", skip_serializing_if = "Option::is_none")]
     pub channel_name: Option<String>,
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "sender_id", skip_serializing_if = "Option::is_none")]
     pub sender_id: Option<String>,
     #[serde(rename = "sender_name", skip_serializing_if = "Option::is_none")]
@@ -76,7 +76,7 @@ impl PushNotification {
             channel_id: None,
             root_id: None,
             channel_name: None,
-            _type: None,
+            r#type: None,
             sender_id: None,
             sender_name: None,
             override_username: None,

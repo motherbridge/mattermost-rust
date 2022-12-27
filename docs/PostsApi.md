@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## create_post
 
-> crate::models::Post create_post(inline_object58, set_online)
+> crate::models::Post create_post(create_post_request, set_online)
 Create a post
 
 Create a new post in a channel. To create the post as a comment on another post, provide `root_id`. ##### Permissions Must have `create_post` permission for the channel the post is being created in. 
@@ -37,7 +37,7 @@ Create a new post in a channel. To create the post as a comment on another post,
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object58** | [**InlineObject58**](InlineObject58.md) |  | [required] |
+**create_post_request** | [**CreatePostRequest**](CreatePostRequest.md) | Post object to create | [required] |
 **set_online** | Option<**bool**> | Whether to set the user status as online or not. |  |
 
 ### Return type
@@ -58,7 +58,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_post_ephemeral
 
-> crate::models::Post create_post_ephemeral(inline_object59)
+> crate::models::Post create_post_ephemeral(create_post_ephemeral_request)
 Create a ephemeral post
 
 Create a new ephemeral post in a channel. ##### Permissions Must have `create_post_ephemeral` permission (currently only given to system admin) 
@@ -68,7 +68,7 @@ Create a new ephemeral post in a channel. ##### Permissions Must have `create_po
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object59** | [**InlineObject59**](InlineObject59.md) |  | [required] |
+**create_post_ephemeral_request** | [**CreatePostEphemeralRequest**](CreatePostEphemeralRequest.md) | Ephemeral Post object to send | [required] |
 
 ### Return type
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_post
 
-> crate::models::Post patch_post(post_id, inline_object61)
+> crate::models::Post patch_post(post_id, patch_post_request)
 Patch a post
 
 Partially update a post by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored. ##### Permissions Must have the `edit_post` permission. 
@@ -395,7 +395,7 @@ Partially update a post by providing only the fields you want to update. Omitted
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** | Post GUID | [required] |
-**inline_object61** | [**InlineObject61**](InlineObject61.md) |  | [required] |
+**patch_post_request** | [**PatchPostRequest**](PatchPostRequest.md) | Post object that is to be updated | [required] |
 
 ### Return type
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_posts
 
-> crate::models::PostListWithSearchMatches search_posts(team_id, inline_object62)
+> crate::models::PostListWithSearchMatches search_posts(team_id, search_posts_request)
 Search for team posts
 
 Search posts in the team and from the provided terms string. ##### Permissions Must be authenticated and have the `view_team` permission. 
@@ -456,7 +456,7 @@ Search posts in the team and from the provided terms string. ##### Permissions M
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **team_id** | **String** | Team GUID | [required] |
-**inline_object62** | [**InlineObject62**](InlineObject62.md) |  | [required] |
+**search_posts_request** | [**SearchPostsRequest**](SearchPostsRequest.md) | The search terms and logic to use in the search. | [required] |
 
 ### Return type
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Required | Notes
 
 ## set_post_reminder
 
-> crate::models::StatusOk set_post_reminder(user_id, post_id, inline_object63)
+> crate::models::StatusOk set_post_reminder(user_id, post_id, set_post_reminder_request)
 Set a post reminder
 
 Set a reminder for the user for the post. ##### Permissions Must have `read_channel` permission for the channel the post is in.  __Minimum server version__: 7.2 
@@ -488,7 +488,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **user_id** | **String** | User GUID | [required] |
 **post_id** | **String** | Post GUID | [required] |
-**inline_object63** | [**InlineObject63**](InlineObject63.md) |  | [required] |
+**set_post_reminder_request** | [**SetPostReminderRequest**](SetPostReminderRequest.md) | Target time for the reminder | [required] |
 
 ### Return type
 
@@ -569,7 +569,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_post
 
-> crate::models::Post update_post(post_id, inline_object60)
+> crate::models::Post update_post(post_id, update_post_request)
 Update a post
 
 Update a post. Only the fields listed below are updatable, omitted fields will be treated as blank. ##### Permissions Must have `edit_post` permission for the channel the post is in. 
@@ -580,7 +580,7 @@ Update a post. Only the fields listed below are updatable, omitted fields will b
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** | ID of the post to update | [required] |
-**inline_object60** | [**InlineObject60**](InlineObject60.md) |  | [required] |
+**update_post_request** | [**UpdatePostRequest**](UpdatePostRequest.md) | Post object that is to be updated | [required] |
 
 ### Return type
 

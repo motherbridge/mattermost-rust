@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | Option<**String**> |  | [optional]
 **secure_url** | Option<**String**> |  | [optional]
-**_type** | Option<**String**> |  | [optional]
+**r#type** | Option<**String**> |  | [optional]
 **width** | Option<**i32**> |  | [optional]
 **height** | Option<**i32**> |  | [optional]
 

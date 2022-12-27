@@ -111,7 +111,7 @@ pub async fn cancel_job(configuration: &configuration::Configuration, job_id: &s
 }
 
 /// Create a new job. __Minimum server version: 4.1__ ##### Permissions Must have `manage_jobs` permission. 
-pub async fn create_job(configuration: &configuration::Configuration, inline_object67: crate::models::InlineObject67) -> Result<crate::models::Job, Error<CreateJobError>> {
+pub async fn create_job(configuration: &configuration::Configuration, create_job_request: crate::models::CreateJobRequest) -> Result<crate::models::Job, Error<CreateJobError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -125,7 +125,7 @@ pub async fn create_job(configuration: &configuration::Configuration, inline_obj
     if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&inline_object67);
+    local_var_req_builder = local_var_req_builder.json(&create_job_request);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -205,7 +205,7 @@ pub async fn get_job(configuration: &configuration::Configuration, job_id: &str)
 }
 
 /// Get a page of jobs. Use the query parameters to modify the behaviour of this endpoint. __Minimum server version: 4.1__ ##### Permissions Must have `manage_jobs` permission. 
-pub async fn get_jobs(configuration: &configuration::Configuration, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Job>, Error<GetJobsError>> {
+pub async fn get_jobs(configuration: &configuration::Configuration, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Job>, Error<GetJobsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -242,12 +242,12 @@ pub async fn get_jobs(configuration: &configuration::Configuration, page: Option
 }
 
 /// Get a page of jobs of the given type. Use the query parameters to modify the behaviour of this endpoint. __Minimum server version: 4.1__ ##### Permissions Must have `manage_jobs` permission. 
-pub async fn get_jobs_by_type(configuration: &configuration::Configuration, _type: &str, page: Option<i64>, per_page: Option<i64>) -> Result<Vec<crate::models::Job>, Error<GetJobsByTypeError>> {
+pub async fn get_jobs_by_type(configuration: &configuration::Configuration, r#type: &str, page: Option<i32>, per_page: Option<i32>) -> Result<Vec<crate::models::Job>, Error<GetJobsByTypeError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/jobs/type/{type}", local_var_configuration.base_path, type=crate::apis::urlencode(_type));
+    let local_var_uri_str = format!("{}/jobs/type/{type}", local_var_configuration.base_path, type=crate::apis::urlencode(r#type));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = page {

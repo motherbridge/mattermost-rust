@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> | The unique id of the job | [optional]
-**_type** | Option<**String**> | The type of job | [optional]
+**r#type** | Option<**String**> | The type of job | [optional]
 **create_at** | Option<**i64**> | The time at which the job was created | [optional]
 **start_at** | Option<**i64**> | The time at which the job was started | [optional]
 **last_activity_at** | Option<**i64**> | The last time at which the job had activity | [optional]

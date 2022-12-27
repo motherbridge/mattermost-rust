@@ -13,8 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct FilesLimits {
-    #[serde(rename = "total_storage", skip_serializing_if = "Option::is_none")]
-    pub total_storage: Option<i64>,
+    #[serde(rename = "total_storage", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_storage: Option<Option<i64>>,
 }
 
 impl FilesLimits {

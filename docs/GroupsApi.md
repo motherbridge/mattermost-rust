@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 ## add_group_members
 
-> crate::models::StatusOk add_group_members(group_id, inline_object91)
+> crate::models::StatusOk add_group_members(group_id, add_group_members_request)
 Adds members to a custom group
 
 Adds members to a custom group.  ##### Permissions Must have `custom_group_manage_members` permission for the given group.  __Minimum server version__: 6.3 
@@ -44,7 +44,7 @@ Adds members to a custom group.  ##### Permissions Must have `custom_group_manag
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | The ID of the group. | [required] |
-**inline_object91** | [**InlineObject91**](InlineObject91.md) |  | [required] |
+**add_group_members_request** | [**AddGroupMembersRequest**](AddGroupMembersRequest.md) |  | [required] |
 
 ### Return type
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_group
 
-> create_group(inline_object87)
+> create_group(create_group_request)
 Create a custom group
 
 Create a `custom` type group.  #### Permission Must have `create_custom_group` permission.  __Minimum server version__: 6.3 
@@ -74,7 +74,7 @@ Create a `custom` type group.  #### Permission Must have `create_custom_group` p
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object87** | [**InlineObject87**](InlineObject87.md) |  | [required] |
+**create_group_request** | [**CreateGroupRequest**](CreateGroupRequest.md) | Group object and initial members. | [required] |
 
 ### Return type
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_group_members
 
-> crate::models::StatusOk delete_group_members(group_id, inline_object92)
+> crate::models::StatusOk delete_group_members(group_id, delete_group_members_request)
 Removes members from a custom group
 
 Soft deletes a custom group members.  ##### Permissions Must have `custom_group_manage_members` permission for the given group.  __Minimum server version__: 6.3 
@@ -135,7 +135,7 @@ Soft deletes a custom group members.  ##### Permissions Must have `custom_group_
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | The ID of the group to delete. | [required] |
-**inline_object92** | [**InlineObject92**](InlineObject92.md) |  | [required] |
+**delete_group_members_request** | [**DeleteGroupMembersRequest**](DeleteGroupMembersRequest.md) |  | [required] |
 
 ### Return type
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_group_stats
 
-> crate::models::InlineResponse20014 get_group_stats(group_id)
+> crate::models::GetGroupStats200Response get_group_stats(group_id)
 Get group stats
 
 Retrieve the stats of a given group.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.26 
@@ -199,7 +199,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20014**](inline_response_200_14.md)
+[**crate::models::GetGroupStats200Response**](GetGroupStats_200_response.md)
 
 ### Authorization
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_group_users
 
-> crate::models::InlineResponse20013 get_group_users(group_id, page, per_page)
+> crate::models::GetGroupUsers200Response get_group_users(group_id, page, per_page)
 Get group users
 
 Retrieve the list of users associated with a given group.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -353,7 +353,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20013**](inline_response_200_13.md)
+[**crate::models::GetGroupUsers200Response**](GetGroupUsers_200_response.md)
 
 ### Authorization
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_group
 
-> crate::models::Group patch_group(group_id, inline_object88)
+> crate::models::Group patch_group(group_id, patch_group_request)
 Patch a group
 
 Partially update a group by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -609,7 +609,7 @@ Partially update a group by providing only the fields you want to update. Omitte
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
-**inline_object88** | [**InlineObject88**](InlineObject88.md) |  | [required] |
+**patch_group_request** | [**PatchGroupRequest**](PatchGroupRequest.md) | Group object that is to be updated | [required] |
 
 ### Return type
 
@@ -629,7 +629,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_group_syncable_for_channel
 
-> crate::models::GroupSyncableChannel patch_group_syncable_for_channel(group_id, channel_id, inline_object90)
+> crate::models::GroupSyncableChannel patch_group_syncable_for_channel(group_id, channel_id, patch_group_syncable_for_team_request)
 Patch a GroupSyncable associated to Channel
 
 Partially update a GroupSyncable by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -641,7 +641,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
 **channel_id** | **String** | Channel GUID | [required] |
-**inline_object90** | [**InlineObject90**](InlineObject90.md) |  | [required] |
+**patch_group_syncable_for_team_request** | [**PatchGroupSyncableForTeamRequest**](PatchGroupSyncableForTeamRequest.md) | GroupSyncable object that is to be updated | [required] |
 
 ### Return type
 
@@ -661,7 +661,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_group_syncable_for_team
 
-> crate::models::GroupSyncableTeam patch_group_syncable_for_team(group_id, team_id, inline_object89)
+> crate::models::GroupSyncableTeam patch_group_syncable_for_team(group_id, team_id, patch_group_syncable_for_team_request)
 Patch a GroupSyncable associated to Team
 
 Partially update a GroupSyncable by providing only the fields you want to update. Omitted fields will not be updated. The fields that can be updated are defined in the request body, all other provided fields will be ignored.  ##### Permissions Must have `manage_system` permission.  __Minimum server version__: 5.11 
@@ -673,7 +673,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Group GUID | [required] |
 **team_id** | **String** | Team GUID | [required] |
-**inline_object89** | [**InlineObject89**](InlineObject89.md) |  | [required] |
+**patch_group_syncable_for_team_request** | [**PatchGroupSyncableForTeamRequest**](PatchGroupSyncableForTeamRequest.md) | GroupSyncable object that is to be updated | [required] |
 
 ### Return type
 

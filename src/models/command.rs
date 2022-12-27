@@ -21,7 +21,7 @@ pub struct Command {
     pub token: Option<String>,
     /// The time in milliseconds the command was created
     #[serde(rename = "create_at", skip_serializing_if = "Option::is_none")]
-    pub create_at: Option<i64>,
+    pub create_at: Option<i32>,
     /// The time in milliseconds the command was last updated
     #[serde(rename = "update_at", skip_serializing_if = "Option::is_none")]
     pub update_at: Option<i64>,

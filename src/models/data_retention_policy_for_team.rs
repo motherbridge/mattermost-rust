@@ -18,7 +18,7 @@ pub struct DataRetentionPolicyForTeam {
     pub team_id: Option<String>,
     /// The number of days a message will be retained before being deleted by this policy.
     #[serde(rename = "post_duration", skip_serializing_if = "Option::is_none")]
-    pub post_duration: Option<i64>,
+    pub post_duration: Option<i32>,
 }
 
 impl DataRetentionPolicyForTeam {

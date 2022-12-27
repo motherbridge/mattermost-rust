@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## create_o_auth_app
 
-> crate::models::OAuthApp create_o_auth_app(inline_object97)
+> crate::models::OAuthApp create_o_auth_app(create_o_auth_app_request)
 Register OAuth app
 
 Register an OAuth 2.0 client application with Mattermost as the service provider. ##### Permissions Must have `manage_oauth` permission. 
@@ -27,7 +27,7 @@ Register an OAuth 2.0 client application with Mattermost as the service provider
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**inline_object97** | [**InlineObject97**](InlineObject97.md) |  | [required] |
+**create_o_auth_app_request** | [**CreateOAuthAppRequest**](CreateOAuthAppRequest.md) | OAuth application to register | [required] |
 
 ### Return type
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_o_auth_app
 
-> crate::models::OAuthApp update_o_auth_app(app_id, inline_object98)
+> crate::models::OAuthApp update_o_auth_app(app_id, update_o_auth_app_request)
 Update an OAuth app
 
 Update an OAuth 2.0 client application based on OAuth struct. ##### Permissions If app creator, must have `mange_oauth` permission otherwise `manage_system_wide_oauth` permission is required. 
@@ -241,7 +241,7 @@ Update an OAuth 2.0 client application based on OAuth struct. ##### Permissions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **app_id** | **String** | Application client id | [required] |
-**inline_object98** | [**InlineObject98**](InlineObject98.md) |  | [required] |
+**update_o_auth_app_request** | [**UpdateOAuthAppRequest**](UpdateOAuthAppRequest.md) | OAuth application to update | [required] |
 
 ### Return type
 

@@ -54,7 +54,19 @@ impl PluginStatus {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum State {
     #[serde(rename = "null")]
-    Null
+    Null,
+    #[serde(rename = "NotRunning")]
+    NotRunning,
+    #[serde(rename = "Starting")]
+    Starting,
+    #[serde(rename = "Running")]
+    Running,
+    #[serde(rename = "FailedToStart")]
+    FailedToStart,
+    #[serde(rename = "FailedToStayRunning")]
+    FailedToStayRunning,
+    #[serde(rename = "Stopping")]
+    Stopping,
 }
 
 impl Default for State {

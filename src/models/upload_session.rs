@@ -19,7 +19,7 @@ pub struct UploadSession {
     pub id: Option<String>,
     /// The type of the upload.
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<Type>,
+    pub r#type: Option<RHashType>,
     /// The time the upload was created in milliseconds.
     #[serde(rename = "create_at", skip_serializing_if = "Option::is_none")]
     pub create_at: Option<i64>,
@@ -45,7 +45,7 @@ impl UploadSession {
     pub fn new() -> UploadSession {
         UploadSession {
             id: None,
-            _type: None,
+            r#type: None,
             create_at: None,
             user_id: None,
             channel_id: None,
@@ -58,15 +58,15 @@ impl UploadSession {
 
 /// The type of the upload.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "attachment")]
     Attachment,
     #[serde(rename = "import")]
     Import,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Attachment
     }
 }
